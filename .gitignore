@@ -38,6 +38,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# temporales del CLI de Supabase (guarda el enlace al proyecto, no va al repo)
+supabase/.temp/
+supabase/.branches/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
