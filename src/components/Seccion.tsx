@@ -20,7 +20,7 @@ export function Seccion({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className={`relative overflow-x-clip py-24 md:py-28 ${tenue ? 'bg-fondo-2/60' : ''}`}>
+    <section id={id} className={`relative overflow-x-clip py-20 md:py-24 ${tenue ? 'bg-fondo-2/60' : ''}`}>
       <div className="contenedor relative">{children}</div>
     </section>
   );
@@ -39,7 +39,7 @@ export function Encabezamiento({
   alineado?: boolean;
 }) {
   return (
-    <div data-revelar className={`mb-14 max-w-[62ch] ${alineado ? '' : 'mx-auto text-center'}`}>
+    <div data-revelar className={`mb-11 max-w-[62ch] ${alineado ? '' : 'mx-auto text-center'}`}>
       <p className="rotulo">{etiqueta}</p>
       <h2 className="mt-4 text-[clamp(1.85rem,4vw,2.875rem)] leading-[1.1] font-bold">{titulo}</h2>
       {texto && (

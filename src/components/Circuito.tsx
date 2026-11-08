@@ -35,11 +35,11 @@ const SALIDA_Y = SALIDAS.map((_, i) => 100 + i * 60);
 
 export function Circuito() {
   return (
-    <section className="relative overflow-x-clip py-24 md:py-28">
+    <section className="relative overflow-x-clip bg-fondo-2/60 py-20 md:py-24">
       <div className="aura top-1/4 left-1/2 size-[36rem] -translate-x-1/2 bg-marca/16" />
 
       <div className="contenedor relative">
-        <div className="mx-auto mb-14 max-w-[52ch] text-center" data-revelar>
+        <div className="mx-auto mb-11 max-w-[52ch] text-center" data-revelar>
           <p className="rotulo">Una sola verdad</p>
           <h2 className="mt-4 text-[clamp(1.85rem,4vw,2.875rem)] leading-[1.1] font-bold">
             Vendas por donde vendas,{' '}

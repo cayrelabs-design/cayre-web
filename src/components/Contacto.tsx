@@ -4,7 +4,7 @@ import { Icono } from './Icono';
 
 export function Contacto() {
   return (
-    <section id="contacto" className="relative overflow-hidden py-24 md:py-28">
+    <section id="contacto" className="relative overflow-hidden py-20 md:py-24">
       <div className="aura -top-20 right-1/4 size-[28rem] bg-marca/16" />
 
       <div className="contenedor relative grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">

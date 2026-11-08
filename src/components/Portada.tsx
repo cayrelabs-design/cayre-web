@@ -66,11 +66,13 @@ export function Portada() {
         ))}
       </div>
 
-      <div className="contenedor relative py-28 md:py-36 lg:py-44">
-        <div className="flex max-w-[48ch] flex-col gap-7">
+      <div className="contenedor relative py-16 md:py-20 lg:py-24">
+        <div className="flex max-w-[48ch] flex-col gap-6">
           <p className="vidrio inline-flex w-fit items-center gap-2.5 !rounded-full px-4 py-2">
             <span className="latir size-1.5 rounded-full bg-cian" aria-hidden />
-            <span className="rotulo !text-texto-2">{portada.etiqueta}</span>
+            <span className="rotulo !text-[9.5px] !tracking-[0.1em] !text-texto-2 sm:!text-[11px] sm:!tracking-[0.16em]">
+              {portada.etiqueta}
+            </span>
           </p>
 
           {/* El titular NO lleva animación de entrada a propósito: es el
@@ -113,7 +115,7 @@ export function Portada() {
             )}
           </div>
 
-          <div className="vidrio mt-6 flex flex-col gap-3.5 p-6" data-revelar>
+          <div className="vidrio mt-3 flex flex-col gap-3 p-5" data-revelar>
             <p className="rotulo !text-texto-3">{portada.clientesTitulo}</p>
             <ul className="flex flex-wrap items-center gap-x-7 gap-y-3">
               {portada.clientes.map((cliente) => (

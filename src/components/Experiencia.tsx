@@ -20,7 +20,7 @@ export function Experiencia() {
   const caso = experiencia.casos[activo];
 
   return (
-    <Seccion id="experiencia">
+    <Seccion id="experiencia" tenue>
       <Encabezamiento
         etiqueta={experiencia.etiqueta}
         titulo={experiencia.titulo}

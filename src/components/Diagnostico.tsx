@@ -10,7 +10,7 @@ import { Icono } from './Icono';
  */
 export function Diagnostico() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-28">
+    <section className="relative overflow-hidden py-20 md:py-24">
       <Image
         src="/img/fondo-grilla.webp"
         alt=""

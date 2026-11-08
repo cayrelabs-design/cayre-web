@@ -73,12 +73,22 @@ function FichaAncha({ p }: { p: Producto }) {
       </div>
 
       <ul className="flex flex-col gap-2.5 border-white/10 pt-2 lg:border-l lg:pt-0 lg:pl-11">
-        {p.funciones.map((f) => (
-          <li key={f} className="flex items-start gap-2.5 text-[14.5px] text-texto-2">
+        {p.funciones.map((f, i) => (
+          <li
+            key={f}
+            className={`items-start gap-2.5 text-[14.5px] text-texto-2 ${
+              i < 6 ? 'flex' : 'hidden sm:flex'
+            }`}
+          >
             <Icono nombre="check" className="mt-1 size-3.5 flex-none text-cian" />
             <span>{f}</span>
           </li>
         ))}
+        {p.funciones.length > 6 && (
+          <li className="pt-1 text-[13.5px] text-texto-3 sm:hidden">
+            y {p.funciones.length - 6} funciones más
+          </li>
+        )}
       </ul>
     </article>
   );
@@ -121,9 +131,9 @@ export function Productos() {
   const [principal, ...otrosSistemas] = SISTEMAS;
 
   return (
-    <Seccion id="productos" tenue>
+    <Seccion id="productos">
       <Encabezamiento
-        etiqueta="04 — Las cinco líneas"
+        etiqueta="03 — Las cinco líneas"
         titulo="Tres sistemas y dos cosas que hacemos nosotros."
         texto="Los sistemas comparten usuarios, permisos, productos y clientes: el que arranca con uno y mañana necesita otro no migra nada, se le activa."
       />

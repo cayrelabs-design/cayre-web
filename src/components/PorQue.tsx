@@ -14,7 +14,7 @@ import { Encabezamiento, Seccion } from './Seccion';
  */
 export function PorQue() {
   return (
-    <Seccion id="por-que" tenue>
+    <Seccion id="por-que">
       <Encabezamiento etiqueta={porQue.etiqueta} titulo={porQue.titulo} texto={porQue.texto} />
 
       <ul className="grid gap-2.5 md:grid-cols-2">

@@ -19,7 +19,11 @@ export function PuntoDePartida() {
       />
 
       <div data-revelar className="vidrio overflow-hidden !rounded-[32px]">
-        <div className="grid grid-cols-2 border-b border-white/8 bg-white/4">
+        <p className="border-b border-white/8 bg-white/4 px-6 py-4 font-mono text-[10px] tracking-[0.14em] text-texto-3 uppercase sm:hidden">
+          Como estaban <span className="text-marca-2">→ como trabajan hoy</span>
+        </p>
+
+        <div className="hidden grid-cols-2 border-b border-white/8 bg-white/4 sm:grid">
           <p className="px-6 py-4 font-mono text-[10px] tracking-[0.14em] text-texto-3 uppercase">
             Como estaban
           </p>

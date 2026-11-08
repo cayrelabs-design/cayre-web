@@ -39,7 +39,6 @@ export const navegacion = [
   { href: '#productos', etiqueta: 'Qué hacemos' },
   { href: '#funciones', etiqueta: 'Funciones' },
   { href: '#experiencia', etiqueta: 'Experiencia' },
-  { href: '#marketing', etiqueta: 'Marketing' },
   { href: '#por-que', etiqueta: 'Por qué Cayre' },
 ];
 
@@ -155,7 +154,7 @@ export const funciones: {
   rubroTitulo: string;
   rubros: string[];
 } = {
-  etiqueta: '05 — Funciones principales',
+  etiqueta: '04 — Funciones principales',
   titulo: 'La base que toda empresa necesita, lista desde el primer día.',
   texto:
     'Vienen en todos los sistemas que hacemos.',
@@ -213,7 +212,7 @@ export const experiencia: {
   casos: { cliente: string; rubro: string; desafio: string; items: string[]; icono: NombreIcono }[];
   cierre: { titulo: string; texto: string };
 } = {
-  etiqueta: '07 — Experiencia',
+  etiqueta: '05 — Experiencia',
   titulo: 'Sistemas que están funcionando hoy.',
   texto:
     'Tres operaciones distintas, con problemas que no se parecen en nada.',
@@ -267,52 +266,8 @@ export const experiencia: {
   },
 };
 
-export const marketing = {
-  etiqueta: '08 — Marketing digital',
-  titulo: 'El sistema ordena la operación.',
-  tituloDestacado: 'El marketing la llena de ventas.',
-  texto:
-    'Para empresas que ya tienen algo bueno para vender y necesitan que se note. Con o sin sistema.',
-  paraQuienTitulo: 'Para quién es',
-  paraQuien: [
-    {
-      titulo: 'Vendés bien pero nadie te conoce',
-      texto: 'Buen producto y buena atención, pero el que no te conoce no llega nunca.',
-    },
-    {
-      titulo: 'Invertís en pauta a ciegas',
-      texto: 'Pagás campañas todos los meses y nadie te sabe decir cuánto volvió en ventas.',
-    },
-    {
-      titulo: 'Tenés tienda y no vende',
-      texto: 'Entra gente, mira y se va. El problema puede ser el tráfico o puede ser la tienda.',
-    },
-  ],
-  pilaresTitulo: 'Qué hacemos',
-  pilares: [
-    {
-      titulo: 'Estrategia y campañas',
-      texto: 'Meta y Google Ads con un plan detrás, no publicaciones sueltas a ver qué pasa.',
-    },
-    {
-      titulo: 'Contenido y marca',
-      texto: 'Identidad, fotos, piezas y redes, con una voz consistente en todos lados.',
-    },
-    {
-      titulo: 'Medición contra la venta real',
-      texto: 'Un panel que cruza lo invertido con lo facturado y con el margen, no con los clics.',
-    },
-  ],
-  combinado: {
-    titulo: 'Tienda + Marketing',
-    texto:
-      'Una tienda sin tráfico no vende. Tráfico sobre una tienda que no convierte es plata tirada. Las dos las hacemos nosotros: nadie se puede echar la culpa.',
-  },
-  cta: 'Consultar por marketing',
-};
-
 export const porQue = {
-  etiqueta: '09 — Por qué Cayre',
+  etiqueta: '06 — Por qué Cayre',
   titulo: 'Lo que nos hace distintos.',
   texto: 'Diez compromisos que van por escrito en cada propuesta.',
   compromisos: [

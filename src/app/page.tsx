@@ -4,7 +4,6 @@ import { Diagnostico } from '@/components/Diagnostico';
 import { Encabezado } from '@/components/Encabezado';
 import { Experiencia } from '@/components/Experiencia';
 import { Funciones } from '@/components/Funciones';
-import { Marketing } from '@/components/Marketing';
 import { Metodo } from '@/components/Metodo';
 import { Pie } from '@/components/Pie';
 import { PorQue } from '@/components/PorQue';
@@ -32,7 +31,6 @@ export default function Inicio() {
         <Diagnostico />
         <Funciones />
         <Experiencia />
-        <Marketing />
         <PorQue />
         <Contacto />
       </main>
