@@ -1,5 +1,6 @@
 import { escala } from '@/content/landing';
 import { Icono } from './Icono';
+import { Marquesina } from './Marquesina';
 import { Encabezamiento, Seccion } from './Seccion';
 
 export function Escala() {
@@ -11,9 +12,9 @@ export function Escala() {
         {escala.niveles.map((nivel, i) => {
           const ultimo = i === escala.niveles.length - 1;
           return (
-            <article
+            <article data-revelar
               key={nivel.etiqueta}
-              className={`flex flex-col gap-4 p-8 ${ultimo ? 'vidrio-marca' : 'vidrio'}`}
+              className={`vidrio-interactivo flex flex-col gap-4 p-8 ${ultimo ? 'vidrio-marca' : 'vidrio'}`}
             >
               <p className="font-mono text-[10px] tracking-[0.14em] text-marca-2 uppercase">
                 {nivel.etiqueta}
@@ -32,15 +33,11 @@ export function Escala() {
         })}
       </div>
 
-      <div className="mt-12 text-center">
-        <p className="rotulo !text-texto-3">{escala.integracionesTitulo}</p>
-        <ul className="mt-4 flex flex-wrap justify-center gap-x-8 gap-y-3">
-          {escala.integraciones.map((nombre) => (
-            <li key={nombre} className="font-display text-[15px] font-bold text-texto-3">
-              {nombre}
-            </li>
-          ))}
-        </ul>
+      <div className="mt-14">
+        <p className="rotulo !text-texto-3 text-center">{escala.integracionesTitulo}</p>
+        <div className="mt-5">
+          <Marquesina nombres={escala.integraciones} />
+        </div>
       </div>
     </Seccion>
   );

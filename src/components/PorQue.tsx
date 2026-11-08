@@ -9,7 +9,7 @@ export function PorQue() {
 
       <ul className="grid gap-4 sm:grid-cols-2">
         {porQue.compromisos.map((c, i) => (
-          <li key={c.titulo} className="vidrio p-8">
+          <li data-revelar key={c.titulo} className="vidrio vidrio-interactivo p-8">
             <p className="font-mono text-[11px] tracking-[0.14em] text-cian">
               {String(i + 1).padStart(2, '0')}
             </p>

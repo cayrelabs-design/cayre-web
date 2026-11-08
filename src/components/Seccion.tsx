@@ -39,7 +39,7 @@ export function Encabezamiento({
   alineado?: boolean;
 }) {
   return (
-    <div className={`mb-14 max-w-[62ch] ${alineado ? '' : 'mx-auto text-center'}`}>
+    <div data-revelar className={`mb-14 max-w-[62ch] ${alineado ? '' : 'mx-auto text-center'}`}>
       <p className="rotulo">{etiqueta}</p>
       <h2 className="mt-4 text-[clamp(1.85rem,4vw,2.875rem)] leading-[1.1] font-bold">{titulo}</h2>
       {texto && (

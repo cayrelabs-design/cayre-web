@@ -194,3 +194,155 @@
     filter: blur(90px);
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Movimiento
+
+   Todo acá es CSS: no entra ninguna librería de animación. La referencia usa
+   siete (GSAP, AOS, WOW, Swiper…) y son casi 400 KB que el cliente paga en
+   datos antes de ver la primera palabra. Lo mismo se consigue con keyframes
+   y un observador de scroll de veinte líneas.
+
+   Regla: nada de esto es necesario para entender la página. Si el visitante
+   pidió menos movimiento en su sistema, se apaga entero (el bloque de
+   prefers-reduced-motion de más arriba) y la página sigue completa.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+@keyframes derivar {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.12); }
+  66% { transform: translate(-30px, 25px) scale(0.92); }
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes latir {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.35); }
+}
+
+/* Acercamiento lentísimo sobre las fotos: no se nota mirando, se nota si se
+   saca la animación. Diez segundos y un 6% de escala. */
+@keyframes acercar {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+
+/* El destello que cruza el botón principal al pasar el mouse. */
+@keyframes destello {
+  to { left: 140%; }
+}
+
+@keyframes marquesina {
+  to { transform: translateX(-50%); }
+}
+
+.flotar { animation: flotar 7s ease-in-out infinite; }
+.flotar-lento { animation: flotar 11s ease-in-out infinite; }
+.derivar { animation: derivar 22s ease-in-out infinite; }
+.girar-lento { animation: girar 34s linear infinite; }
+.latir { animation: latir 2.4s ease-in-out infinite; }
+
+@layer components {
+  /* Aparición al entrar en pantalla. El estado inicial lo pone el componente
+     CSS desde el primer pintado (sin parpadeo) y lo saca el observador. Si el
+     JavaScript no corre, el <noscript> del layout lo anula y el contenido se ve
+     igual: la animación nunca puede esconder información. */
+  [data-revelar] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-revelar][data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Las tarjetas se levantan apenas y encienden el borde. */
+  .vidrio,
+  .vidrio-marca {
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      background-color 0.3s ease;
+  }
+  .vidrio-interactivo:hover {
+    transform: translateY(-5px);
+    border-color: rgba(143, 118, 255, 0.45);
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+
+  /* Destello sobre el botón principal. */
+  .boton-primario {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .boton-primario::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    z-index: -1;
+    height: 100%;
+    width: 45%;
+    transform: skewX(-22deg);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  }
+  .boton-primario:hover::after {
+    animation: destello 0.75s ease;
+  }
+
+  .marquesina-pista {
+    display: flex;
+    width: max-content;
+    animation: marquesina 38s linear infinite;
+  }
+  .marquesina:hover .marquesina-pista {
+    animation-play-state: paused;
+  }
+
+  /* Máscara de los bordes de la marquesina: las marcas entran y salen
+     desvaneciéndose en vez de cortarse contra el borde de la pantalla. */
+  .marquesina {
+    /* overflow oculto, no solo la mascara: la mascara tapa a la vista pero la
+       pista mide mas que la pantalla igual, y eso agrega barra horizontal. */
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  }
+}
+
+/* El trazo que viaja por las líneas del circuito. pathLength=100 en el SVG
+   hace que la cuenta sea en porcentaje del largo de la curva, así que el guión
+   mide siempre lo mismo aunque la curva sea más larga o más corta. */
+@keyframes fluir {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: -8; }
+}
+
+.circuito-flujo {
+  stroke-dasharray: 8 92;
+  stroke-linecap: round;
+  stroke-width: 2.5;
+  animation: fluir 3.2s linear infinite;
+}
+
+/* El panel de la seccion Experiencia se vuelve a montar al cambiar de solapa
+   (lleva key), asi que esta animacion corre de nuevo en cada cambio. */
+@keyframes entradaPanel {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.entrada-panel {
+  animation: entradaPanel 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}

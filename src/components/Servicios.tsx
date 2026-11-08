@@ -8,9 +8,9 @@ export function Servicios() {
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {servicios.items.map((item) => (
-          <article
+          <article data-revelar
             key={item.nombre}
-            className={`flex flex-col gap-4 p-7 ${item.destacado ? 'vidrio-marca' : 'vidrio'}`}
+            className={`vidrio-interactivo flex flex-col gap-4 p-7 ${item.destacado ? 'vidrio-marca' : 'vidrio'}`}
           >
             <ChipIcono nombre={item.icono} destacado={item.destacado} />
 

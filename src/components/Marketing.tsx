@@ -16,7 +16,7 @@ export function Marketing() {
       <div className="aura top-24 -left-20 size-96 bg-cian/12" />
 
       <div className="contenedor relative">
-        <div className="mx-auto mb-14 max-w-[62ch] text-center">
+        <div data-revelar className="mx-auto mb-14 max-w-[62ch] text-center">
           <p className="rotulo">{marketing.etiqueta}</p>
           <h2 className="mt-4 text-[clamp(1.85rem,4vw,2.875rem)] leading-[1.1] font-bold">
             {marketing.titulo}
@@ -30,7 +30,7 @@ export function Marketing() {
             <p className="rotulo !text-texto-3">{marketing.paraQuienTitulo}</p>
             <ul className="mt-5 flex flex-col gap-3">
               {marketing.paraQuien.map((item) => (
-                <li key={item.titulo} className="vidrio p-6">
+                <li data-revelar key={item.titulo} className="vidrio vidrio-interactivo p-6">
                   <h3 className="text-[16.5px] font-bold">{item.titulo}</h3>
                   <p className="mt-1 text-[14.5px] text-texto-2">{item.texto}</p>
                 </li>
@@ -42,7 +42,7 @@ export function Marketing() {
             <p className="rotulo !text-texto-3">{marketing.pilaresTitulo}</p>
             <ul className="mt-5 flex flex-col gap-3">
               {marketing.pilares.map((item) => (
-                <li key={item.titulo} className="vidrio flex items-start gap-4 p-6">
+                <li data-revelar key={item.titulo} className="vidrio vidrio-interactivo flex items-start gap-4 p-6">
                   <span className="mt-0.5 flex-none text-cian" aria-hidden>
                     <Icono nombre="check" className="size-4" />
                   </span>
@@ -56,7 +56,7 @@ export function Marketing() {
           </div>
         </div>
 
-        <div className="vidrio-marca mt-6 p-9 !rounded-[32px] text-center">
+        <div data-revelar className="vidrio-marca mt-6 p-9 !rounded-[32px] text-center">
           <h3 className="text-[22px] font-bold">{marketing.combinado.titulo}</h3>
           <p className="mx-auto mt-3 max-w-[62ch] text-[16px] text-texto-2">
             {marketing.combinado.texto}

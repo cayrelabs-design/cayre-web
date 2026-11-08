@@ -1,3 +1,4 @@
+import { Circuito } from '@/components/Circuito';
 import { Contacto } from '@/components/Contacto';
 import { Diagnostico } from '@/components/Diagnostico';
 import { Encabezado } from '@/components/Encabezado';
@@ -11,15 +12,21 @@ import { PorQue } from '@/components/PorQue';
 import { Portada } from '@/components/Portada';
 import { PuntoDePartida } from '@/components/PuntoDePartida';
 import { Productos } from '@/components/Productos';
+import { Revelador } from '@/components/Revelador';
 import { Servicios } from '@/components/Servicios';
 
 export default function Inicio() {
   return (
     <>
       <Encabezado />
+      {/* Un solo componente de cliente anima todo el sitio: las secciones
+          siguen siendo de servidor. */}
+      <Revelador />
       <main id="contenido">
         <Portada />
         <PuntoDePartida />
+        {/* El problema recién contado, resuelto en un dibujo y sin un párrafo. */}
+        <Circuito />
         <Metodo />
         <Servicios />
         <Productos />

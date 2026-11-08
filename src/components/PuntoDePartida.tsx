@@ -18,7 +18,7 @@ export function PuntoDePartida() {
         texto={puntoDePartida.texto}
       />
 
-      <div className="vidrio overflow-hidden !rounded-[32px]">
+      <div data-revelar className="vidrio overflow-hidden !rounded-[32px]">
         <div className="grid grid-cols-2 border-b border-white/8 bg-white/4">
           <p className="px-6 py-4 font-mono text-[10px] tracking-[0.14em] text-texto-3 uppercase">
             Como estaban
@@ -47,7 +47,7 @@ export function PuntoDePartida() {
         </ul>
       </div>
 
-      <p className="mx-auto mt-8 max-w-[62ch] text-center text-[16px] text-texto-2">
+      <p data-revelar className="mx-auto mt-8 max-w-[62ch] text-center text-[16px] text-texto-2">
         {puntoDePartida.cierre}
       </p>
     </Seccion>

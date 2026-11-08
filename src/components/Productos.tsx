@@ -23,7 +23,7 @@ export function Productos() {
       />
 
       {destacados.map((p) => (
-        <article
+        <article data-revelar
           key={p.slug}
           className="vidrio-marca mb-4 grid gap-8 p-8 !rounded-[32px] lg:grid-cols-[1fr_1fr] lg:p-11"
         >
@@ -79,7 +79,7 @@ export function Productos() {
         <p className="rotulo !text-texto-3 text-center">En desarrollo</p>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {proximos.map((p) => (
-            <article key={p.slug} className="vidrio flex flex-col gap-3 p-7">
+            <article data-revelar key={p.slug} className="vidrio vidrio-interactivo flex flex-col gap-3 p-7">
               <div className="flex items-center justify-between gap-3">
                 <span
                   className="size-7 flex-none rounded-lg opacity-70"

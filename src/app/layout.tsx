@@ -52,6 +52,18 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       lang="es-AR"
       className={`${display.variable} ${cuerpo.variable} ${mono.variable} h-full antialiased`}
     >
+      <head>
+        {/* Si el navegador no corre JavaScript, el observador que revela los
+            bloques al hacer scroll nunca arranca y la página quedaría vacía.
+            Esto lo desarma: una animación no puede esconder información. */}
+        <noscript>
+          <style
+            dangerouslySetInnerHTML={{
+              __html: '[data-revelar]{opacity:1 !important;transform:none !important}',
+            }}
+          />
+        </noscript>
+      </head>
       <body className="flex min-h-full flex-col">
         <a
           href="#contenido"

@@ -23,7 +23,7 @@ export function Metodo() {
 
         <ol className="flex flex-col gap-4">
           {metodo.pasos.map((paso, i) => (
-            <li key={paso.titulo} className="vidrio p-7">
+            <li data-revelar key={paso.titulo} className="vidrio vidrio-interactivo p-7">
               <div className="flex items-start gap-5">
                 <ChipIcono nombre={paso.icono} />
                 <div>

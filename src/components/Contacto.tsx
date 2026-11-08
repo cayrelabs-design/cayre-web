@@ -57,7 +57,7 @@ export function Contacto() {
           </ul>
         </div>
 
-        <div className="vidrio p-7 !rounded-[32px] md:p-10">
+        <div data-revelar className="vidrio p-7 !rounded-[32px] md:p-10">
           <h3 className="text-[22px] font-bold">{contactoSeccion.formularioTitulo}</h3>
           <p className="mt-1.5 mb-6 text-[15px] text-texto-2">{contactoSeccion.formularioTexto}</p>
           <FormularioConsulta />
