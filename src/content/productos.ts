@@ -1,13 +1,22 @@
 /**
- * Los seis productos de Cayre Labs.
+ * Las cinco líneas de Cayre Labs.
  *
- * ⚠️ PENDIENTE: el campo `estado` está en "proximamente" para TODOS. Cambiá a
- * "disponible" los que ya se puedan contratar. Mientras diga "proximamente", la
- * ficha se publica pero sin precio y sin botón de contratar — se muestra, se
- * explica, y el botón lleva a dejar el mail para avisar cuando salga.
+ * Tres sistemas y dos servicios. El límite entre ellos es el tamaño y la forma
+ * del negocio, no la lista de funciones:
  *
- * La razón de que arranque así: publicar un botón de "contratar" en algo que
- * todavía no existe te trae el reclamo el primer día, y el que atiende sos vos.
+ *   Cayre360   empresa mediana con depósito, varios canales y mucho movimiento
+ *   CayrePOS   el mismo circuito, en chico, para el comercio de mostrador
+ *   CayreCRM   la parte comercial, con IA, sobre el sistema que ya tenés
+ *   CayreCorp  lo que tu negocio hace distinto y ningún catálogo contempla
+ *   CayreMKT   la agencia: que lo que construimos se llene de ventas
+ *
+ * ── Regla de honestidad (traspaso §5) ───────────────────────────────────────
+ * `funciones` es lo que ANDA HOY. No es la lista de deseos ni el roadmap: es lo
+ * que se puede mostrar funcionando si el cliente lo pide en la reunión.
+ *
+ * De Cayre360 NO se promete, porque todavía no está: Mercado Libre, WooCommerce,
+ * facturación ARCA válida (está en pruebas), producción, órdenes de compra,
+ * funcionamiento sin señal, transportistas, ni app en Google Play o App Store.
  */
 
 /**
@@ -17,6 +26,12 @@
  */
 export type Estado = 'disponible' | 'piloto' | 'proximamente';
 
+/**
+ * Un sistema se contrata y se usa; un servicio lo hacemos nosotros. La ficha se
+ * arma distinto: el sistema muestra funciones, el servicio muestra entregables.
+ */
+export type Linea = 'sistema' | 'servicio';
+
 export type Producto = {
   slug: string;
   nombre: string;
@@ -25,8 +40,9 @@ export type Producto = {
   resumen: string;
   titular: string;
   bajada: string;
+  linea: Linea;
   estado: Estado;
-  /** Color propio del producto. Se usa en dosis chicas: el violeta sigue siendo el de la marca. */
+  /** Color propio de la línea. Se usa en dosis chicas: el violeta sigue siendo el de la marca. */
   acento: string;
   funciones: string[];
   incluye: string[];
@@ -34,113 +50,33 @@ export type Producto = {
 };
 
 export const PRODUCTOS: Producto[] = [
+  // ⚠️ ÉSTE ES EL SISTEMA CONSTRUIDO Y FUNCIONANDO (antes se llamaba CayreWMS).
+  // Todo lo que dice `funciones` existe hoy. Ver la regla de honestidad arriba
+  // antes de agregar un renglón.
   {
-    slug: 'erp',
-    nombre: 'CayreERP',
-    rubro: 'Gestión integral',
-    quien: 'Para el dueño y la administración',
-    resumen: 'Compras, ventas, producción y tesorería en un solo lugar.',
-    titular: 'Toda la empresa mirando el mismo número.',
+    slug: 'cayre360',
+    nombre: 'Cayre360',
+    rubro: 'La operación completa',
+    quien: 'Para la empresa mediana con depósito, varios canales y mucho movimiento',
+    resumen: 'Depósito, local, mayorista y tienda online sobre una sola base.',
+    titular: 'Toda la empresa mirando el mismo stock.',
     bajada:
-      'Compras, ventas, stock, producción, tesorería y cheques. Con la balanza de IVA calculada y lo que está trabado a la vista.',
-    estado: 'proximamente',
-    acento: '#6D4AFF',
-    funciones: [
-      'Compras, órdenes y pagos a proveedores',
-      'Ventas, pedidos y presupuestos',
-      'Stock multi-depósito con transferencias',
-      'Órdenes de producción',
-      'Tesorería, cobranzas y gestión de cheques',
-      'Cuentas corrientes de clientes y proveedores',
-      'Facturación electrónica y balanza de IVA',
-      'Tablero con lo que está trabado hoy',
-    ],
-    incluye: [
-      'Relevamiento sin costo en tu empresa',
-      'Migración de datos históricos',
-      'Capacitación por rol',
-      'Soporte y evolución mensual',
-    ],
-    preguntas: [
-      {
-        p: '¿Cómo se cotiza?',
-        r: 'Por cantidad de módulos activados, no por usuarios ni por facturación. Después del relevamiento sabés el número exacto.',
-      },
-      {
-        p: '¿Puedo migrar desde otro sistema?',
-        r: 'Sí. Traemos productos, clientes, proveedores, saldos y cuentas corrientes.',
-      },
-    ],
-  },
-
-  {
-    slug: 'pos',
-    nombre: 'CayrePOS',
-    rubro: 'Punto de venta',
-    quien: 'Para el que atiende el mostrador',
-    resumen: 'Punto de venta, facturación e inventario para comercios.',
-    titular: 'Cobrá rápido y cerrá la caja sin hacer cuentas.',
-    bajada:
-      'Punto de venta, facturación electrónica e inventario en el navegador. Sin instalar nada y sin servidor.',
-    estado: 'proximamente',
-    acento: '#16C784',
-    funciones: [
-      'Venta con lector de código de barras y balanza',
-      'Facturación electrónica conectada a ARCA',
-      'Inventario con alertas de stock mínimo',
-      'Caja por turnos y cierre con arqueo ciego',
-      'Clientes con cuenta corriente y fiado',
-      'Actualización masiva de precios',
-      'Reportes de ventas, márgenes y productos sin movimiento',
-      'Usuarios con permisos por rol',
-    ],
-    incluye: [
-      'Sin límite de productos ni de ventas',
-      'Facturación ARCA incluida, sin costo por comprobante',
-      'Actualizaciones y mejoras',
-      'Soporte por WhatsApp',
-      'Migramos tu lista de productos',
-    ],
-    preguntas: [
-      {
-        p: '¿Necesito instalar algo?',
-        r: 'No. Funciona en el navegador, en la computadora del mostrador o en una tablet. El lector de código de barras se enchufa y anda.',
-      },
-      {
-        p: '¿Puedo usar mi impresora?',
-        r: 'Trabajamos con impresoras térmicas comunes y con facturación electrónica de ARCA, que reemplaza al controlador fiscal.',
-      },
-      {
-        p: '¿Sirve para indumentaria?',
-        r: 'Sí. Al registrarte elegís el rubro y el sistema acomoda las pantallas: grilla de talle y color para ropa, peso y balanza para almacén.',
-      },
-    ],
-  },
-
-  // ⚠️ ÚNICO PRODUCTO CONSTRUIDO Y FUNCIONANDO. Todo lo que dice esta ficha existe hoy.
-  // NO agregar: Mercado Libre, WooCommerce, facturación ARCA válida (está en pruebas),
-  // funcionamiento sin señal, transportistas, ni app en Google Play / App Store.
-  {
-    slug: 'wms',
-    nombre: 'CayreWMS',
-    rubro: 'Depósito, ventas y caja',
-    quien: 'Para marcas que venden por la tienda, el local y el mayorista',
-    resumen: 'Una sola verdad de stock para todos tus canales.',
-    titular: 'Tu depósito, tus ventas y tu caja, en un solo sistema.',
-    bajada:
-      'Sabé dónde está cada prenda, quién la movió y en qué paso está cada pedido. Lo que se vende en el local no se vuelve a vender online.',
+      'Sabé dónde está cada producto, quién lo movió y en qué paso está cada pedido. Lo que se vende en el local no se vuelve a vender online, y la caja cierra el mismo día.',
+    linea: 'sistema',
     estado: 'disponible',
     acento: '#22C3D6',
     funciones: [
-      'Ubicaciones: cada talle y color con su lugar exacto en el estante',
+      'Ubicaciones: cada producto con su lugar exacto en el estante',
       'Preparación guiada: el sistema dice qué tomar y de dónde, en orden de recorrido',
       'App Android con lector de código de barras, sin teclear',
+      'Varios depósitos, con transferencias entre ellos',
       'Pedidos de Tienda Nube que entran solos, con reserva de stock',
-      'Punto de venta en el local con caja, turnos y arqueo',
+      'Punto de venta en cada local, con caja, turnos y arqueo',
       'Cambios y devoluciones escaneando el ticket',
-      'Cuentas corrientes de mayoristas con atraso por tramo',
+      'Portal mayorista con cuenta corriente y atraso por tramo',
       'Tesorería: bancos, cajas y cheques',
       'Conteos de inventario a ciegas y con doble control',
+      'Permisos por rol, con autor y hora en cada movimiento',
       'Importación del catálogo desde una planilla',
     ],
     incluye: [
@@ -153,7 +89,7 @@ export const PRODUCTOS: Producto[] = [
     preguntas: [
       {
         p: 'Ya tengo Tienda Nube, ¿para qué otro sistema?',
-        r: 'Tienda Nube sabe lo que vendiste online. No sabe lo que vendiste en el local ni al mayorista, ni en qué estante está cada prenda. Cayre junta todo y mantiene un solo stock.',
+        r: 'Tienda Nube sabe lo que vendiste online. No sabe lo que vendiste en el local ni al mayorista, ni en qué estante está cada producto. Cayre360 junta todo y mantiene un solo stock.',
       },
       {
         p: '¿Mis empleados lo van a poder usar?',
@@ -170,83 +106,6 @@ export const PRODUCTOS: Producto[] = [
     ],
   },
 
-  {
-    slug: 'rest',
-    nombre: 'CayreREST',
-    rubro: 'Gastronomía',
-    quien: 'Para el que maneja un salón lleno',
-    resumen: 'Salón, cocina y caja para restaurantes y bares.',
-    titular: 'De la mesa a la parrilla sin que se pierda nada.',
-    bajada:
-      'El mozo toma el pedido en la tablet y aparece en la pantalla del sector que corresponde, con el reloj corriendo.',
-    estado: 'proximamente',
-    acento: '#FF7A3D',
-    funciones: [
-      'Mapa de mesas, apertura y transferencia de cuentas',
-      'Comandas dirigidas a cocina, parrilla o barra',
-      'Carta con variantes, adicionales y promociones',
-      'División de cuenta y cobro parcial',
-      'Facturación electrónica ARCA',
-      'Stock de insumos con receta por plato',
-      'Cierre de turno con arqueo y control de mermas',
-      'Reportes por hora, mozo y producto',
-    ],
-    incluye: [
-      'Sin límite de mesas ni de mozos',
-      'Funciona en tablet, celular y computadora',
-      'Soporte en horario de servicio',
-      'Migramos tu carta actual',
-    ],
-    preguntas: [
-      {
-        p: '¿Cuántas terminales puedo conectar?',
-        r: 'Las que quieras. El precio es por local, no por dispositivo.',
-      },
-      {
-        p: '¿Puedo controlar la merma?',
-        r: 'Cada plato tiene su receta, así que el sistema descuenta insumos por venta y te muestra la diferencia contra el stock real.',
-      },
-    ],
-  },
-
-  {
-    slug: 'valtus',
-    nombre: 'Valtus',
-    rubro: 'Marketing',
-    quien: 'Para el que maneja la marca',
-    resumen: 'Publicá en todas tus redes con textos de IA y pautá en Meta.',
-    titular: 'De la foto del producto al anuncio pago.',
-    bajada:
-      'Toma tu catálogo, escribe el texto con IA, publica en todas tus redes y te arma la pauta en Meta.',
-    estado: 'proximamente',
-    acento: '#E84BC7',
-    funciones: [
-      'Conexión con tu tienda: productos, precios y stock',
-      'Publicación simultánea en todas las redes conectadas',
-      'Textos generados con IA, con el tono de tu marca',
-      'Políticas comerciales: qué se promociona y cuándo',
-      'Calendario de publicaciones',
-      'Campañas en Meta con armado de pauta asistido',
-      'Reportes de alcance y resultados',
-    ],
-    incluye: [
-      'Redes sincronizadas',
-      'Textos con IA sin límite',
-      'Calendario de publicación',
-      'Armado de pauta en Meta',
-    ],
-    preguntas: [
-      {
-        p: '¿La pauta la pago aparte?',
-        r: 'Sí. La inversión publicitaria va directo a Meta y no pasa por Cayre Labs.',
-      },
-      {
-        p: '¿Puedo editar el texto que genera la IA?',
-        r: 'Siempre. La IA propone y vos aprobás, corregís o reescribís antes de publicar.',
-      },
-    ],
-  },
-
   // Funciona hoy adentro de una operación real. Todavía no se contrata llave en
   // mano, por eso va como piloto y no como disponible.
   {
@@ -258,6 +117,7 @@ export const PRODUCTOS: Producto[] = [
     titular: 'Tu IA no debería tener que preguntarle el stock a otro sistema.',
     bajada:
       'Atiende, califica al cliente y deja la venta lista para que tu vendedor la cierre sin cambiar de pantalla. Y como vive adentro de tu sistema, cuando dice "lo tengo", lo tiene.',
+    linea: 'sistema',
     estado: 'piloto',
     acento: '#4C9AFF',
     funciones: [
@@ -268,7 +128,6 @@ export const PRODUCTOS: Producto[] = [
       'Ficha única de cliente con todo el historial de todos los canales',
       'Pasa la conversación a una persona con el contexto ya cargado',
       'Devuelve cada venta a Meta y Google Analytics: la pauta aprende a quién mostrarse',
-      'Lo que el CRM aprende vuelve al marketing: mejores públicos, menos plata tirada',
     ],
     incluye: [
       'Funcionando hoy adentro de una operación real',
@@ -291,6 +150,135 @@ export const PRODUCTOS: Producto[] = [
       },
     ],
   },
+
+  {
+    slug: 'pos',
+    nombre: 'CayrePOS',
+    rubro: 'El mismo circuito, en chico',
+    quien: 'Para el comercio que atiende mostrador',
+    resumen: 'Punto de venta, facturación e inventario para comercios.',
+    titular: 'El 360, del tamaño de tu local.',
+    bajada:
+      'El mismo circuito del sistema grande, sin el depósito ni el canal mayorista. Punto de venta, inventario y caja en el navegador: sin instalar nada y sin servidor.',
+    linea: 'sistema',
+    estado: 'proximamente',
+    acento: '#16C784',
+    funciones: [
+      'Venta con lector de código de barras y balanza',
+      'Inventario con alertas de stock mínimo',
+      'Caja por turnos y cierre con arqueo ciego',
+      'Clientes con cuenta corriente y fiado',
+      'Actualización masiva de precios',
+      'Reportes de ventas, márgenes y productos sin movimiento',
+      'Usuarios con permisos por rol',
+      'Si el negocio crece, se pasa a Cayre360 con los datos puestos',
+    ],
+    incluye: [
+      'Sin límite de productos ni de ventas',
+      'Actualizaciones y mejoras',
+      'Soporte por WhatsApp',
+      'Migramos tu lista de productos',
+    ],
+    preguntas: [
+      {
+        p: '¿Necesito instalar algo?',
+        r: 'No. Funciona en el navegador, en la computadora del mostrador o en una tablet. El lector de código de barras se enchufa y anda.',
+      },
+      {
+        p: '¿En qué se diferencia de Cayre360?',
+        r: 'Es el mismo circuito sin la parte de depósito grande ni el canal mayorista. Si tu negocio crece hasta necesitarlos, no migrás nada: se activa.',
+      },
+      {
+        p: '¿Sirve para indumentaria?',
+        r: 'Sí. Al registrarte elegís el rubro y el sistema acomoda las pantallas: grilla de talle y color para ropa, peso y balanza para almacén.',
+      },
+    ],
+  },
+
+  {
+    slug: 'corp',
+    nombre: 'CayreCorp',
+    rubro: 'Desarrollos a medida',
+    quien: 'Para lo que tu negocio hace distinto y ningún sistema de catálogo contempla',
+    resumen: 'El software que tu operación necesita y no existe en ningún catálogo.',
+    titular: 'Si tu negocio no entra en una plantilla, no lo metas a la fuerza.',
+    bajada:
+      'Tiendas, portales e integraciones hechas para tu circuito, no adaptadas al nuestro. Empieza siempre por entender cómo trabajás hoy, y esa parte sirve aunque después no nos contrates.',
+    linea: 'servicio',
+    estado: 'disponible',
+    acento: '#6D4AFF',
+    funciones: [
+      'Plataformas de e-commerce minoristas y mayoristas, construidas, no instaladas',
+      'Portales para clientes, proveedores o vendedores',
+      'Integraciones con lo que ya usás, y entre sistemas que hoy no se hablan',
+      'Módulos propios montados sobre Cayre360',
+      'Migraciones desde tu sistema actual, con el historial completo',
+      'Auditoría de procesos: qué automatizar, qué simplificar y qué tirar',
+    ],
+    incluye: [
+      'Relevamiento de dos semanas adentro de tu operación',
+      'Alcance, cronograma y precio por escrito, con lo que queda afuera también escrito',
+      'Puesta en marcha por etapas, sin frenar la operación',
+      'Tus datos se exportan cuando quieras',
+    ],
+    preguntas: [
+      {
+        p: '¿La auditoría sirve si después no los contrato?',
+        r: 'Sí, y es a propósito. Salís con el circuito relevado y con qué conviene cambiar, lo hagamos nosotros o no.',
+      },
+      {
+        p: '¿Cómo sé que no se va a estirar para siempre?',
+        r: 'El alcance, el cronograma y el precio van cerrados por escrito antes de empezar, y lo que queda afuera está escrito también.',
+      },
+    ],
+  },
+
+  {
+    slug: 'mkt',
+    nombre: 'CayreMKT',
+    rubro: 'Agencia de marketing digital',
+    quien: 'Para el que ya tiene algo bueno para vender y necesita que se note',
+    resumen: 'Campañas, contenido y marca, medidos contra tu facturación.',
+    titular: 'El sistema ordena la operación. El marketing la llena de ventas.',
+    bajada:
+      'Campañas en Meta y Google con un plan detrás, no publicaciones sueltas a ver qué pasa. Y un panel que cruza lo invertido con lo facturado y con el margen, no con los clics.',
+    linea: 'servicio',
+    estado: 'disponible',
+    acento: '#E84BC7',
+    funciones: [
+      'Estrategia y campañas en Meta y Google Ads',
+      'Contenido, identidad y redes con una sola voz',
+      'Medición contra la venta real: lo invertido contra lo facturado y el margen',
+      'Si tenés Cayre360 o CayreCRM, la venta vuelve sola a las plataformas',
+      'Revisión de la tienda: si entra gente y no compra, el problema puede ser la tienda',
+    ],
+    incluye: [
+      'Se contrata con o sin sistema',
+      'Plan mensual con lo que se va a hacer, escrito',
+      'Panel de resultados contra facturación',
+      'La inversión publicitaria va directo a Meta o Google, no pasa por nosotros',
+    ],
+    preguntas: [
+      {
+        p: '¿Tengo que tener un sistema de ustedes?',
+        r: 'No. Se contrata solo. Si además tenés Cayre360 o CayreCRM, la medición deja de depender de los clics y pasa a ser contra tu facturación real.',
+      },
+      {
+        p: '¿La pauta la pago aparte?',
+        r: 'Sí. La inversión publicitaria va directo a Meta o a Google y no pasa por Cayre Labs.',
+      },
+      {
+        p: 'Tengo tienda y no vende. ¿Es problema de pauta?',
+        r: 'Puede ser el tráfico o puede ser la tienda. Lo miramos antes de proponerte invertir: traer gente a una tienda que no convierte es plata tirada.',
+      },
+    ],
+  },
 ];
 
 export const porSlug = (slug: string) => PRODUCTOS.find((p) => p.slug === slug);
+
+/** Los tres sistemas, en el orden en que se muestran. */
+export const SISTEMAS = PRODUCTOS.filter((p) => p.linea === 'sistema');
+
+/** Los dos servicios. */
+export const SERVICIOS = PRODUCTOS.filter((p) => p.linea === 'servicio');

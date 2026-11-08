@@ -13,7 +13,6 @@ import { Portada } from '@/components/Portada';
 import { PuntoDePartida } from '@/components/PuntoDePartida';
 import { Productos } from '@/components/Productos';
 import { Revelador } from '@/components/Revelador';
-import { Servicios } from '@/components/Servicios';
 
 export default function Inicio() {
   return (
@@ -28,10 +27,9 @@ export default function Inicio() {
         {/* El problema recién contado, resuelto en un dibujo y sin un párrafo. */}
         <Circuito />
         <Metodo />
-        <Servicios />
         <Productos />
-        {/* El diagnóstico va justo después de los sistemas: el visitante acaba
-            de ver seis y la pregunta que le queda es cuál necesita. */}
+        {/* El diagnóstico va justo después de las líneas: el visitante acaba de
+            ver cinco y la pregunta que le queda es cuál necesita. */}
         <Diagnostico />
         <Funciones />
         <Escala />

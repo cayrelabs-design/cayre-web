@@ -93,7 +93,7 @@ export function Portada() {
               {portada.ctaPrincipal}
               <Icono nombre="flecha" className="size-4" />
             </a>
-            <a href="#servicios" className="boton boton-secundario">
+            <a href="#productos" className="boton boton-secundario">
               {portada.ctaSecundario}
             </a>
           </div>

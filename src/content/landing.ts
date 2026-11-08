@@ -8,7 +8,8 @@
 //  · No se muestran caras ni nombres del equipo. Sí se puede decir "hablás con los socios".
 //  · NO se publica: antigüedad de Cayre Labs, cantidad de clientes, testimonios,
 //    porcentajes de mejora ni estadísticas. (Regla de honestidad del traspaso, §5.)
-//  · De CayreWMS no se promete: Mercado Libre, WooCommerce, facturación ARCA válida,
+//  · De Cayre360 (antes CayreWMS) no se promete: Mercado Libre, WooCommerce,
+//    facturación ARCA válida, producción, órdenes de compra,
 //    funcionamiento sin señal, transportistas, ni app en Google Play o App Store.
 
 import type { NombreIcono } from '@/components/Icono';
@@ -29,8 +30,7 @@ export const contacto = {
 export const navegacion = [
   { href: '#punto-de-partida', etiqueta: 'El problema' },
   { href: '#metodo', etiqueta: 'Cómo trabajamos' },
-  { href: '#servicios', etiqueta: 'Servicios' },
-  { href: '#productos', etiqueta: 'Sistemas' },
+  { href: '#productos', etiqueta: 'Qué hacemos' },
   { href: '#funciones', etiqueta: 'Funciones' },
   { href: '#experiencia', etiqueta: 'Experiencia' },
   { href: '#marketing', etiqueta: 'Marketing' },
@@ -120,60 +120,6 @@ export const metodo = {
       titulo: 'Acompañamiento',
       texto: 'Capacitación, documentación y soporte.',
       icono: 'usuarios' as NombreIcono,
-    },
-  ],
-};
-
-export const servicios: {
-  etiqueta: string;
-  titulo: string;
-  texto: string;
-  items: { nombre: string; texto: string; icono: NombreIcono; destacado?: boolean }[];
-} = {
-  etiqueta: '03 — Lo que hacemos',
-  titulo: 'Especialistas en tiendas online y en marketing que vende.',
-  texto:
-    'Cada peso de pauta se mide contra una venta, no contra un clic.',
-  items: [
-    {
-      nombre: 'Plataformas de e-commerce',
-      texto:
-        'Minoristas y mayoristas, a medida. No instalamos plantillas: las construimos.',
-      icono: 'bolsa',
-      destacado: true,
-    },
-    {
-      nombre: 'Marketing digital',
-      texto:
-        'Meta y Google, contenido y marca. Con un panel que lo mide contra tu facturación.',
-      icono: 'objetivo',
-      destacado: true,
-    },
-    {
-      nombre: 'ERP',
-      texto: 'Ventas, stock, compras, producción y administración en un solo sistema.',
-      icono: 'grilla',
-    },
-    {
-      nombre: 'CRM',
-      texto: 'WhatsApp e Instagram en una bandeja compartida, con embudo de ventas y seguimiento.',
-      icono: 'chat',
-    },
-    {
-      nombre: 'WMS',
-      texto: 'Depósito ordenado: ubicaciones, armado de pedidos por escaneo y despacho.',
-      icono: 'deposito',
-    },
-    {
-      nombre: 'Desarrollos a medida',
-      texto: 'Lo que tu negocio hace distinto y ningún sistema de catálogo contempla.',
-      icono: 'codigo',
-    },
-    {
-      nombre: 'Auditoría de procesos',
-      texto:
-        'Qué automatizar, qué simplificar y qué tirar. Sirve aunque no nos contrates.',
-      icono: 'grafico',
     },
   ],
 };
