@@ -5,9 +5,11 @@ export function Pie() {
   const año = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#050508] pt-14 pb-6 text-sm text-texto-3">
-      <div className="contenedor">
-        <div className="flex flex-col gap-8 border-b border-linea pb-10 md:flex-row md:justify-between">
+    <footer className="relative overflow-hidden bg-[#040814] pt-16 pb-7 text-sm text-texto-3">
+      <div className="aura -bottom-32 left-1/2 size-[32rem] -translate-x-1/2 bg-marca/14" />
+
+      <div className="contenedor relative">
+        <div className="flex flex-col gap-8 border-b border-white/8 pb-10 md:flex-row md:justify-between">
           <div>
             <a href="#inicio">
               <Logotipo size={24} />
@@ -22,7 +24,7 @@ export function Pie() {
             <p className="mt-1">{contacto.ubicacion}</p>
           </div>
 
-          <nav aria-label="Secciones" className="grid grid-cols-2 gap-x-10 gap-y-1 sm:grid-cols-2">
+          <nav aria-label="Secciones" className="grid grid-cols-2 gap-x-10 gap-y-1">
             {navegacion.map((item) => (
               <a key={item.href} href={item.href} className="py-1.5 text-texto-2 hover:text-marca-2">
                 {item.etiqueta}
@@ -34,7 +36,7 @@ export function Pie() {
           </nav>
         </div>
 
-        <p className="pt-5 font-mono text-[11px] tracking-[0.05em]">© {año} CAYRE LABS</p>
+        <p className="pt-6 font-mono text-[11px] tracking-[0.05em]">© {año} CAYRE LABS</p>
       </div>
     </footer>
   );

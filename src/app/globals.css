@@ -3,39 +3,47 @@
 /* ═══════════════════════════════════════════════════════════════════════
    Sistema visual de Cayre Labs
 
-   Tema oscuro con el violeta de la marca (#6D4AFF) como único acento.
+   Oscuro, pero azul profundo y no negro: el negro puro se lee severo y
+   plano. Las superficies son vidrio translúcido sobre ese fondo, las
+   esquinas son generosas y el acento es un gradiente que arranca en el
+   violeta de la marca.
+
    Los nombres siguen la convención de Tailwind 4: lo que se declara acá
-   con el prefijo --color- queda disponible como clase (bg-superficie,
-   text-texto-2, border-linea, etc.).
+   con el prefijo --color- queda como clase (bg-superficie, text-texto-2…).
    ═══════════════════════════════════════════════════════════════════════ */
 
 @theme {
-  /* Fondos, de más oscuro a más claro */
-  --color-fondo: #08080c;
-  --color-fondo-2: #0c0c13;
-  --color-superficie: #12121a;
-  --color-superficie-2: #191922;
-  --color-superficie-3: #22222e;
+  /* Fondos: azul muy oscuro con una pizca del violeta de marca */
+  --color-fondo: #060a18;
+  --color-fondo-2: #0a1024;
+  --color-superficie: #111733;
+  --color-superficie-2: #171e3d;
+  --color-superficie-3: #1f2750;
 
-  /* Líneas y bordes */
-  --color-linea: #1e1e28;
-  --color-linea-2: #2c2c3a;
-  --color-linea-3: #3a3a4c;
+  /* Líneas: casi siempre blanco con muy poca opacidad */
+  --color-linea: #1b2342;
+  --color-linea-2: #27315a;
+  --color-linea-3: #3a4578;
 
-  /* Texto, de más a menos contraste */
-  --color-texto: #f3f2f8;
-  --color-texto-2: #a3a2b6;
-  --color-texto-3: #6c6b80;
+  /* Texto */
+  --color-texto: #ffffff;
+  --color-texto-2: #a8aece;
+  --color-texto-3: #6e769f;
 
   /* Marca */
   --color-marca: #6d4aff;
   --color-marca-2: #8f76ff;
   --color-marca-3: #b3a2ff;
+  --color-cian: #3fc8e4;
 
   /* Estados */
   --color-ok: #3dd68c;
   --color-alerta: #f5a524;
   --color-error: #f2707a;
+
+  /* Esquinas: generosas. Es lo que más cambia la sensación del sitio. */
+  --radius-tarjeta: 24px;
+  --radius-bloque: 32px;
 
   /* Tipografías: las inyecta layout.tsx con next/font */
   --font-display: var(--fuente-display), system-ui, sans-serif;
@@ -54,7 +62,7 @@
 
   body {
     background: var(--color-fondo);
-    color: var(--color-texto);
+    color: var(--color-texto-2);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-wrap: pretty;
@@ -66,7 +74,7 @@
   h4,
   h5 {
     font-family: var(--font-display);
-    letter-spacing: -0.035em;
+    letter-spacing: -0.03em;
     color: #fff;
     text-wrap: balance;
   }
@@ -106,5 +114,83 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--color-marca-2);
+  }
+
+  /* Superficie de vidrio: lo que reemplaza a las cajas sólidas y planas */
+  .vidrio {
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-tarjeta);
+    backdrop-filter: blur(12px);
+  }
+
+  .vidrio-marca {
+    background:
+      linear-gradient(145deg, rgba(109, 74, 255, 0.16), rgba(63, 200, 228, 0.05) 60%, transparent),
+      rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(143, 118, 255, 0.32);
+    border-radius: var(--radius-tarjeta);
+    backdrop-filter: blur(12px);
+  }
+
+  /* El gradiente de marca: cian a violeta. Se usa en el botón principal y
+     en una palabra del titular, nunca en bloques grandes de texto. */
+  .degradado {
+    background-image: linear-gradient(
+      96deg,
+      var(--color-cian) 4%,
+      var(--color-marca) 52%,
+      #b443ff 96%
+    );
+  }
+
+  .texto-degradado {
+    background-image: linear-gradient(96deg, var(--color-cian) 4%, var(--color-marca-2) 60%, #c07bff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Botones en pastilla: es la forma que más separa un sitio moderno de uno
+     que parece un panel de administración. */
+  .boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3.25rem;
+    padding-inline: 1.9rem;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.98rem;
+    transition: 0.2s;
+  }
+
+  .boton-primario {
+    color: #fff;
+    box-shadow: 0 10px 30px -12px rgba(109, 74, 255, 0.9);
+  }
+  .boton-primario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 38px -12px rgba(109, 74, 255, 0.95);
+  }
+
+  .boton-secundario {
+    color: var(--color-texto);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .boton-secundario:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Resplandor de fondo: da profundidad sin cargar la página de imágenes. */
+  .aura {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 999px;
+    filter: blur(90px);
   }
 }

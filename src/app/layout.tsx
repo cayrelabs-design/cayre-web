@@ -1,18 +1,21 @@
 import type { Metadata } from 'next';
-import { Archivo, IBM_Plex_Mono, Instrument_Sans } from 'next/font/google';
+import { IBM_Plex_Mono, Urbanist } from 'next/font/google';
 import { pie } from '@/content/landing';
 import './globals.css';
 
 // next/font descarga y aloja las tipografías en nuestro propio dominio: no hay
 // pedido a Google en la visita y no hay salto de maquetado mientras carga.
-const display = Archivo({
+// Una sola familia para todo el sitio. Urbanist es redondeada y abierta: lo
+// contrario de la condensada técnica que teníamos, que hacía ver la página como
+// un panel de administración y no como el sitio de una empresa de software.
+const display = Urbanist({
   subsets: ['latin'],
-  weight: ['600', '700', '800'],
+  weight: ['500', '600', '700', '800'],
   variable: '--fuente-display',
   display: 'swap',
 });
 
-const cuerpo = Instrument_Sans({
+const cuerpo = Urbanist({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
   variable: '--fuente-cuerpo',
@@ -52,7 +55,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body className="flex min-h-full flex-col">
         <a
           href="#contenido"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:bg-marca focus:px-4 focus:py-2 focus:font-semibold focus:text-fondo"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:rounded-full focus:bg-marca focus:px-5 focus:py-2.5 focus:font-semibold focus:text-white"
         >
           Saltar al contenido
         </a>

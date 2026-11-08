@@ -7,7 +7,7 @@ import { type CampoConsulta, estadoInicial } from '@/lib/consulta';
 import { Icono } from './Icono';
 
 const estiloCampo =
-  'w-full border border-linea-2 bg-fondo px-4 py-3 text-texto placeholder:text-texto-3 focus:border-marca focus:ring-2 focus:ring-marca/25 focus:outline-none aria-invalid:border-error';
+  'w-full rounded-2xl border border-white/10 bg-white/4 px-4 py-3.5 text-texto placeholder:text-texto-3 focus:border-marca focus:bg-white/6 focus:ring-2 focus:ring-marca/25 focus:outline-none aria-invalid:border-error';
 
 export function FormularioConsulta() {
   const [estado, accion, enviando] = useActionState(enviarConsulta, estadoInicial);
@@ -21,11 +21,11 @@ export function FormularioConsulta() {
   if (estado.estado === 'ok') {
     return (
       <div role="status" className="flex flex-col gap-4 py-6">
-        <p className="text-2xl font-extrabold">¡Gracias! Ya tenemos tu consulta.</p>
+        <p className="text-2xl font-bold">¡Gracias! Ya tenemos tu consulta.</p>
         <p className="text-texto-2">Te respondemos en menos de 4 horas hábiles.</p>
         <a
           href={`mailto:${contacto.email}`}
-          className="inline-flex min-h-12 items-center gap-2 self-start border border-linea-2 bg-superficie-2 px-6 font-semibold text-texto transition hover:border-linea-3"
+          className="boton boton-secundario self-start"
         >
           O escribinos a {contacto.email}
         </a>
@@ -111,7 +111,7 @@ export function FormularioConsulta() {
       <input ref={inicio} type="hidden" name="inicio" defaultValue="" />
 
       {estado.estado === 'error' && estado.mensaje && (
-        <p role="alert" className="border border-error/40 bg-error/10 px-4 py-3 text-sm font-semibold text-error">
+        <p role="alert" className="rounded-2xl border border-error/40 bg-error/10 px-4 py-3 text-sm font-semibold text-error">
           {estado.mensaje}
         </p>
       )}
@@ -119,7 +119,7 @@ export function FormularioConsulta() {
       <button
         type="submit"
         disabled={enviando}
-        className="inline-flex min-h-12 items-center justify-center gap-2 bg-marca px-6 font-display font-semibold text-fondo transition hover:bg-marca-2 disabled:opacity-60"
+        className="boton boton-primario degradado disabled:opacity-60"
       >
         {enviando ? 'Enviando…' : 'Enviar consulta'}
         {!enviando && <Icono nombre="flecha" className="size-4" />}

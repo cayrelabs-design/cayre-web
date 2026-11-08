@@ -8,18 +8,23 @@ export function Encabezado() {
   const [abierto, setAbierto] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-linea bg-fondo/92 backdrop-blur-lg">
-      <div className="contenedor flex h-16 items-center justify-between gap-6">
+    <header className="sticky top-0 z-50 border-b border-white/6 bg-fondo/80 backdrop-blur-xl">
+      <div className="contenedor flex h-18 items-center justify-between gap-6">
         <a href="#inicio" aria-label="Cayre Labs, volver al inicio" className="shrink-0">
           <Logotipo />
         </a>
 
-        <nav aria-label="Secciones" className="hidden items-center gap-6 xl:flex">
+        {/* El menú va dentro de una pastilla de vidrio: flota sobre la página en
+            vez de quedar pegado a una barra. */}
+        <nav
+          aria-label="Secciones"
+          className="vidrio hidden items-center gap-1 !rounded-full px-2 py-1.5 xl:flex"
+        >
           {navegacion.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-texto-2 transition-colors hover:text-white"
+              className="rounded-full px-3.5 py-2 text-sm font-medium text-texto-2 transition-colors hover:bg-white/8 hover:text-white"
             >
               {item.etiqueta}
             </a>
@@ -29,7 +34,7 @@ export function Encabezado() {
         <div className="flex items-center gap-2">
           <a
             href="#contacto"
-            className="hidden min-h-11 items-center bg-marca px-5 text-sm font-semibold text-fondo transition-colors hover:bg-marca-2 sm:inline-flex"
+            className="boton boton-primario degradado hidden !min-h-11 !px-6 !text-sm sm:inline-flex"
           >
             Hablemos
           </a>
@@ -37,7 +42,7 @@ export function Encabezado() {
             onClick={() => setAbierto((v) => !v)}
             aria-expanded={abierto}
             aria-controls="nav-movil"
-            className="min-h-11 border border-linea-2 px-4 font-mono text-[11px] tracking-[0.1em] text-texto-2 xl:hidden"
+            className="boton boton-secundario !min-h-11 !px-5 font-mono !text-[11px] tracking-[0.1em] xl:hidden"
           >
             {abierto ? 'CERRAR' : 'MENÚ'}
           </button>
@@ -48,14 +53,14 @@ export function Encabezado() {
         <nav
           id="nav-movil"
           aria-label="Secciones"
-          className="max-h-[70vh] overflow-y-auto border-t border-linea bg-fondo-2 px-6 pb-6 xl:hidden"
+          className="max-h-[70vh] overflow-y-auto border-t border-white/6 bg-fondo-2 px-6 pb-6 xl:hidden"
         >
           {navegacion.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setAbierto(false)}
-              className="block border-b border-linea py-3.5 text-[15px] text-texto-2"
+              className="block border-b border-white/6 py-3.5 text-[15px] text-texto-2"
             >
               {item.etiqueta}
             </a>
@@ -63,7 +68,7 @@ export function Encabezado() {
           <a
             href="#contacto"
             onClick={() => setAbierto(false)}
-            className="mt-5 block bg-marca px-5 py-3.5 text-center font-semibold text-fondo"
+            className="boton boton-primario degradado mt-5 w-full"
           >
             Hablemos
           </a>

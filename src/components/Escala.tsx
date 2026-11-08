@@ -13,20 +13,16 @@ export function Escala() {
           return (
             <article
               key={nivel.etiqueta}
-              className={`flex flex-col gap-4 border p-7 ${
-                ultimo
-                  ? 'border-marca/45 bg-gradient-to-b from-marca/12 to-transparent'
-                  : 'border-linea-2 bg-superficie'
-              }`}
+              className={`flex flex-col gap-4 p-8 ${ultimo ? 'vidrio-marca' : 'vidrio'}`}
             >
               <p className="font-mono text-[10px] tracking-[0.14em] text-marca-2 uppercase">
                 {nivel.etiqueta}
               </p>
-              <h3 className="text-[22px] font-extrabold">{nivel.titulo}</h3>
+              <h3 className="text-[22px] font-bold">{nivel.titulo}</h3>
               <ul className="mt-1 flex flex-col gap-2.5">
                 {nivel.items.map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-[15px] text-texto-2">
-                    <Icono nombre="check" className="mt-1 size-3.5 flex-none text-marca-2" />
+                    <Icono nombre="check" className="mt-1 size-3.5 flex-none text-cian" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -36,9 +32,9 @@ export function Escala() {
         })}
       </div>
 
-      <div className="mt-11">
-        <p className="rotulo text-texto-3">{escala.integracionesTitulo}</p>
-        <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-3">
+      <div className="mt-12 text-center">
+        <p className="rotulo !text-texto-3">{escala.integracionesTitulo}</p>
+        <ul className="mt-4 flex flex-wrap justify-center gap-x-8 gap-y-3">
           {escala.integraciones.map((nombre) => (
             <li key={nombre} className="font-display text-[15px] font-bold text-texto-3">
               {nombre}

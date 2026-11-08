@@ -10,36 +10,34 @@ import { Icono } from './Icono';
  */
 export function Diagnostico() {
   return (
-    <section className="relative overflow-hidden border-b border-linea py-20 md:py-24">
+    <section className="relative overflow-hidden py-24 md:py-28">
       <Image
         src="/img/fondo-grilla.webp"
         alt=""
         fill
         sizes="100vw"
-        className="object-cover opacity-50"
+        className="object-cover opacity-45"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-fondo/75 via-fondo/88 to-fondo" />
+      <div className="absolute inset-0 bg-gradient-to-b from-fondo/80 via-fondo/90 to-fondo" />
+      <div className="aura top-0 left-1/3 size-[30rem] bg-marca/18" />
 
       <div className="contenedor relative grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
         <div>
           <p className="rotulo">{diagnostico.etiqueta}</p>
-          <h2 className="mt-3.5 text-[clamp(1.7rem,3.8vw,2.625rem)] leading-[1.05] font-extrabold">
+          <h2 className="mt-4 text-[clamp(1.85rem,4vw,2.875rem)] leading-[1.1] font-bold">
             {diagnostico.titulo}
           </h2>
           <p className="mt-4 max-w-[46ch] text-[17px] text-texto-2">{diagnostico.texto}</p>
-          <Link
-            href="#contacto"
-            className="mt-7 inline-flex min-h-12 items-center gap-2 bg-marca px-7 font-display font-semibold text-fondo transition hover:bg-marca-2"
-          >
+          <Link href="#contacto" className="boton boton-primario degradado mt-8">
             {diagnostico.cta}
             <Icono nombre="flecha" className="size-4" />
           </Link>
         </div>
 
-        <ul className="flex flex-col gap-px self-center bg-linea">
+        <ul className="flex flex-col gap-3 self-center">
           {diagnostico.items.map((item, i) => (
-            <li key={item} className="flex items-start gap-4 bg-fondo p-6">
-              <span className="font-mono text-[11px] leading-6 text-marca-2" aria-hidden>
+            <li key={item} className="vidrio flex items-start gap-4 p-6">
+              <span className="font-mono text-[11px] leading-6 text-cian" aria-hidden>
                 0{i + 1}
               </span>
               <span className="text-[15.5px] text-texto-2">{item}</span>

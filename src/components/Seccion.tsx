@@ -1,7 +1,13 @@
+import { Icono, type NombreIcono } from './Icono';
+
 /**
  * Piezas que se repiten en todas las secciones. Tenerlas en un solo lugar es
  * lo que hace que el sitio se vea como un sistema y no como diez páginas
  * pegadas: si cambia el espaciado de un encabezado, cambia en todas.
+ *
+ * Las secciones ya no se separan con una línea: se separan con aire. La línea
+ * cortaba la página en bandas y era buena parte de lo que la hacía ver como un
+ * formulario largo.
  */
 
 export function Seccion({
@@ -14,11 +20,8 @@ export function Seccion({
   children: React.ReactNode;
 }) {
   return (
-    <section
-      id={id}
-      className={`border-b border-linea py-20 md:py-24 ${tenue ? 'bg-fondo-2' : ''}`}
-    >
-      <div className="contenedor">{children}</div>
+    <section id={id} className={`relative overflow-x-clip py-24 md:py-28 ${tenue ? 'bg-fondo-2/60' : ''}`}>
+      <div className="contenedor relative">{children}</div>
     </section>
   );
 }
@@ -27,21 +30,20 @@ export function Encabezamiento({
   etiqueta,
   titulo,
   texto,
-  centrado,
+  alineado,
 }: {
   etiqueta: string;
   titulo: React.ReactNode;
   texto?: string;
-  centrado?: boolean;
+  /** Por defecto va centrado; `alineado` lo deja contra el margen izquierdo. */
+  alineado?: boolean;
 }) {
   return (
-    <div className={`mb-11 max-w-[62ch] ${centrado ? 'mx-auto text-center' : ''}`}>
+    <div className={`mb-14 max-w-[62ch] ${alineado ? '' : 'mx-auto text-center'}`}>
       <p className="rotulo">{etiqueta}</p>
-      <h2 className="mt-3.5 text-[clamp(1.7rem,3.8vw,2.625rem)] leading-[1.05] font-extrabold">
-        {titulo}
-      </h2>
+      <h2 className="mt-4 text-[clamp(1.85rem,4vw,2.875rem)] leading-[1.1] font-bold">{titulo}</h2>
       {texto && (
-        <p className={`mt-3.5 max-w-[56ch] text-[17px] text-texto-2 ${centrado ? 'mx-auto' : ''}`}>
+        <p className={`mt-4 max-w-[58ch] text-[17px] text-texto-2 ${alineado ? '' : 'mx-auto'}`}>
           {texto}
         </p>
       )}
@@ -52,11 +54,38 @@ export function Encabezamiento({
 export function Tarjeta({
   children,
   className = '',
+  destacada,
 }: {
   children: React.ReactNode;
   className?: string;
+  destacada?: boolean;
 }) {
   return (
-    <div className={`border border-linea-2 bg-superficie p-7 ${className}`}>{children}</div>
+    <div className={`${destacada ? 'vidrio-marca' : 'vidrio'} p-7 ${className}`}>{children}</div>
+  );
+}
+
+/**
+ * El cuadradito redondeado con el ícono adentro. Se repite en cinco secciones,
+ * así que vive acá para que todas lo tengan igual.
+ */
+export function ChipIcono({
+  nombre,
+  destacado,
+}: {
+  nombre: NombreIcono;
+  destacado?: boolean;
+}) {
+  return (
+    <span
+      aria-hidden
+      className={`flex size-12 flex-none items-center justify-center rounded-2xl border ${
+        destacado
+          ? 'border-marca/45 bg-marca/18 text-marca-3'
+          : 'border-white/10 bg-white/6 text-marca-2'
+      }`}
+    >
+      <Icono nombre={nombre} className="size-5" />
+    </span>
   );
 }
