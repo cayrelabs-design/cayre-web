@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { portada } from '@/content/landing';
+import { contacto, portada } from '@/content/landing';
 import { Icono } from './Icono';
 
 /**
@@ -93,9 +93,24 @@ export function Portada() {
               {portada.ctaPrincipal}
               <Icono nombre="flecha" className="size-4" />
             </a>
-            <a href="#productos" className="boton boton-secundario">
-              {portada.ctaSecundario}
-            </a>
+            {/* WhatsApp es el canal donde compra la pyme argentina. Aparece
+                solo cuando hay número cargado; mientras no lo haya, el único
+                camino es el formulario y no se promete un canal que no existe. */}
+            {contacto.whatsappLink ? (
+              <a
+                href={contacto.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="boton boton-secundario"
+              >
+                <Icono nombre="chat" className="size-4" />
+                Escribinos por WhatsApp
+              </a>
+            ) : (
+              <a href="#productos" className="boton boton-secundario">
+                {portada.ctaSecundario}
+              </a>
+            )}
           </div>
 
           <div className="vidrio mt-6 flex flex-col gap-3.5 p-6" data-revelar>

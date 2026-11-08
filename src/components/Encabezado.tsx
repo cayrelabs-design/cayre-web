@@ -36,7 +36,7 @@ export function Encabezado() {
             href="#contacto"
             className="boton boton-primario degradado hidden !min-h-11 !px-6 !text-sm sm:inline-flex"
           >
-            Hablemos
+            Diagnóstico gratis
           </a>
           <button
             onClick={() => setAbierto((v) => !v)}
@@ -70,7 +70,7 @@ export function Encabezado() {
             onClick={() => setAbierto(false)}
             className="boton boton-primario degradado mt-5 w-full"
           >
-            Hablemos
+            Diagnóstico gratis
           </a>
           <a
             href={`mailto:${contacto.email}`}

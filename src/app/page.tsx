@@ -2,7 +2,6 @@ import { Circuito } from '@/components/Circuito';
 import { Contacto } from '@/components/Contacto';
 import { Diagnostico } from '@/components/Diagnostico';
 import { Encabezado } from '@/components/Encabezado';
-import { Escala } from '@/components/Escala';
 import { Experiencia } from '@/components/Experiencia';
 import { Funciones } from '@/components/Funciones';
 import { Marketing } from '@/components/Marketing';
@@ -32,7 +31,6 @@ export default function Inicio() {
             ver cinco y la pregunta que le queda es cuál necesita. */}
         <Diagnostico />
         <Funciones />
-        <Escala />
         <Experiencia />
         <Marketing />
         <PorQue />

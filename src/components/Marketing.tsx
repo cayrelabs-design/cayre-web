@@ -61,9 +61,12 @@ export function Marketing() {
           <p className="mx-auto mt-3 max-w-[62ch] text-[16px] text-texto-2">
             {marketing.combinado.texto}
           </p>
-          <a href="#contacto" className="boton boton-primario degradado mt-7">
+          <a
+            href="#contacto"
+            className="mt-7 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.1em] text-marca-2 uppercase hover:text-marca-3"
+          >
             {marketing.cta}
-            <Icono nombre="flecha" className="size-4" />
+            <Icono nombre="flecha" className="size-3.5" />
           </a>
         </div>
       </div>

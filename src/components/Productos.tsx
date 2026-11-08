@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import { integraciones } from '@/content/landing';
 import { SERVICIOS, SISTEMAS, type Producto } from '@/content/productos';
 import { Icono } from './Icono';
+import { Marquesina } from './Marquesina';
 import { Encabezamiento, Seccion } from './Seccion';
 
 /**
@@ -26,7 +28,7 @@ function Insignia({ estado }: { estado: Producto['estado'] }) {
     return (
       <span className="flex items-center gap-2 rounded-full bg-alerta/15 px-3 py-1.5 font-mono text-[9.5px] tracking-[0.12em] text-alerta uppercase">
         <span className="latir size-1.5 rounded-full bg-alerta" aria-hidden />
-        En operación · primeros clientes
+        Primeros clientes
       </span>
     );
   }
@@ -61,9 +63,12 @@ function FichaAncha({ p }: { p: Producto }) {
         <p className="mt-3 text-[16px] text-texto-2">{p.bajada}</p>
         <p className="mt-5 text-[14.5px] text-texto-3">{p.quien}</p>
 
-        <Link href="#contacto" className="boton boton-primario degradado mt-8">
+        <Link
+          href="#contacto"
+          className="mt-8 inline-flex items-center gap-2 self-start font-mono text-[11px] tracking-[0.1em] text-marca-2 uppercase hover:text-marca-3"
+        >
           Quiero verlo funcionando
-          <Icono nombre="flecha" className="size-4" />
+          <Icono nombre="flecha" className="size-3.5" />
         </Link>
       </div>
 
@@ -82,38 +87,29 @@ function FichaAncha({ p }: { p: Producto }) {
 /** Ficha de media columna. Muestra las seis primeras funciones y corta. */
 function Ficha({ p }: { p: Producto }) {
   return (
-    <article data-revelar className="vidrio vidrio-interactivo flex flex-col p-8">
-      <div className="flex flex-wrap items-center gap-3">
-        <span className="size-7 flex-none rounded-lg" style={{ background: p.acento }} aria-hidden />
+    <article data-revelar className="vidrio vidrio-interactivo flex flex-col p-6">
+      {/* min-h fija: si una insignia es más larga que las otras, la fila de
+          tarjetas se desalinea y los nombres quedan a distinta altura. */}
+      <div className="flex min-h-14 flex-wrap items-center gap-2.5">
+        <span className="size-6 flex-none rounded-lg" style={{ background: p.acento }} aria-hidden />
         <Insignia estado={p.estado} />
       </div>
 
-      <h3 className="mt-5 text-[26px] leading-tight font-bold">{p.nombre}</h3>
-      <p className="mt-1 font-mono text-[10px] tracking-[0.14em] text-marca-2 uppercase">
+      <h3 className="mt-4 text-[22px] leading-tight font-bold">{p.nombre}</h3>
+      <p className="mt-1 font-mono text-[9.5px] tracking-[0.14em] text-marca-2 uppercase">
         {p.rubro}
       </p>
 
-      <p className="mt-4 text-[17px] leading-snug font-semibold text-white">{p.titular}</p>
-      <p className="mt-2.5 text-[15px] text-texto-2">{p.bajada}</p>
+      <p className="mt-3.5 text-[15.5px] leading-snug font-semibold text-white">{p.titular}</p>
+      <p className="mt-2 text-[14px] text-texto-2">{p.resumen}</p>
 
-      <ul className="mt-5 flex flex-col gap-2 border-t border-white/8 pt-5">
-        {p.funciones.slice(0, 6).map((f) => (
-          <li key={f} className="flex items-start gap-2.5 text-[14px] text-texto-2">
-            <Icono nombre="check" className="mt-1 size-3 flex-none text-cian" />
-            <span>{f}</span>
-          </li>
-        ))}
-      </ul>
-
-      <p className="mt-5 text-[13.5px] text-texto-3">{p.quien}</p>
-
-      {/* Lo que todavía no se contrata no lleva botón de contratar. */}
+      {/* Lo que todavía no se contrata no lleva invitación a contratarlo. */}
       {p.estado !== 'proximamente' && (
         <Link
           href="#contacto"
-          className="mt-5 inline-flex items-center gap-2 self-start font-mono text-[11px] text-marca-2 hover:text-marca-3"
+          className="mt-auto inline-flex items-center gap-2 self-start pt-5 font-mono text-[10.5px] tracking-[0.08em] text-marca-2 uppercase hover:text-marca-3"
         >
-          Quiero verlo funcionando
+          Verlo funcionando
           <Icono nombre="flecha" className="size-3.5" />
         </Link>
       )}
@@ -132,19 +128,25 @@ export function Productos() {
         texto="Los sistemas comparten usuarios, permisos, productos y clientes: el que arranca con uno y mañana necesita otro no migra nada, se le activa."
       />
 
+      {/* Sólo la línea que está construida y funcionando lleva ficha grande con
+          la lista entera: es la prueba de la página. Las otras cuatro van en
+          una fila de tarjetas chicas — el detalle es conversación de reunión,
+          no de landing. */}
       <FichaAncha p={principal} />
 
-      <div className="mt-4 grid gap-4 lg:grid-cols-2">
-        {otrosSistemas.map((p) => (
+      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {[...otrosSistemas, ...SERVICIOS].map((p) => (
           <Ficha key={p.slug} p={p} />
         ))}
       </div>
 
-      <p className="rotulo !text-texto-3 mt-14 text-center">Y lo que hacemos nosotros</p>
-      <div className="mt-5 grid gap-4 lg:grid-cols-2">
-        {SERVICIOS.map((p) => (
-          <Ficha key={p.slug} p={p} />
-        ))}
+      {/* La cinta cierra la seccion: el visitante acaba de ver que hacemos y lo
+          que le queda por preguntar es si se lleva bien con lo que ya tiene. */}
+      <div className="mt-16">
+        <p className="rotulo !text-texto-3 text-center">{integraciones.integracionesTitulo}</p>
+        <div className="mt-5">
+          <Marquesina nombres={integraciones.integraciones} />
+        </div>
       </div>
     </Seccion>
   );

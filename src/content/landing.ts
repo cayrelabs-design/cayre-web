@@ -14,13 +14,19 @@
 
 import type { NombreIcono } from '@/components/Icono';
 
-// TODO: cuando haya número, completar. Mientras sea null, los botones de
-// WhatsApp no se muestran y el llamado a la acción lleva al formulario.
+// ── WhatsApp ────────────────────────────────────────────────────────────────
+// Poné el número acá y WhatsApp aparece solo en la portada, en la sección de
+// contacto y en el menú del teléfono. Mientras sea null no se muestra en
+// ningún lado, y el único camino es el formulario.
+//
+// Formato internacional, sin "+" ni espacios ni guiones: 5491122334455.
 const whatsappNumero: string | null = null;
+// Cómo se lee en pantalla. Si queda null se muestra el número tal cual.
+const whatsappComoSeLee: string | null = null;
 
 export const contacto = {
   email: 'hola@cayrelabs.com.ar',
-  whatsappVisible: null as string | null,
+  whatsappVisible: whatsappNumero ? (whatsappComoSeLee ?? whatsappNumero) : null,
   whatsappLink: whatsappNumero
     ? `https://wa.me/${whatsappNumero}?text=${encodeURIComponent('Hola, vi la web de Cayre Labs y quiero hacer una consulta.')}`
     : null,
@@ -179,42 +185,13 @@ export const funciones: {
   ],
 };
 
-export const escala = {
-  etiqueta: '06 — A tu medida',
-  titulo: 'Desde lo simple hasta un sistema 360.',
-  texto:
-    'Arrancás con lo que más te duele y el sistema crece con tu empresa, sin cambiar de proveedor ni perder tus datos.',
-  niveles: [
-    {
-      etiqueta: 'Inicial',
-      titulo: 'Un circuito resuelto',
-      items: ['Ventas, stock y caja', 'Un canal de venta', 'Facturación electrónica'],
-    },
-    {
-      etiqueta: 'Integral',
-      titulo: 'Toda la operación',
-      items: [
-        'Varios canales de venta',
-        'Tienda online propia',
-        'Cobranzas y tesorería',
-        'Compras y proveedores',
-        'Reportes de rentabilidad',
-      ],
-    },
-    {
-      etiqueta: '360',
-      titulo: 'La empresa entera, conectada',
-      items: [
-        'Ventas en todos los canales',
-        'CRM con WhatsApp e Instagram',
-        'Producción y materia prima',
-        'Comercio exterior',
-        'Logística y envíos',
-        'Conciliación bancaria',
-        'Pauta conectada a las ventas',
-      ],
-    },
-  ],
+/**
+ * Las plataformas con las que el sistema se conecta. Antes vivian adentro de
+ * la seccion "A tu medida", que se saco porque repetia el argumento de
+ * CayrePOS -> Cayre360 y porque su tercer nivel se llamaba "360", igual que
+ * el producto.
+ */
+export const integraciones = {
   integracionesTitulo: 'Se conecta con lo que ya usás',
   integraciones: [
     'ARCA',
