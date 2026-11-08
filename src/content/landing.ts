@@ -1,8 +1,15 @@
 // Todos los textos de la web viven acá: se corrigen sin tocar el diseño.
 //
-// Dos reglas de esta web:
-//  · Los tres clientes se nombran con autorización. No se agrega ninguno más sin pedirla.
-//  · No se muestran caras ni nombres del equipo: la prueba son los clientes, no las fotos.
+// Reglas de esta web, acordadas entre los socios:
+//
+//  · Las tres empresas se nombran CON AUTORIZACIÓN y no son clientes externos: los socios
+//    son quienes las operan. Se dice así, porque es la verdad y además vende más que
+//    "confían en nosotros". No se agrega ninguna empresa más sin pedir permiso.
+//  · No se muestran caras ni nombres del equipo. Sí se puede decir "hablás con los socios".
+//  · NO se publica: antigüedad de Cayre Labs, cantidad de clientes, testimonios,
+//    porcentajes de mejora ni estadísticas. (Regla de honestidad del traspaso, §5.)
+//  · De CayreWMS no se promete: Mercado Libre, WooCommerce, facturación ARCA válida,
+//    funcionamiento sin señal, transportistas, ni app en Google Play o App Store.
 
 import type { NombreIcono } from '@/components/Icono';
 
@@ -20,10 +27,11 @@ export const contacto = {
 };
 
 export const navegacion = [
+  { href: '#punto-de-partida', etiqueta: 'El problema' },
   { href: '#metodo', etiqueta: 'Cómo trabajamos' },
   { href: '#servicios', etiqueta: 'Servicios' },
+  { href: '#productos', etiqueta: 'Sistemas' },
   { href: '#funciones', etiqueta: 'Funciones' },
-  { href: '#escala', etiqueta: 'A tu medida' },
   { href: '#experiencia', etiqueta: 'Experiencia' },
   { href: '#marketing', etiqueta: 'Marketing' },
   { href: '#por-que', etiqueta: 'Por qué Cayre' },
@@ -34,38 +42,84 @@ export const portada = {
   titulo: 'El sistema, la tienda y la pauta. Un solo equipo.',
   bajada:
     'Desarrollamos plataformas de e-commerce y sistemas de gestión, y hacemos el marketing que los llena de ventas. Todo conectado, todo nuestro, todo medido contra tu facturación real.',
-  ctaPrincipal: 'Contanos tu problema',
+  ctaPrincipal: 'Pedí tu diagnóstico de 30 minutos',
   ctaSecundario: 'Ver lo que hacemos',
-  clientesTitulo: 'Confían en nosotros',
+  // No es una franja de logos de clientes: es la prueba de que el software se usa
+  // todos los días en operaciones reales, por la gente que lo construyó.
+  clientesTitulo: 'Nuestros sistemas operan todos los días en',
   clientes: ['Porcenot', 'Bodysculpt', 'Ibérico Mayorista'],
+  clientesPie: 'No son casos de estudio: son empresas que operamos.',
 };
 
+/**
+ * El antes y después, contado por quienes lo vivieron adentro de las operaciones
+ * que manejan. Cada dolor va emparejado con lo que lo resolvió: así se lee como
+ * un cambio y no como dos listas sueltas.
+ *
+ * Sin porcentajes ni estadísticas (regla de honestidad del traspaso, §5).
+ */
+export const puntoDePartida = {
+  etiqueta: '01 — El punto de partida',
+  titulo: 'Todas las empresas que ordenamos empezaron igual.',
+  texto:
+    'Información cruzada en miles de planillas que entendían dos o tres personas. Sobre eso no se puede decidir nada — y lo peor es que las pérdidas estaban, pero no se podían encontrar.',
+  pares: [
+    {
+      antes: 'Miles de planillas que solo entendían unos pocos',
+      despues: 'Un solo sistema, y cada dato cargado una sola vez',
+    },
+    {
+      antes: 'Varios canales de venta peleando por el mismo stock',
+      despues: 'Una sola verdad de stock, con QR y código de barras en cada movimiento',
+    },
+    {
+      antes: 'Horas de administración que podían automatizarse',
+      despues: 'Facturación automática y la logística como un proceso, no como un apuro',
+    },
+    {
+      antes: 'Cierres de caja que nunca daban: siempre sobraba o faltaba plata',
+      despues: 'Caja cuadrada al cierre, con cada movimiento registrado y con autor',
+    },
+    {
+      antes: 'Nadie sabía qué se pagó ni cuándo',
+      despues: 'Flujo de caja a la vista y previsibilidad financiera',
+    },
+  ],
+  cierre:
+    'Ninguna de esas empresas cambió de rubro ni de gente. Cambió que la información dejó de estar partida en pedazos.',
+};
+
+// Las cuatro etapas son las aprobadas en el documento de traspaso (§4.2).
 export const metodo = {
-  etiqueta: '01 — Cómo trabajamos',
+  etiqueta: '02 — Cómo trabajamos',
   lineas: [
-    { destacado: 'Escuchamos', resto: ' el problema.' },
-    { destacado: 'Creamos', resto: ' la solución.' },
-    { previo: 'La ', destacado: 'implementamos', resto: '.' },
+    { destacado: 'Primero el proceso.', resto: '' },
+    { previo: 'Después el ', destacado: 'software', resto: '.' },
   ],
   texto:
-    'Somos una empresa de tecnología. Construimos el sistema que ordena tu operación, la tienda que te vende de noche y las campañas que la llenan de gente. No tercerizamos ninguna de las tres.',
+    'Un sistema arriba de un circuito roto acelera el problema. Por eso nos metemos dos semanas adentro de tu operación antes de proponerte nada — y esa auditoría sirve incluso si después no nos contratás el software.',
   pasos: [
     {
-      titulo: 'Escuchamos',
+      titulo: 'Relevamiento',
       texto:
-        'Diagnóstico de tu operación: cómo vendés, cómo cobrás, qué usás hoy y dónde se pierde tiempo o plata.',
+        'Dos semanas adentro de la operación, mirando el circuito real, no el que dice el manual.',
       icono: 'chat' as NombreIcono,
     },
     {
-      titulo: 'Creamos',
-      texto:
-        'Propuesta por escrito con alcance, etapas, fechas y precio. Después desarrollamos por etapas: primero lo que más duele.',
-      icono: 'codigo' as NombreIcono,
+      titulo: 'Propuesta cerrada',
+      texto: 'Alcance, cronograma y precio por escrito. Lo que queda afuera también está escrito.',
+      icono: 'documento' as NombreIcono,
     },
     {
-      titulo: 'Implementamos',
-      texto: 'Puesta en marcha con tu equipo, capacitación y acompañamiento con un abono mensual.',
+      titulo: 'Puesta en marcha',
+      texto:
+        'Por etapas, arrancando por el módulo que más duele. La operación no se frena.',
       icono: 'cohete' as NombreIcono,
+    },
+    {
+      titulo: 'Acompañamiento',
+      texto: 'Capacitación, documentación y soporte. El sistema tiene que andar sin nosotros al lado.',
+      icono: 'usuarios' as NombreIcono,
     },
   ],
 };
@@ -76,7 +130,7 @@ export const servicios: {
   texto: string;
   items: { nombre: string; texto: string; icono: NombreIcono; destacado?: boolean }[];
 } = {
-  etiqueta: '02 — Lo que hacemos',
+  etiqueta: '03 — Lo que hacemos',
   titulo: 'Especialistas en tiendas online y en marketing que vende.',
   texto:
     'Cada venta, venga del local, de la tienda o de un vendedor, descuenta del mismo stock y queda atada a su cobranza. Y cada peso de pauta se mide contra esa venta, no contra un clic.',
@@ -115,7 +169,30 @@ export const servicios: {
       texto: 'Lo que tu negocio hace distinto y ningún sistema de catálogo contempla.',
       icono: 'codigo',
     },
+    {
+      nombre: 'Auditoría de procesos',
+      texto:
+        'Relevamos cómo trabaja tu equipo hoy y te decimos qué automatizar, qué simplificar y qué directamente tirar. Sirve incluso si no nos contratás el software.',
+      icono: 'grafico',
+    },
   ],
+};
+
+/**
+ * La puerta de entrada comercial. Seis productos marean a un dueño de pyme: la
+ * venta entra por acá y adentro se decide qué módulo.
+ */
+export const diagnostico = {
+  etiqueta: 'Por dónde se empieza',
+  titulo: 'Un diagnóstico de 30 minutos, sin costo.',
+  texto:
+    'Contanos cómo trabajás hoy. Salís con un diagnóstico de tu operación y una idea concreta de por dónde empezar, te contratemos o no.',
+  items: [
+    'Miramos tu circuito real: cómo vendés, cómo cobrás y qué usás hoy',
+    'Te decimos qué se puede automatizar y qué conviene dejar como está',
+    'Si hace falta un sistema, te decimos cuál y por qué. Si no hace falta, también',
+  ],
+  cta: 'Pedí tu diagnóstico',
 };
 
 export const funciones: {
@@ -126,7 +203,7 @@ export const funciones: {
   rubroTitulo: string;
   rubros: string[];
 } = {
-  etiqueta: '03 — Funciones principales',
+  etiqueta: '05 — Funciones principales',
   titulo: 'La base que toda empresa necesita, lista desde el primer día.',
   texto:
     'Vienen en todos los sistemas que hacemos. Sobre esa base construimos lo que hace distinto a tu negocio.',
@@ -157,7 +234,7 @@ export const funciones: {
 };
 
 export const escala = {
-  etiqueta: '04 — A tu medida',
+  etiqueta: '06 — A tu medida',
   titulo: 'Desde lo simple hasta un sistema 360.',
   texto:
     'Arrancás con lo que más te duele y el sistema crece con tu empresa, sin cambiar de proveedor ni perder tus datos.',
@@ -213,41 +290,50 @@ export const experiencia: {
   casos: { cliente: string; rubro: string; desafio: string; items: string[]; icono: NombreIcono }[];
   cierre: { titulo: string; texto: string };
 } = {
-  etiqueta: '05 — Experiencia',
+  etiqueta: '07 — Experiencia',
   titulo: 'Sistemas que están funcionando hoy.',
-  texto: 'Empresas reales, con nombre y apellido, operando todos los días sobre lo que construimos.',
+  texto:
+    'Tres operaciones distintas, con problemas que no se parecen en nada. Lo que sigue es lo propio de cada una: el punto de partida compartido ya está más arriba.',
   casos: [
     {
       cliente: 'Porcenot',
       rubro: 'Fábrica e importadora de revestimientos',
+      // Lo distintivo: cada venta compromete producción, materia prima o un contenedor.
       desafio:
-        'Vende al público, a mayoristas y a arquitectos, desde varios depósitos y por varios canales a la vez.',
+        'Fabrica, importa y vende al público, a mayoristas y a arquitectos. Cada venta compromete una producción, una materia prima o un contenedor que todavía está en camino.',
       items: [
-        'Sistema de gestión completo, de la compra al cobro.',
-        'Tienda minorista propia, conectada al mismo stock.',
-        'CRM con WhatsApp para todo el equipo comercial.',
+        'Órdenes de producción que dan fecha de entrega real, atadas a la compra de materia prima.',
+        'El vendedor atiende, cotiza y cierra en la misma conversación: el chatbot califica al cliente y él nunca cambia de pantalla.',
+        'Comercio exterior adentro del sistema: costo del contenedor y preventa antes de que llegue.',
+        'Tienda con calculadora de materiales y simulación de la obra terminada, algo que no existía en el rubro.',
+        'Lo que el CRM aprende vuelve al marketing: mejores públicos y menos plata tirada en pauta.',
       ],
       icono: 'fabrica',
     },
     {
       cliente: 'Bodysculpt',
       rubro: 'Indumentaria',
-      desafio: 'Miles de prendas en talles y colores, varios locales, tienda online y venta mayorista.',
+      // Lo distintivo: la escala. 170.000 es un dato de su operación, no una mejora.
+      desafio:
+        'Ciento setenta mil productos entre talles y colores, repartidos en varios depósitos. A esa escala el margen de error es cero: lo que no se encuentra, no se vende.',
       items: [
-        'Punto de venta por talle y color, con stock por local.',
-        'Portal donde los mayoristas piden solos.',
-        'Tienda online sincronizada con el mismo stock.',
+        'Depósito con ubicaciones: cada talle y cada color con su lugar exacto en el estante.',
+        'Preparación guiada por escáner, para que el pedido salga completo y sin errores de talle.',
+        'Portal donde cada mayorista arma su pedido y lo sigue en tiempo real.',
+        'Una sola verdad de stock para el local, la tienda y el mayorista.',
       ],
       icono: 'remera',
     },
     {
       cliente: 'Ibérico Mayorista',
       rubro: 'Distribución de alimentos',
-      desafio: 'Vende a comercios y gastronómicos, con cuentas corrientes y mucha venta por peso.',
+      // Lo distintivo: cada comercio pide distinto, y la administración necesita cerrar el día.
+      desafio:
+        'Le vende a comercios que piden distinto según el día, el barrio y lo que les quedó en la heladera. Y del otro lado, una administración que necesita cerrar la caja todos los días.',
       items: [
-        'Tienda mayorista B2B desarrollada a medida.',
-        'Facturación electrónica y cuentas corrientes.',
-        'Control de rentabilidad producto por producto.',
+        'Tienda B2B donde cada comercio arma su pedido según lo que su negocio necesita.',
+        'Circuitos administrativos y de facturación completos, de la nota de pedido al comprobante.',
+        'Arqueo de cajas que deja a administración trabajando al día, no a fin de mes.',
       ],
       icono: 'camion',
     },
@@ -259,7 +345,7 @@ export const experiencia: {
 };
 
 export const marketing = {
-  etiqueta: '06 — Marketing digital',
+  etiqueta: '08 — Marketing digital',
   titulo: 'El sistema ordena la operación.',
   tituloDestacado: 'El marketing la llena de ventas.',
   texto:
@@ -303,22 +389,33 @@ export const marketing = {
 };
 
 export const porQue = {
-  etiqueta: '07 — Por qué Cayre',
+  etiqueta: '09 — Por qué Cayre',
   titulo: 'Lo que nos hace distintos.',
   texto: 'Ocho compromisos que van por escrito en cada propuesta.',
   compromisos: [
+    {
+      titulo: 'Hablás con los socios, no con una mesa de ayuda',
+      texto: 'El que releva tu proceso es el mismo que después atiende el teléfono.',
+    },
+    {
+      titulo: 'Primero el proceso, después el software',
+      texto:
+        'Un sistema arriba de un circuito roto acelera el problema. Por eso la auditoría viene antes que la licencia.',
+    },
+    {
+      titulo: 'Escala pyme, criterio de sistemas grandes',
+      texto:
+        'Trazabilidad, permisos y control de cambios como corresponde, en presupuestos que una empresa de barrio puede sostener.',
+    },
     {
       titulo: 'Hacemos el software, no lo revendemos',
       texto:
         'Si te falta una función, se agrega. No dependés de que un proveedor del exterior decida si tu caso le importa.',
     },
     {
-      titulo: 'Un responsable asignado',
-      texto: 'Un project manager de punta a punta, con el equipo detrás. Siempre sabés a quién llamar.',
-    },
-    {
-      titulo: 'Tienda y pauta bajo el mismo techo',
-      texto: 'El que hace la tienda y el que trae el tráfico son el mismo equipo. No hay a quién culpar.',
+      titulo: 'Lo usamos nosotros primero',
+      texto:
+        'Nuestros sistemas nacieron adentro de operaciones que manejamos todos los días, no en un escritorio.',
     },
     {
       titulo: 'Abono fijo',

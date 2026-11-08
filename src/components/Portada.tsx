@@ -60,6 +60,7 @@ export function Portada() {
                 </li>
               ))}
             </ul>
+            <p className="text-[13px] text-texto-3">{portada.clientesPie}</p>
           </div>
         </div>
       </div>

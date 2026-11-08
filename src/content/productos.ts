@@ -10,7 +10,12 @@
  * todavía no existe te trae el reclamo el primer día, y el que atiende sos vos.
  */
 
-export type Estado = 'disponible' | 'proximamente';
+/**
+ * `piloto` existe para no tener que elegir entre dos mentiras: decir
+ * "disponible" de algo que todavía no se puede contratar llave en mano, o
+ * decir "próximamente" de algo que está funcionando en una operación real.
+ */
+export type Estado = 'disponible' | 'piloto' | 'proximamente';
 
 export type Producto = {
   slug: string;
@@ -112,35 +117,55 @@ export const PRODUCTOS: Producto[] = [
     ],
   },
 
+  // ⚠️ ÚNICO PRODUCTO CONSTRUIDO Y FUNCIONANDO. Todo lo que dice esta ficha existe hoy.
+  // NO agregar: Mercado Libre, WooCommerce, facturación ARCA válida (está en pruebas),
+  // funcionamiento sin señal, transportistas, ni app en Google Play / App Store.
   {
     slug: 'wms',
     nombre: 'CayreWMS',
-    rubro: 'Depósito',
-    quien: 'Para el que mueve la mercadería',
-    resumen: 'Ubicaciones, picking y control de inventario.',
-    titular: 'Que nadie vuelva a buscar un pallet a mano.',
+    rubro: 'Depósito, ventas y caja',
+    quien: 'Para marcas que venden por la tienda, el local y el mayorista',
+    resumen: 'Una sola verdad de stock para todos tus canales.',
+    titular: 'Tu depósito, tus ventas y tu caja, en un solo sistema.',
     bajada:
-      'Cada cosa con su ubicación, cada movimiento registrado y el inventario controlado sin frenar el depósito.',
-    estado: 'proximamente',
+      'Sabé dónde está cada prenda, quién la movió y en qué paso está cada pedido. Lo que se vende en el local no se vuelve a vender online.',
+    estado: 'disponible',
     acento: '#22C3D6',
     funciones: [
-      'Mapa de ubicaciones por sector, calle y altura',
-      'Recepción con control contra la orden de compra',
-      'Picking guiado por recorrido óptimo',
-      'Packing y control de bulto antes de despachar',
-      'Inventario cíclico sin parar la operación',
-      'Trazabilidad por lote y vencimiento',
+      'Ubicaciones: cada talle y color con su lugar exacto en el estante',
+      'Preparación guiada: el sistema dice qué tomar y de dónde, en orden de recorrido',
+      'App Android con lector de código de barras, sin teclear',
+      'Pedidos de Tienda Nube que entran solos, con reserva de stock',
+      'Punto de venta en el local con caja, turnos y arqueo',
+      'Cambios y devoluciones escaneando el ticket',
+      'Cuentas corrientes de mayoristas con atraso por tramo',
+      'Tesorería: bancos, cajas y cheques',
+      'Conteos de inventario a ciegas y con doble control',
+      'Importación del catálogo desde una planilla',
     ],
     incluye: [
-      'Relevamiento del depósito',
-      'Armado del mapa de ubicaciones',
-      'Capacitación del equipo',
-      'Integrado a CayreERP',
+      'Te acompañamos en la migración desde tu sistema actual',
+      'Cargás tu catálogo desde una planilla',
+      'Guía de uso completa dentro del sistema, pantalla por pantalla',
+      'Usuarios y roles: el operario no ve la plata, la cajera no ve el depósito',
+      'Tus datos se exportan cuando quieras',
     ],
     preguntas: [
       {
-        p: '¿Hace falta comprar equipos?',
-        r: 'Funciona con lectores de mano comunes. No hace falta infraestructura especial para empezar.',
+        p: 'Ya tengo Tienda Nube, ¿para qué otro sistema?',
+        r: 'Tienda Nube sabe lo que vendiste online. No sabe lo que vendiste en el local ni al mayorista, ni en qué estante está cada prenda. Cayre junta todo y mantiene un solo stock.',
+      },
+      {
+        p: '¿Mis empleados lo van a poder usar?',
+        r: 'El depósito trabaja con el celular y el lector de código de barras, y cada rol ve solo su parte. Adentro del sistema hay una guía de uso pantalla por pantalla.',
+      },
+      {
+        p: '¿Funciona con varios depósitos o locales?',
+        r: 'Sí: varios depósitos, transferencias entre ellos y la caja de cada local atada a su depósito.',
+      },
+      {
+        p: '¿Mis datos están seguros?',
+        r: 'Cada empresa está aislada de las demás, todo movimiento queda registrado con su autor y su hora, y tus datos se exportan cuando quieras.',
       },
     ],
   },
@@ -222,35 +247,47 @@ export const PRODUCTOS: Producto[] = [
     ],
   },
 
+  // Funciona hoy adentro de una operación real. Todavía no se contrata llave en
+  // mano, por eso va como piloto y no como disponible.
   {
     slug: 'crm',
     nombre: 'CayreCRM',
-    rubro: 'Comercial',
-    quien: 'Para el equipo de ventas',
-    resumen: 'Cartera, seguimiento comercial y post-venta ordenados.',
-    titular: 'La cartera es de la empresa, no del vendedor.',
+    rubro: 'Comercial con IA',
+    quien: 'Para el que atiende por WhatsApp, Instagram y la tienda a la vez',
+    resumen: 'La IA que atiende y vende adentro de tu propio sistema.',
+    titular: 'Tu IA no debería tener que preguntarle el stock a otro sistema.',
     bajada:
-      'Embudo, ficha única de cliente y seguimiento. Si mañana se va alguien del equipo, la información se queda.',
-    estado: 'proximamente',
+      'Atiende, califica al cliente y deja la venta lista para que tu vendedor la cierre sin cambiar de pantalla. Y como vive adentro de tu sistema, cuando dice "lo tengo", lo tiene.',
+    estado: 'piloto',
     acento: '#4C9AFF',
     funciones: [
-      'Embudo de ventas configurable por etapa',
-      'Ficha única de cliente con todo el historial',
-      'Tareas, recordatorios y alertas de seguimiento',
-      'Gestión de reclamos y post-venta',
-      'Reportes de desempeño por vendedor',
-      'Conectado a pedidos y cuentas corrientes del ERP',
+      'Una sola bandeja para WhatsApp, Instagram y el chat de la tienda',
+      'La IA califica al cliente en la conversación y el vendedor cierra ahí mismo',
+      'Ve el stock real, el precio y la cuenta corriente: no le pregunta a una integración',
+      'Embudo con dueño, fecha y próximo paso, sin planillas paralelas por vendedor',
+      'Ficha única de cliente con todo el historial de todos los canales',
+      'Pasa la conversación a una persona con el contexto ya cargado',
+      'Devuelve cada venta a Meta y Google Analytics: la pauta aprende a quién mostrarse',
+      'Lo que el CRM aprende vuelve al marketing: mejores públicos, menos plata tirada',
     ],
     incluye: [
-      'Embudo a medida de tu proceso',
-      'Importación de tu cartera actual',
-      'Alertas por cliente sin contacto',
-      'Integrado al ERP',
+      'Funcionando hoy adentro de una operación real',
+      'Se activa sobre tu sistema: no es otra herramienta más para mantener',
+      'La IA habla con la voz de tu marca',
+      'Tu equipo sigue atendiendo cuando hace falta una persona',
     ],
     preguntas: [
       {
-        p: '¿Se integra con WhatsApp?',
-        r: 'El registro de conversaciones se carga desde la ficha del cliente. La integración directa se evalúa por proyecto.',
+        p: '¿En qué se diferencia de un chatbot?',
+        r: 'Un chatbot responde preguntas frecuentes de una lista. Este ve tu stock, tus precios y la cuenta corriente del cliente, porque es parte del mismo sistema. Cuando dice "lo tengo", lo tiene.',
+      },
+      {
+        p: '¿Reemplaza a mis vendedores?',
+        r: 'No. Les saca de encima la consulta repetida y les deja la conversación lista para cerrar, con el cliente ya calificado. El que vende sigue siendo tu vendedor.',
+      },
+      {
+        p: '¿Qué tiene que ver con la pauta publicitaria?',
+        r: 'Cada venta que arrancó en un anuncio vuelve a Meta y a Google Analytics. Esas plataformas aprenden a quién mostrarle tu publicidad, y dejás de pagar por clics que no compran.',
       },
     ],
   },
