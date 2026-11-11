@@ -36,10 +36,9 @@ const PLAN = [
   { de: 'd96af251-5871-418c-bd51-e7c798bfc684.png', a: 'fondo-textura.webp',  w: 1920, h: 1080 },
   { de: '6ed463d2-773a-4064-a78c-c02fe425c793.png', a: 'fondo-vertical.webp', w: 1000, h: 1250 },
 
-  // Retratos — 4:5, ya vienen todos iguales
-  { de: 'socio1.png',   a: 'socio-1.webp', w: 900, h: 1125 },
-  { de: 'socio2.png',   a: 'socio-2.webp', w: 900, h: 1125 },
-  { de: 'socio3.jpeg',  a: 'socio-3.webp', w: 900, h: 1125 },
+  // Los retratos de los socios se sacaron a proposito: el sitio no muestra caras.
+  // Lo que esta en public/ se puede abrir por direccion aunque ninguna pagina lo
+  // enlace, asi que una foto que no se publica no puede vivir ahi.
 ];
 
 const kb = (n) => `${Math.round(n / 1024).toLocaleString('es-AR')} KB`;

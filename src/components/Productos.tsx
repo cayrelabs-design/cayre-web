@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import { integraciones } from '@/content/landing';
+import { TRAZOS_DE_MARCA } from '@/content/marcas';
 import { SERVICIOS, SISTEMAS, type Producto } from '@/content/productos';
+import { logoPublicado } from '@/lib/logos';
+import { aSlug } from '@/lib/slug';
 import { Icono } from './Icono';
 import { Marquesina } from './Marquesina';
 import { Encabezamiento, Seccion } from './Seccion';
@@ -130,6 +133,17 @@ function Ficha({ p }: { p: Producto }) {
 export function Productos() {
   const [principal, ...otrosSistemas] = SISTEMAS;
 
+  // Cada integracion se muestra con lo mejor que haya: el logo oficial si el
+  // archivo esta en public/logos/integraciones/, si no su isotipo, si no el nombre.
+  const marcas = integraciones.integraciones.map((nombre) => {
+    const slug = aSlug(nombre);
+    return {
+      nombre,
+      archivo: logoPublicado('integraciones', slug),
+      trazo: TRAZOS_DE_MARCA[slug] ?? null,
+    };
+  });
+
   return (
     <Seccion id="productos">
       <Encabezamiento
@@ -155,7 +169,7 @@ export function Productos() {
       <div className="mt-16">
         <p className="rotulo !text-texto-3 text-center">{integraciones.integracionesTitulo}</p>
         <div className="mt-5">
-          <Marquesina nombres={integraciones.integraciones} />
+          <Marquesina marcas={marcas} />
         </div>
       </div>
     </Seccion>

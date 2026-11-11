@@ -1,6 +1,9 @@
 import { contacto, contactoSeccion, experiencia } from '@/content/landing';
 import { FormularioConsulta } from './FormularioConsulta';
+import { logoPublicado } from '@/lib/logos';
+import { aSlug } from '@/lib/slug';
 import { Icono } from './Icono';
+import { Marca } from './Marca';
 
 export function Contacto() {
   return (
@@ -50,8 +53,13 @@ export function Contacto() {
 
           <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/8 pt-8">
             {experiencia.casos.map((c) => (
-              <li key={c.cliente} className="font-display text-[15px] font-bold text-texto-3">
-                {c.cliente}
+              <li key={c.cliente} className="flex items-center opacity-70">
+                <Marca
+                  nombre={c.cliente}
+                  archivo={logoPublicado('clientes', aSlug(c.cliente))}
+                  alto={20}
+                  className="font-display text-[15px] font-bold text-texto-3"
+                />
               </li>
             ))}
           </ul>

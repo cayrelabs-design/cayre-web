@@ -41,15 +41,16 @@ const SALIDA_Y = SALIDAS.map((_, i) => 100 + i * 60);
  * tramo corrido se arma la cascada: primero entran los cuatro canales, después
  * se prende el centro y recién al final salen las cinco operaciones.
  *
- * Todo termina en el 88% y no en el 100% para que el circuito quede completo
- * un rato antes de irse de la pantalla, y no justo cuando ya no se ve.
+ * Todo termina en el 62%: el circuito queda completo cuando todavía está en el
+ * medio de la pantalla, no cuando ya se está yendo. (Antes terminaba en el 88%
+ * y había que scrollear demasiado para verlo entero.)
  */
 const tramo = (desde: number, hasta: number) =>
   ({ '--desde': `cover ${desde}%`, '--hasta': `cover ${hasta}%` }) as React.CSSProperties;
 
-const TRAMO_ENTRADA = (i: number) => tramo(22 + i * 5, 42 + i * 5);
-const TRAMO_NUCLEO = tramo(40, 56);
-const TRAMO_SALIDA = (i: number) => tramo(54 + i * 4, 72 + i * 4);
+const TRAMO_ENTRADA = (i: number) => tramo(12 + i * 3, 26 + i * 3);
+const TRAMO_NUCLEO = tramo(30, 40);
+const TRAMO_SALIDA = (i: number) => tramo(38 + i * 3, 50 + i * 3);
 
 export function Circuito() {
   return (
@@ -193,7 +194,7 @@ export function Circuito() {
 
           <div
             className="circuito-linea relative mx-auto my-5 h-12 w-px bg-gradient-to-b from-cian to-marca"
-            style={tramo(20, 42)}
+            style={tramo(14, 30)}
           >
             <span className="latir absolute -left-[3px] size-1.5 rounded-full bg-white" />
           </div>
@@ -204,7 +205,7 @@ export function Circuito() {
 
           <div
             className="circuito-linea relative mx-auto my-5 h-12 w-px bg-gradient-to-b from-marca to-cian"
-            style={tramo(52, 74)}
+            style={tramo(36, 52)}
           >
             <span className="latir absolute bottom-0 -left-[3px] size-1.5 rounded-full bg-white" />
           </div>

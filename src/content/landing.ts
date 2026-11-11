@@ -34,12 +34,12 @@ export const contacto = {
 };
 
 export const navegacion = [
-  { href: '#punto-de-partida', etiqueta: 'El problema' },
-  { href: '#metodo', etiqueta: 'Cómo trabajamos' },
-  { href: '#productos', etiqueta: 'Qué hacemos' },
-  { href: '#funciones', etiqueta: 'Funciones' },
-  { href: '#experiencia', etiqueta: 'Experiencia' },
-  { href: '#por-que', etiqueta: 'Por qué Cayre' },
+  { href: '/#punto-de-partida', etiqueta: 'El problema' },
+  { href: '/#metodo', etiqueta: 'Cómo trabajamos' },
+  { href: '/#productos', etiqueta: 'Qué hacemos' },
+  { href: '/#funciones', etiqueta: 'Funciones' },
+  { href: '/#experiencia', etiqueta: 'Experiencia' },
+  { href: '/#por-que', etiqueta: 'Por qué Cayre' },
 ];
 
 export const portada = {

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useActionState, useEffect, useRef } from 'react';
 import { enviarConsulta } from '@/app/acciones';
 import { contacto } from '@/content/landing';
@@ -125,7 +126,13 @@ export function FormularioConsulta() {
         {!enviando && <Icono nombre="flecha" className="size-4" />}
       </button>
 
-      <p className="text-xs text-texto-3">Usamos tus datos solo para responderte.</p>
+      <p className="text-xs text-texto-3">
+        Usamos tus datos solo para responderte.{' '}
+        <Link href="/privacidad" className="underline underline-offset-2 hover:text-marca-2">
+          Política de privacidad
+        </Link>
+        .
+      </p>
     </form>
   );
 }

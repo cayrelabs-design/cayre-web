@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { experiencia } from '@/content/landing';
 import { Icono } from './Icono';
+import { Marca } from './Marca';
 import { ChipIcono, Encabezamiento, Seccion } from './Seccion';
 
 /**
@@ -15,9 +16,27 @@ import { ChipIcono, Encabezamiento, Seccion } from './Seccion';
  *
  * Arranca en el primero, así que el que no toca nada igual lee un caso entero.
  */
-export function Experiencia() {
+export function Experiencia({
+  logos = {},
+}: {
+  /** Ruta del logo de cada empresa, resuelta en el servidor. Sin logo, va el nombre. */
+  logos?: Record<string, string | null>;
+}) {
   const [activo, setActivo] = useState(0);
   const caso = experiencia.casos[activo];
+
+  // Las solapas se manejan con las flechas del teclado, como espera quien
+  // navega sin mouse: izquierda y derecha cambian de empresa.
+  function alPresionar(e: React.KeyboardEvent) {
+    const total = experiencia.casos.length;
+    let siguiente = activo;
+    if (e.key === 'ArrowRight') siguiente = (activo + 1) % total;
+    else if (e.key === 'ArrowLeft') siguiente = (activo - 1 + total) % total;
+    else return;
+    e.preventDefault();
+    setActivo(siguiente);
+    document.getElementById(`solapa-${siguiente}`)?.focus();
+  }
 
   return (
     <Seccion id="experiencia" tenue>
@@ -32,6 +51,7 @@ export function Experiencia() {
       <div
         role="tablist"
         aria-label="Empresas"
+        onKeyDown={alPresionar}
         className="mx-auto flex max-w-fit flex-wrap justify-center gap-2 rounded-[28px] border border-white/8 bg-white/4 p-2"
         data-revelar
       >
@@ -42,6 +62,7 @@ export function Experiencia() {
             id={`solapa-${i}`}
             aria-selected={i === activo}
             aria-controls={`panel-${i}`}
+            tabIndex={i === activo ? 0 : -1}
             onClick={() => setActivo(i)}
             className={`flex items-center gap-2.5 rounded-full px-5 py-3 font-display text-[15px] font-bold transition ${
               i === activo
@@ -64,8 +85,8 @@ export function Experiencia() {
       >
         <div>
           <ChipIcono nombre={caso.icono} destacado />
-          <h3 className="mt-5 text-[clamp(1.8rem,3.6vw,2.5rem)] leading-tight font-bold">
-            {caso.cliente}
+          <h3 className="mt-5 flex min-h-12 items-center text-[clamp(1.8rem,3.6vw,2.5rem)] leading-tight font-bold">
+            <Marca nombre={caso.cliente} archivo={logos[caso.cliente]} alto={40} />
           </h3>
           <p className="mt-1.5 font-mono text-[10.5px] tracking-[0.14em] text-marca-2 uppercase">
             {caso.rubro}

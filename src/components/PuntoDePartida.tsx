@@ -8,6 +8,11 @@ import { Encabezamiento, Seccion } from './Seccion';
  * El punto de esta sección no es lucir el producto: es que el visitante se
  * reconozca en la columna izquierda. Por eso el "antes" va primero, en texto
  * apagado, y el "después" entra en blanco con el acento de la marca.
+ *
+ * Con el scroll, cada renglón se transforma al pasar por el medio de la
+ * pantalla: el "antes" se tacha y el "después" se enciende. No suma altura a
+ * la página. Las clases `par-antes` y `par-despues` están en globals.css; sin
+ * soporte o con "menos movimiento" la tabla se ve como siempre, completa.
  */
 export function PuntoDePartida() {
   return (
@@ -40,9 +45,9 @@ export function PuntoDePartida() {
             >
               <div className="flex items-start gap-3 px-6 py-5">
                 <Icono nombre="flecha" className="mt-1 size-3.5 flex-none rotate-180 text-texto-3" />
-                <span className="text-[15px] text-texto-3">{par.antes}</span>
+                <span className="par-antes text-[15px] text-texto-3">{par.antes}</span>
               </div>
-              <div className="flex items-start gap-3 border-t border-white/6 px-6 py-5 sm:border-t-0 sm:border-l sm:border-white/8">
+              <div className="par-despues flex items-start gap-3 border-t border-white/6 px-6 py-5 sm:border-t-0 sm:border-l sm:border-white/8">
                 <Icono nombre="check" className="mt-1 size-3.5 flex-none text-cian" />
                 <span className="text-[15px] font-medium text-white">{par.despues}</span>
               </div>

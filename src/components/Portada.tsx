@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import { contacto, portada } from '@/content/landing';
+import { logoPublicado } from '@/lib/logos';
+import { aSlug } from '@/lib/slug';
 import { Icono } from './Icono';
+import { Marca } from './Marca';
 
 /**
  * Los tres pasos que dispara una sola venta. Flotan sobre la foto, cada uno a
@@ -55,7 +58,7 @@ export function Portada() {
         {PASOS_VENTA.map((paso) => (
           <span
             key={paso.texto}
-            className="vidrio flotar absolute flex items-center gap-2.5 !rounded-full px-4 py-2.5"
+            className="vidrio con-desenfoque flotar absolute flex items-center gap-2.5 !rounded-full px-4 py-2.5"
             style={{ top: paso.arriba, right: paso.derecha, animationDelay: paso.demora }}
           >
             <span className="flex size-5 items-center justify-center rounded-full bg-ok/20 text-ok">
@@ -68,7 +71,7 @@ export function Portada() {
 
       <div className="contenedor relative py-16 md:py-20 lg:py-24">
         <div className="flex max-w-[48ch] flex-col gap-6">
-          <p className="vidrio inline-flex w-fit items-center gap-2.5 !rounded-full px-4 py-2">
+          <p className="vidrio con-desenfoque inline-flex w-fit items-center gap-2.5 !rounded-full px-4 py-2">
             <span className="latir size-1.5 rounded-full bg-cian" aria-hidden />
             <span className="rotulo !text-[9.5px] !tracking-[0.1em] !text-texto-2 sm:!text-[11px] sm:!tracking-[0.16em]">
               {portada.etiqueta}
@@ -84,13 +87,13 @@ export function Portada() {
           </h1>
 
           <p
-            className="max-w-[46ch] text-[clamp(1.05rem,1.8vw,1.2rem)] leading-relaxed text-texto-2"
-            data-revelar
+            className="entrada max-w-[46ch] text-[clamp(1.05rem,1.8vw,1.2rem)] leading-relaxed text-texto-2"
+            style={{ animationDelay: "80ms" }}
           >
             {portada.bajada}
           </p>
 
-          <div className="flex flex-wrap gap-3" data-revelar>
+          <div className="entrada flex flex-wrap gap-3" style={{ animationDelay: "160ms" }}>
             <a href="#contacto" className="boton boton-primario degradado">
               {portada.ctaPrincipal}
               <Icono nombre="flecha" className="size-4" />
@@ -115,15 +118,20 @@ export function Portada() {
             )}
           </div>
 
-          <div className="vidrio mt-3 flex flex-col gap-3 p-5" data-revelar>
+          <div
+            className="vidrio con-desenfoque entrada mt-3 flex flex-col gap-3 p-5"
+            style={{ animationDelay: "240ms" }}
+          >
             <p className="rotulo !text-texto-3">{portada.clientesTitulo}</p>
             <ul className="flex flex-wrap items-center gap-x-7 gap-y-3">
               {portada.clientes.map((cliente) => (
-                <li
-                  key={cliente}
-                  className="font-display text-lg font-bold tracking-tight text-white"
-                >
-                  {cliente}
+                <li key={cliente} className="flex items-center">
+                  <Marca
+                    nombre={cliente}
+                    archivo={logoPublicado('clientes', aSlug(cliente))}
+                    alto={26}
+                    className="font-display text-lg font-bold tracking-tight text-white"
+                  />
                 </li>
               ))}
             </ul>

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Logotipo } from '@/components/logo';
 import { contacto, navegacion, pie } from '@/content/landing';
 
@@ -11,9 +12,9 @@ export function Pie() {
       <div className="contenedor relative">
         <div className="flex flex-col gap-8 border-b border-white/8 pb-10 md:flex-row md:justify-between">
           <div>
-            <a href="#inicio">
+            <Link href="/" aria-label="Cayre Labs, volver al inicio">
               <Logotipo size={24} />
-            </a>
+            </Link>
             <p className="mt-3.5 max-w-[34ch] text-[13.5px]">{pie.bajada}</p>
             <a
               href={`mailto:${contacto.email}`}
@@ -26,17 +27,27 @@ export function Pie() {
 
           <nav aria-label="Secciones" className="grid grid-cols-2 gap-x-10 gap-y-1">
             {navegacion.map((item) => (
-              <a key={item.href} href={item.href} className="py-1.5 text-texto-2 hover:text-marca-2">
+              <Link key={item.href} href={item.href} className="py-1.5 text-texto-2 hover:text-marca-2">
                 {item.etiqueta}
-              </a>
+              </Link>
             ))}
-            <a href="#contacto" className="py-1.5 text-texto-2 hover:text-marca-2">
+            <Link href="/#contacto" className="py-1.5 text-texto-2 hover:text-marca-2">
               Contacto
-            </a>
+            </Link>
           </nav>
         </div>
 
-        <p className="pt-6 font-mono text-[11px] tracking-[0.05em]">© {año} CAYRE LABS</p>
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 pt-6">
+          <p className="font-mono text-[11px] tracking-[0.05em]">© {año} CAYRE LABS</p>
+          <nav aria-label="Legales" className="flex gap-5 text-[12.5px]">
+            <Link href="/privacidad" className="hover:text-marca-2">
+              Privacidad
+            </Link>
+            <Link href="/terminos" className="hover:text-marca-2">
+              Términos
+            </Link>
+          </nav>
+        </div>
       </div>
     </footer>
   );

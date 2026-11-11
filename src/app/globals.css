@@ -28,7 +28,7 @@
   /* Texto */
   --color-texto: #ffffff;
   --color-texto-2: #a8aece;
-  --color-texto-3: #6e769f;
+  --color-texto-3: #7f87b0;
 
   /* Marca */
   --color-marca: #6d4aff;
@@ -121,6 +121,13 @@
     background: rgba(255, 255, 255, 0.045);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-tarjeta);
+  }
+
+  /* El desenfoque de lo que hay detrás es lo más caro de pintar mientras se
+     scrollea. Lo tenían más de cuarenta tarjetas apoyadas sobre un fondo
+     liso, donde no cambia nada a la vista y sí traba el scroll en máquinas
+     comunes. Ahora lo lleva solo lo que flota sobre una foto. */
+  .con-desenfoque {
     backdrop-filter: blur(12px);
   }
 
@@ -130,7 +137,6 @@
       rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(143, 118, 255, 0.32);
     border-radius: var(--radius-tarjeta);
-    backdrop-filter: blur(12px);
   }
 
   /* El gradiente de marca: cian a violeta. Se usa en el botón principal y
@@ -246,7 +252,7 @@
 
 .flotar { animation: flotar 7s ease-in-out infinite; }
 .flotar-lento { animation: flotar 11s ease-in-out infinite; }
-.derivar { animation: derivar 22s ease-in-out infinite; }
+.derivar { animation: derivar 22s ease-in-out infinite; will-change: transform; }
 .girar-lento { animation: girar 34s linear infinite; }
 .latir { animation: latir 2.4s ease-in-out infinite; }
 
@@ -257,10 +263,10 @@
      igual: la animación nunca puede esconder información. */
   [data-revelar] {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(16px);
     transition:
-      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
   [data-revelar][data-visible='true'] {
     opacity: 1;
@@ -438,4 +444,90 @@
     animation: none !important;
     transform: none !important;
   }
+}
+
+/* Logos de otras empresas: todos en blanco. Cada uno con su color y su fondo
+   se pelean entre sí y con la página; en un solo tono se leen como conjunto.
+   El filtro pinta de blanco todo lo que no sea transparente, así que el
+   archivo tiene que venir con fondo transparente. */
+.logo-blanco {
+  filter: brightness(0) invert(1);
+  opacity: 0.82;
+  transition: opacity 0.2s;
+}
+.logo-blanco:hover {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   El antes y después se transforma con el scroll
+
+   Cada renglón tiene su propio reloj (`view()`): cuando el renglón pasa por
+   el medio de la pantalla, primero se tacha el "antes" y enseguida se
+   enciende el "después". No suma altura: usa el scroll que ya existe.
+
+   Sin soporte o con "menos movimiento", la tabla queda como estaba: el antes
+   apagado, el después en blanco, todo legible.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@keyframes tacharAntes {
+  from {
+    text-decoration-color: transparent;
+    opacity: 1;
+  }
+  to {
+    text-decoration-color: currentColor;
+    opacity: 0.62;
+  }
+}
+
+@keyframes encenderDespues {
+  from {
+    opacity: 0.28;
+    transform: translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .par-antes {
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+    text-decoration-color: transparent;
+    animation: tacharAntes linear both;
+    animation-timeline: view();
+    animation-range: cover 26% cover 38%;
+  }
+
+  .par-despues > * {
+    animation: encenderDespues linear both;
+    animation-timeline: view();
+    animation-range: cover 30% cover 44%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .par-antes,
+  .par-despues > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* La entrada de la portada es CSS puro, sin esperar al JavaScript.
+   El resto de la pagina se revela con un observador de scroll, que necesita
+   que el JavaScript haya cargado. En la portada eso dejaba la bajada y el boton
+   principal invisibles hasta ese momento: en un celular lento, un par de
+   segundos de portada sin boton. Esto arranca apenas se pinta la pagina. */
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.entrada {
+  animation: entrada 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

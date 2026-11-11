@@ -11,8 +11,18 @@ import { Portada } from '@/components/Portada';
 import { PuntoDePartida } from '@/components/PuntoDePartida';
 import { Productos } from '@/components/Productos';
 import { Revelador } from '@/components/Revelador';
+import { experiencia } from '@/content/landing';
+import { logoPublicado } from '@/lib/logos';
+import { aSlug } from '@/lib/slug';
 
 export default function Inicio() {
+  // Experiencia es un componente de cliente (tiene solapas) y desde el
+  // navegador no se puede mirar si un archivo existe. Se resuelve aca, en el
+  // servidor, y se le pasa la respuesta.
+  const logosDeClientes = Object.fromEntries(
+    experiencia.casos.map((c) => [c.cliente, logoPublicado('clientes', aSlug(c.cliente))]),
+  );
+
   return (
     <>
       <Encabezado />
@@ -30,7 +40,7 @@ export default function Inicio() {
             ver cinco y la pregunta que le queda es cuál necesita. */}
         <Diagnostico />
         <Funciones />
-        <Experiencia />
+        <Experiencia logos={logosDeClientes} />
         <PorQue />
         <Contacto />
       </main>

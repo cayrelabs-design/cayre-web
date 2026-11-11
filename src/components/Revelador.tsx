@@ -26,12 +26,12 @@ export function Revelador() {
       return;
     }
 
-    // Escalonado: dentro de una misma grilla, cada tarjeta entra 70 ms después
+    // Escalonado: dentro de una misma grilla, cada tarjeta entra 40 ms después
     // de la anterior. Se corta a los siete para que la última no llegue tarde.
     for (const el of objetivos) {
       const hermanos = el.parentElement ? Array.from(el.parentElement.children) : [];
       const posicion = Math.min(Math.max(hermanos.indexOf(el), 0), 6);
-      el.style.transitionDelay = `${posicion * 70}ms`;
+      el.style.transitionDelay = `${posicion * 40}ms`;
     }
 
     const observador = new IntersectionObserver(
@@ -42,7 +42,7 @@ export function Revelador() {
           observador.unobserve(entrada.target);
         }
       },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.06 },
+      { rootMargin: '0px 0px -4% 0px', threshold: 0.04 },
     );
 
     for (const el of objetivos) observador.observe(el);
