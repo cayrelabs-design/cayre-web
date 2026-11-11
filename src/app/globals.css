@@ -346,3 +346,96 @@
 .entrada-panel {
   animation: entradaPanel 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   El circuito se dibuja con el scroll
+
+   No es "aparece cuando entra en pantalla": el avance de la animación está
+   atado a la posición del scroll. El visitante mueve el dedo y empuja una
+   venta por el sistema — entra por los canales, pasa por el centro, sale a
+   stock, caja, facturación, logística y pauta. Si scrollea para atrás, la
+   venta vuelve atrás.
+
+   Es la única sección del sitio con este efecto, a propósito: acá el
+   movimiento explica el argumento. En el resto sería decoración, y decoración
+   que encima cuesta altura de página.
+
+   Todo con CSS nativo (`animation-timeline`), que corre en el compositor del
+   navegador. La referencia que miramos usa siete librerías para esto mismo:
+   son casi 400 KB que el visitante paga en datos antes de leer una palabra.
+
+   Dos salvaguardas, como con el resto de las animaciones:
+    · navegador sin soporte  -> queda el recorrido en bucle de siempre;
+    · el visitante pidió menos movimiento -> el circuito se ve dibujado entero.
+   En los dos casos la información está completa.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@keyframes dibujarTrazo {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes encender {
+  from { opacity: 0.22; }
+  to { opacity: 1; }
+}
+
+@keyframes crecerLinea {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@supports (animation-timeline: view()) {
+  /* El reloj de la escena: arranca cuando el diagrama asoma por abajo de la
+     pantalla y termina cuando sale por arriba. Los hijos se cuelgan de él. */
+  .circuito-escena {
+    view-timeline-name: --circuito;
+    view-timeline-axis: block;
+  }
+
+  /* Cada trazo y cada caja entran en su propio tramo del recorrido: eso es lo
+     que hace la cascada de izquierda a derecha. El tramo lo fija el componente
+     con --desde y --hasta, porque depende de qué lugar ocupa en la secuencia. */
+  .circuito-escena .circuito-flujo {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: dibujarTrazo linear both;
+    animation-timeline: --circuito;
+    animation-range: var(--desde, cover 20%) var(--hasta, cover 55%);
+  }
+
+  .circuito-nodo {
+    opacity: 0.22;
+    animation: encender linear both;
+    animation-timeline: --circuito;
+    animation-range: var(--desde, cover 20%) var(--hasta, cover 55%);
+  }
+
+  /* En el teléfono el diagrama es vertical: las dos líneas que unen los
+     bloques crecen de arriba hacia abajo con el scroll. */
+  .circuito-linea {
+    transform-origin: top;
+    animation: crecerLinea linear both;
+    animation-timeline: --circuito;
+    animation-range: var(--desde, cover 25%) var(--hasta, cover 50%);
+  }
+}
+
+/* Menos movimiento: el circuito queda dibujado entero y quieto. No se pierde
+   nada, porque la información del diagrama son las cajas y las líneas, no el
+   movimiento. */
+@media (prefers-reduced-motion: reduce) {
+  .circuito-escena .circuito-flujo {
+    animation: none !important;
+    stroke-dasharray: 100 !important;
+    stroke-dashoffset: 0 !important;
+  }
+  .circuito-nodo {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .circuito-linea {
+    animation: none !important;
+    transform: none !important;
+  }
+}

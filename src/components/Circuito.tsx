@@ -33,6 +33,24 @@ const ALTO = 440;
 const ENTRADA_Y = ENTRADAS.map((_, i) => 112 + i * 72);
 const SALIDA_Y = SALIDAS.map((_, i) => 100 + i * 60);
 
+/**
+ * El tramo del scroll en el que cada pieza se dibuja.
+ *
+ * `cover 0%` es el momento en que el diagrama asoma por abajo de la pantalla y
+ * `cover 100%` cuando termina de salir por arriba. Dándole a cada pieza un
+ * tramo corrido se arma la cascada: primero entran los cuatro canales, después
+ * se prende el centro y recién al final salen las cinco operaciones.
+ *
+ * Todo termina en el 88% y no en el 100% para que el circuito quede completo
+ * un rato antes de irse de la pantalla, y no justo cuando ya no se ve.
+ */
+const tramo = (desde: number, hasta: number) =>
+  ({ '--desde': `cover ${desde}%`, '--hasta': `cover ${hasta}%` }) as React.CSSProperties;
+
+const TRAMO_ENTRADA = (i: number) => tramo(22 + i * 5, 42 + i * 5);
+const TRAMO_NUCLEO = tramo(40, 56);
+const TRAMO_SALIDA = (i: number) => tramo(54 + i * 4, 72 + i * 4);
+
 export function Circuito() {
   return (
     <section className="relative overflow-x-clip bg-fondo-2/60 py-20 md:py-24">
@@ -47,8 +65,10 @@ export function Circuito() {
           </h2>
         </div>
 
-        {/* Escritorio: el diagrama completo. */}
-        <div className="hidden md:block" data-revelar>
+        {/* Escritorio: el diagrama completo. Este div es el reloj de la
+            escena; el dibujo de adentro avanza con el scroll. Ya no lleva
+            `data-revelar` porque el dibujo ES su entrada. */}
+        <div className="circuito-escena hidden md:block">
           <svg
             viewBox={`0 0 820 ${ALTO}`}
             className="h-auto w-full"
@@ -75,7 +95,7 @@ export function Circuito() {
                     d={`M190,${y} C255,${y} 270,220 325,220`}
                     className="circuito-flujo"
                     pathLength={100}
-                    style={{ animationDelay: `${i * 0.45}s` }}
+                    style={{ ...TRAMO_ENTRADA(i), animationDelay: `${i * 0.45}s` }}
                   />
                 </g>
               ))}
@@ -86,14 +106,14 @@ export function Circuito() {
                     d={`M495,220 C550,220 565,${y} 630,${y}`}
                     className="circuito-flujo"
                     pathLength={100}
-                    style={{ animationDelay: `${0.9 + i * 0.45}s` }}
+                    style={{ ...TRAMO_SALIDA(i), animationDelay: `${0.9 + i * 0.45}s` }}
                   />
                 </g>
               ))}
             </g>
 
             {/* Núcleo */}
-            <g>
+            <g className="circuito-nodo" style={TRAMO_NUCLEO}>
               <rect
                 x="325"
                 y="170"
@@ -122,7 +142,7 @@ export function Circuito() {
             </g>
 
             {ENTRADA_Y.map((y, i) => (
-              <g key={ENTRADAS[i].nombre}>
+              <g key={ENTRADAS[i].nombre} className="circuito-nodo" style={TRAMO_ENTRADA(i)}>
                 <rect
                   x="20"
                   y={y - 23}
@@ -140,7 +160,7 @@ export function Circuito() {
             ))}
 
             {SALIDA_Y.map((y, i) => (
-              <g key={SALIDAS[i].nombre}>
+              <g key={SALIDAS[i].nombre} className="circuito-nodo" style={TRAMO_SALIDA(i)}>
                 <rect
                   x="630"
                   y={y - 23}
@@ -161,7 +181,7 @@ export function Circuito() {
 
         {/* Teléfono: el mismo circuito, apilado. El diagrama ancho ahí se
             vuelve ilegible, así que no se encoge: se rearma. */}
-        <div className="md:hidden">
+        <div className="circuito-escena md:hidden">
           <ul className="grid grid-cols-2 gap-2.5" data-revelar>
             {ENTRADAS.map((e) => (
               <li data-revelar key={e.nombre} className="vidrio flex items-center gap-2.5 px-4 py-3">
@@ -171,7 +191,10 @@ export function Circuito() {
             ))}
           </ul>
 
-          <div className="relative mx-auto my-5 h-12 w-px bg-gradient-to-b from-cian to-marca">
+          <div
+            className="circuito-linea relative mx-auto my-5 h-12 w-px bg-gradient-to-b from-cian to-marca"
+            style={tramo(20, 42)}
+          >
             <span className="latir absolute -left-[3px] size-1.5 rounded-full bg-white" />
           </div>
 
@@ -179,7 +202,10 @@ export function Circuito() {
             Un solo sistema
           </p>
 
-          <div className="relative mx-auto my-5 h-12 w-px bg-gradient-to-b from-marca to-cian">
+          <div
+            className="circuito-linea relative mx-auto my-5 h-12 w-px bg-gradient-to-b from-marca to-cian"
+            style={tramo(52, 74)}
+          >
             <span className="latir absolute bottom-0 -left-[3px] size-1.5 rounded-full bg-white" />
           </div>
 
