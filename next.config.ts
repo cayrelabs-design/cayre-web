@@ -18,7 +18,11 @@ import type { NextConfig } from 'next';
  *  · Strict-Transport-Security: una vez que el navegador entró por https, no
  *    vuelve a intentar por http durante dos años.
  *
- * Se comprueba con: curl -I http://localhost:3010
+ * El back office (/interno) suma dos más estrictas: que ningún buscador lo
+ * indexe, y que al salir de ahí hacia otro sitio no se avise ni de qué dominio
+ * se viene.
+ *
+ * Se comprueba con: curl -I http://localhost:3010  y  curl -I http://localhost:3010/interno/ingresar
  */
 const cabeceras = [
   { key: 'X-Frame-Options', value: 'DENY' },
@@ -31,7 +35,16 @@ const cabeceras = [
 
 const nextConfig: NextConfig = {
   async headers() {
-    return [{ source: '/:path*', headers: cabeceras }];
+    return [
+      { source: '/:path*', headers: cabeceras },
+      {
+        source: '/interno/:path*',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+          { key: 'Referrer-Policy', value: 'no-referrer' },
+        ],
+      },
+    ];
   },
 };
 

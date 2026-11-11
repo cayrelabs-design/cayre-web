@@ -1,0 +1,26 @@
+# Corre las pruebas de acceso en cada cambio.
+#
+# Es la tercera barrera: las reglas viven en la base, la prueba las ataca, y
+# esto hace que la prueba corra sola aunque nadie se acuerde. Si una regla se
+# afloja, el cambio no pasa.
+name: Pruebas de acceso
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  base:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Levantar la base
+        run: supabase db start
+      - name: Revisar el SQL
+        run: supabase db lint --level warning
+      - name: Pruebas de acceso
+        run: supabase test db

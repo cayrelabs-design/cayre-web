@@ -16,7 +16,9 @@ export type NuevaConsulta = {
 };
 
 function cliente() {
-  const url = process.env.SUPABASE_URL;
+  // La dirección de la base es la misma que usa el back office. Se acepta el
+  // nombre viejo (SUPABASE_URL) para no romper lo que ya esté cargado.
+  const url = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL;
   const clave = process.env.SUPABASE_SECRET_KEY;
   if (!url || !clave) return null;
   return createClient(url, clave, { auth: { persistSession: false, autoRefreshToken: false } });
