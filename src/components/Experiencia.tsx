@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { experiencia } from '@/content/landing';
 import { Icono } from './Icono';
-import { Marca } from './Marca';
+import { type LogoResuelto, Marca } from './Marca';
 import { ChipIcono, Encabezamiento, Seccion } from './Seccion';
 
 /**
@@ -19,8 +19,8 @@ import { ChipIcono, Encabezamiento, Seccion } from './Seccion';
 export function Experiencia({
   logos = {},
 }: {
-  /** Ruta del logo de cada empresa, resuelta en el servidor. Sin logo, va el nombre. */
-  logos?: Record<string, string | null>;
+  /** El logo de cada empresa, resuelto en el servidor. Sin logo, va el nombre. */
+  logos?: Record<string, LogoResuelto>;
 }) {
   const [activo, setActivo] = useState(0);
   const caso = experiencia.casos[activo];
@@ -86,7 +86,7 @@ export function Experiencia({
         <div>
           <ChipIcono nombre={caso.icono} destacado />
           <h3 className="mt-5 flex min-h-12 items-center text-[clamp(1.8rem,3.6vw,2.5rem)] leading-tight font-bold">
-            <Marca nombre={caso.cliente} archivo={logos[caso.cliente]} alto={40} />
+            <Marca nombre={caso.cliente} logo={logos[caso.cliente]} alto={38} />
           </h3>
           <p className="mt-1.5 font-mono text-[10.5px] tracking-[0.14em] text-marca-2 uppercase">
             {caso.rubro}

@@ -1,35 +1,60 @@
 import 'server-only';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 /**
- * Los logos se prenden solos al dejar el archivo en su carpeta.
+ * Los logos de otras empresas se prenden solos cuando el archivo está en su
+ * carpeta:
  *
- *   public/logos/clientes/porcenot.svg
- *   public/logos/clientes/bodysculpt.svg
- *   public/logos/clientes/iberico-mayorista.svg
- *   public/logos/integraciones/tiendanube.svg
- *   public/logos/integraciones/mercado-libre.svg
- *   public/logos/integraciones/correo-argentino.svg
- *   public/logos/integraciones/arca.svg
+ *   public/logos/clientes/<marca>.png        las empresas que usan los sistemas
+ *   public/logos/integraciones/<marca>.png   las plataformas con las que se conecta
  *
- * El nombre del archivo es el nombre de la marca en minúsculas, sin acentos y
- * con guiones (lo calcula `aSlug`). Sirve .svg, .webp o .png, en ese orden de
- * preferencia: el SVG se ve nítido a cualquier tamaño y pesa menos.
+ * `<marca>` es el nombre en minúsculas, sin acentos y con guiones (lo calcula
+ * `aSlug`): "Grupo Marquez" -> grupo-marquez.
  *
- * Mientras el archivo no esté, la página muestra el nombre escrito, como
- * hasta ahora. Nunca queda un hueco ni una imagen rota: por eso la consulta
- * se hace acá, en el servidor y al construir la página, y no en el navegador.
+ * Los archivos NO se dejan a mano: los genera `scripts/preparar-logos.mjs` a
+ * partir de los originales, sacándoles el fondo y los márgenes. Ese mismo
+ * script anota la proporción de cada uno en public/logos/medidas.json.
+ *
+ * Mientras un logo no esté, la página muestra el nombre escrito. Nunca queda
+ * un hueco ni una imagen rota: por eso la consulta se hace acá, en el servidor
+ * y al construir la página, y no en el navegador.
  */
 
 export type CarpetaDeLogos = 'clientes' | 'integraciones';
 
-const EXTENSIONES = ['svg', 'webp', 'png'] as const;
+export type Logo = {
+  src: string;
+  /** Ancho dividido alto. Con esto la web le da a cada logo un tamaño parejo a la vista. */
+  proporcion: number;
+};
 
-export function logoPublicado(carpeta: CarpetaDeLogos, slug: string): string | null {
+const EXTENSIONES = ['svg', 'webp', 'png'] as const;
+const PUBLICA = join(process.cwd(), 'public');
+
+let medidas: Record<string, [number, number]> | null = null;
+function leerMedidas() {
+  if (medidas) return medidas;
+  try {
+    medidas = JSON.parse(readFileSync(join(PUBLICA, 'logos', 'medidas.json'), 'utf8'));
+  } catch {
+    medidas = {};
+  }
+  return medidas!;
+}
+
+export function logoPublicado(carpeta: CarpetaDeLogos, slug: string): Logo | null {
   for (const extension of EXTENSIONES) {
     const relativa = `logos/${carpeta}/${slug}.${extension}`;
-    if (existsSync(join(process.cwd(), 'public', relativa))) return `/${relativa}`;
+    if (!existsSync(join(PUBLICA, relativa))) continue;
+
+    const medida = leerMedidas()[`${carpeta}/${slug}`];
+    return {
+      src: `/${relativa}`,
+      // Sin medida anotada (un archivo dejado a mano) se supone un logo
+      // apaisado común, de tres de ancho por uno de alto.
+      proporcion: medida ? medida[0] / medida[1] : 3,
+    };
   }
   return null;
 }

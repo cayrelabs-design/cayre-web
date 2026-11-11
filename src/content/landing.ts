@@ -2,9 +2,11 @@
 //
 // Reglas de esta web, acordadas entre los socios:
 //
-//  · Las tres empresas se nombran CON AUTORIZACIÓN y no son clientes externos: los socios
-//    son quienes las operan. Se dice así, porque es la verdad y además vende más que
-//    "confían en nosotros". No se agrega ninguna empresa más sin pedir permiso.
+//  · Las empresas se nombran y se muestran con su logo CON AUTORIZACIÓN. Desde el
+//    11/11/2026 son seis: Porcenot, Bodysculpt, Ibérico, Shato, Tussy y Grupo Marquez.
+//    No todas las operan los socios (Grupo Marquez es cliente), así que la franja de
+//    logos dice "trabajan con nuestros sistemas" y ya no "son empresas que operamos".
+//    No se agrega ninguna empresa más sin pedir permiso.
 //  · No se muestran caras ni nombres del equipo. Sí se puede decir "hablás con los socios".
 //  · NO se publica: antigüedad de Cayre Labs, cantidad de clientes, testimonios,
 //    porcentajes de mejora ni estadísticas. (Regla de honestidad del traspaso, §5.)
@@ -49,11 +51,10 @@ export const portada = {
     'Desarrollamos tu tienda online y tu sistema de gestión, y hacemos el marketing que los llena de ventas.',
   ctaPrincipal: 'Pedí tu diagnóstico de 30 minutos',
   ctaSecundario: 'Ver lo que hacemos',
-  // No es una franja de logos de clientes: es la prueba de que el software se usa
-  // todos los días en operaciones reales, por la gente que lo construyó.
-  clientesTitulo: 'Nuestros sistemas operan todos los días en',
-  clientes: ['Porcenot', 'Bodysculpt', 'Ibérico Mayorista'],
-  clientesPie: 'No son casos de estudio: son empresas que operamos.',
+  // La prueba de que el software se usa. El orden es el de la franja de logos.
+  // Los tres primeros tienen además su caso contado en la sección Experiencia.
+  clientesTitulo: 'Trabajan con nuestros sistemas',
+  clientes: ['Porcenot', 'Bodysculpt', 'Ibérico Mayorista', 'Shato', 'Tussy', 'Grupo Marquez'],
 };
 
 /**

@@ -118,25 +118,30 @@ export function Portada() {
             )}
           </div>
 
-          <div
-            className="vidrio con-desenfoque entrada mt-3 flex flex-col gap-3 p-5"
-            style={{ animationDelay: "240ms" }}
-          >
-            <p className="rotulo !text-texto-3">{portada.clientesTitulo}</p>
-            <ul className="flex flex-wrap items-center gap-x-7 gap-y-3">
-              {portada.clientes.map((cliente) => (
-                <li key={cliente} className="flex items-center">
-                  <Marca
-                    nombre={cliente}
-                    archivo={logoPublicado('clientes', aSlug(cliente))}
-                    alto={26}
-                    className="font-display text-lg font-bold tracking-tight text-white"
-                  />
-                </li>
-              ))}
-            </ul>
-            <p className="text-[13px] text-texto-3">{portada.clientesPie}</p>
-          </div>
+        </div>
+
+        {/* La prueba: las empresas que trabajan con los sistemas, en una franja
+            a todo el ancho al pie de la portada. Con tres nombres entraba en una
+            tarjeta al lado del titular; con seis logos necesita su propio lugar.
+            En el teléfono se acomodan de a tres por fila. */}
+        <div
+          className="vidrio con-desenfoque entrada mt-10 flex flex-col gap-x-10 gap-y-5 px-6 py-5 lg:mt-14 lg:flex-row lg:items-center lg:px-8"
+          style={{ animationDelay: "240ms" }}
+        >
+          <p className="rotulo flex-none !text-texto-3 lg:max-w-[13rem]">{portada.clientesTitulo}</p>
+          <ul className="grid flex-1 grid-cols-3 items-center justify-items-center gap-x-6 gap-y-6 sm:grid-cols-6">
+            {portada.clientes.map((cliente) => (
+              <li key={cliente} className="flex items-center justify-center">
+                <Marca
+                  nombre={cliente}
+                  logo={logoPublicado('clientes', aSlug(cliente))}
+                  alto={30}
+                  alFrente
+                  className="text-center font-display text-[15px] font-bold tracking-tight text-white"
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

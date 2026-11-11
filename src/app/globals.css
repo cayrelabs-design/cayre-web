@@ -531,3 +531,9 @@
 .entrada {
   animation: entrada 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* Los logos de filas secundarias (la cinta de integraciones, el pie del
+   contacto) van más apagados, a la par del texto que los rodea. */
+.logo-tenue {
+  opacity: 0.55;
+}

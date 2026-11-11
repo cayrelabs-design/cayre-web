@@ -139,7 +139,7 @@ export function Productos() {
     const slug = aSlug(nombre);
     return {
       nombre,
-      archivo: logoPublicado('integraciones', slug),
+      logo: logoPublicado('integraciones', slug),
       trazo: TRAZOS_DE_MARCA[slug] ?? null,
     };
   });
