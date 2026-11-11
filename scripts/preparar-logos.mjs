@@ -45,6 +45,7 @@ const PLAN = [
   { de: 'mercado-libre.png', carpeta: 'integraciones', slug: 'mercado-libre', fondo: 'claro' },
   { de: 'tiendanube.webp', carpeta: 'integraciones', slug: 'tiendanube', fondo: 'claro' },
   { de: 'arca.png', carpeta: 'integraciones', slug: 'arca', fondo: 'oscuro' },
+  { de: 'correo-argentino.webp', carpeta: 'integraciones', slug: 'correo-argentino', fondo: 'claro' },
 ];
 
 const ALTO_MAXIMO = 160; // píxeles: el doble de lo que se muestra, para pantallas de alta densidad
