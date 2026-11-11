@@ -39,17 +39,30 @@ npx supabase link --project-ref pslrgglflfsvdygrzzlo
 ```
 
 ```bash
-npx supabase db push --dry-run
+npx supabase db push --remote --dry-run
 ```
 
 Tiene que listar **solo** `0002_interno.sql` (la `0001` ya está aplicada). Si es
 así:
 
 ```bash
-npx supabase db push
+npx supabase db push --remote
 ```
 
 Es aditiva: crea tablas y reglas nuevas, no borra nada de lo que hay.
+
+Sin `--remote` la herramienta apunta a la base de la computadora, no a la real.
+
+Para comprobar desde afuera que quedó cerrada:
+
+```bash
+node scripts/intento-desde-afuera.mjs
+```
+
+Todos los renglones tienen que decir "permission denied".
+
+> **Estado:** la migración `0002` se aplicó a la base real el 11/11/2026 y la
+> comprobación de arriba dio los siete intentos denegados.
 
 ## 3. Apagar el registro público — en el panel de Supabase
 
