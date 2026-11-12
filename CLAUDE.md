@@ -46,6 +46,11 @@ habitual. Leer la guía que corresponda en `node_modules/next/dist/docs/`.
 5. **Una sola oferta:** el diagnóstico de 30 minutos. No sumar botones que
    compitan. El botón de ValtusCorp ("Contanos tu operación") lleva al mismo
    formulario: es la misma puerta con otro cartel.
+9. **Cada sistema tiene su página** (`/sistemas/valtus360`, `/sistemas/crm`,
+   `/sistemas/pos`; decisión del dueño, 12/11/2026). No tienen textos propios:
+   salen de `src/content/productos.ts`, igual que las tarjetas de la portada,
+   para que no puedan decir cosas distintas. Los servicios (ValtusCorp y
+   ValtusMKT) no tienen página.
 7. **Los hallazgos de la sección de diagnóstico son ejemplos genéricos.** Lo
    que se encuentra adentro de un cliente es del cliente: no se publica, ni
    siquiera sin nombre, sin su autorización expresa.

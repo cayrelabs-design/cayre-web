@@ -46,12 +46,9 @@ function FichaAncha({ p }: { p: Producto }) {
         <p className="mt-3 text-[16px] text-texto-2">{p.bajada}</p>
         <p className="mt-5 text-[14.5px] text-texto-3">{p.quien}</p>
 
-        <Link
-          href="#contacto"
-          className="mt-8 inline-flex items-center gap-2 self-start font-mono text-[11px] tracking-[0.1em] text-marca-2 uppercase hover:text-marca-3"
-        >
-          Quiero verlo funcionando
-          <Icono nombre="flecha" className="size-3.5" />
+        <Link href={`/sistemas/${p.slug}`} className="boton boton-secundario mt-8 self-start">
+          Conocer {p.nombre}
+          <Icono nombre="flecha" className="size-4" />
         </Link>
       </div>
 
@@ -77,8 +74,15 @@ function FichaAncha({ p }: { p: Producto }) {
   );
 }
 
-/** Ficha chica: nombre, rubro, la idea en una frase y el enlace. */
+/**
+ * Ficha chica: nombre, rubro, la idea en una frase y el enlace.
+ *
+ * Los sistemas llevan a su página propia (/sistemas/…), donde está el detalle.
+ * Los servicios no tienen página: su enlace va directo al formulario.
+ */
 function Ficha({ p }: { p: Producto }) {
+  const esSistema = p.linea === 'sistema';
+
   return (
     <article data-revelar className="vidrio vidrio-interactivo flex flex-col p-6">
       <span className="block size-6 rounded-lg" style={{ background: p.acento }} aria-hidden />
@@ -92,10 +96,10 @@ function Ficha({ p }: { p: Producto }) {
       <p className="mt-2 text-[14px] text-texto-2">{p.resumen}</p>
 
       <Link
-        href="#contacto"
+        href={esSistema ? `/sistemas/${p.slug}` : '#contacto'}
         className="mt-auto inline-flex items-center gap-2 self-start pt-5 font-mono text-[10.5px] tracking-[0.08em] text-marca-2 uppercase hover:text-marca-3"
       >
-        Verlo funcionando
+        {esSistema ? `Conocer ${p.nombre}` : 'Verlo funcionando'}
         <Icono nombre="flecha" className="size-3.5" />
       </Link>
     </article>

@@ -54,6 +54,15 @@ export type Producto = {
   funciones: string[];
   incluye: string[];
   preguntas: { p: string; r: string }[];
+  /**
+   * Cómo se usa, en cuatro pasos. Lo muestra la página propia de cada sistema
+   * (/sistemas/…), dibujado como un recorrido.
+   *
+   * ⚠️ Cada paso tiene que salir de un renglón de `funciones`: es la misma
+   * lista contada en orden, no un lugar para prometer algo nuevo. Siempre
+   * cuatro pasos (ver src/components/Etapas.tsx).
+   */
+  recorrido?: { titulo: string; texto: string }[];
 };
 
 export const PRODUCTOS: Producto[] = [
@@ -85,6 +94,24 @@ export const PRODUCTOS: Producto[] = [
       'Conteos de inventario a ciegas y con doble control',
       'Permisos por rol, con autor y hora en cada movimiento',
       'Importación del catálogo desde una planilla',
+    ],
+    recorrido: [
+      {
+        titulo: 'Entra el pedido',
+        texto: 'De Tienda Nube, del local o del mayorista, y reserva su stock.',
+      },
+      {
+        titulo: 'Se prepara',
+        texto: 'El sistema dice qué tomar y de dónde, con el lector de códigos.',
+      },
+      {
+        titulo: 'Se cobra',
+        texto: 'Por caja, cuenta corriente o banco, con autor y hora.',
+      },
+      {
+        titulo: 'Se controla',
+        texto: 'Arqueo de cada turno y conteos de inventario a ciegas.',
+      },
     ],
     incluye: [
       'Te acompañamos en la migración desde tu sistema actual',
@@ -136,6 +163,24 @@ export const PRODUCTOS: Producto[] = [
       'Pasa la conversación a una persona con el contexto ya cargado',
       'Devuelve cada venta a Meta y Google Analytics: la pauta aprende a quién mostrarse',
     ],
+    recorrido: [
+      {
+        titulo: 'Llega la consulta',
+        texto: 'Por WhatsApp, Instagram o el chat de la tienda, a una sola bandeja.',
+      },
+      {
+        titulo: 'La IA atiende',
+        texto: 'Responde con el stock y el precio reales, y califica al cliente.',
+      },
+      {
+        titulo: 'El vendedor cierra',
+        texto: 'Recibe la conversación con el contexto cargado, sin cambiar de pantalla.',
+      },
+      {
+        titulo: 'La pauta aprende',
+        texto: 'La venta vuelve a Meta y a Google Analytics.',
+      },
+    ],
     incluye: [
       'Funcionando hoy adentro de una operación real',
       'Se activa sobre tu sistema: no es otra herramienta más para mantener',
@@ -179,6 +224,24 @@ export const PRODUCTOS: Producto[] = [
       'Reportes de ventas, márgenes y productos sin movimiento',
       'Usuarios con permisos por rol',
       'Si el negocio crece, se pasa a Valtus360 con los datos puestos',
+    ],
+    recorrido: [
+      {
+        titulo: 'Se vende',
+        texto: 'Con lector de código de barras y balanza, en el mostrador.',
+      },
+      {
+        titulo: 'Se descuenta',
+        texto: 'El inventario se actualiza solo y avisa cuando llega al mínimo.',
+      },
+      {
+        titulo: 'Se cierra la caja',
+        texto: 'Por turno, con arqueo ciego.',
+      },
+      {
+        titulo: 'Se mira el negocio',
+        texto: 'Ventas, márgenes y productos sin movimiento.',
+      },
     ],
     incluye: [
       'Sin límite de productos ni de ventas',

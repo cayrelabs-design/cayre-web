@@ -5,8 +5,14 @@ import { useState } from 'react';
 import { Logotipo } from '@/components/logo';
 import { contacto, navegacion } from '@/content/landing';
 
-export function Encabezado() {
+/**
+ * `contactoEnLaPagina`: la página tiene su propio formulario al pie (las de
+ * cada sistema). El botón de diagnóstico baja a ese formulario en vez de
+ * llevar a la portada: el visitante no pierde la página que estaba leyendo.
+ */
+export function Encabezado({ contactoEnLaPagina = false }: { contactoEnLaPagina?: boolean }) {
   const [abierto, setAbierto] = useState(false);
+  const haciaContacto = contactoEnLaPagina ? '#contacto' : '/#contacto';
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/6 bg-fondo/80 backdrop-blur-xl">
@@ -34,7 +40,7 @@ export function Encabezado() {
 
         <div className="flex items-center gap-2">
           <Link
-            href="/#contacto"
+            href={haciaContacto}
             className="boton boton-primario degradado hidden !min-h-11 !px-6 !text-sm sm:inline-flex"
           >
             Diagnóstico gratis
@@ -67,7 +73,7 @@ export function Encabezado() {
             </Link>
           ))}
           <Link
-            href="/#contacto"
+            href={haciaContacto}
             onClick={() => setAbierto(false)}
             className="boton boton-primario degradado mt-5 w-full"
           >

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Logotipo } from '@/components/logo';
 import { contacto, navegacion, pie } from '@/content/landing';
+import { SISTEMAS } from '@/content/productos';
 
 export function Pie() {
   const año = new Date().getFullYear();
@@ -29,6 +30,18 @@ export function Pie() {
             </a>
             <p className="mt-1">{contacto.ubicacion}</p>
           </div>
+
+          <nav aria-label="Sistemas" className="flex flex-col gap-y-1">
+            {SISTEMAS.map((p) => (
+              <Link
+                key={p.slug}
+                href={`/sistemas/${p.slug}`}
+                className="py-1.5 text-texto-2 hover:text-marca-2"
+              >
+                {p.nombre}
+              </Link>
+            ))}
+          </nav>
 
           <nav aria-label="Secciones" className="grid grid-cols-2 gap-x-10 gap-y-1">
             {navegacion.map((item) => (

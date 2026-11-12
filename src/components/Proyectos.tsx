@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { proyectos } from '@/content/landing';
+import { Etapas } from './Etapas';
 import { Icono } from './Icono';
 import { Seccion } from './Seccion';
 
@@ -21,16 +22,6 @@ import { Seccion } from './Seccion';
  * los números y la línea; los textos están siempre a la vista, así que si la
  * animación no corre no se pierde nada.
  */
-
-/**
- * El tramo del scroll en el que se enciende cada pieza. Ver Circuito.tsx.
- *
- * Todo termina antes del 36 %: las cuatro etapas ya están encendidas cuando el
- * recorrido llega a la mitad de la pantalla, que es donde se lo lee. Si
- * terminara más tarde, la última etapa se vería apagada justo al leerla.
- */
-const tramo = (desde: number, hasta: number) =>
-  ({ '--desde': `cover ${desde}%`, '--hasta': `cover ${hasta}%` }) as React.CSSProperties;
 
 export function Proyectos() {
   const { etapas } = proyectos;
@@ -66,61 +57,9 @@ export function Proyectos() {
         </div>
       </div>
 
-      {/* Las cuatro etapas. En pantalla ancha van en fila, unidas por una línea
-          que se llena de izquierda a derecha; en el teléfono van en columna y
-          la línea baja por el costado. */}
-      <div className="circuito-escena relative mt-14 lg:mt-16">
-        {/* Línea de pantalla ancha: va de centro a centro de la primera y la
-            última etapa (por eso el 12,5 % de cada lado: son cuatro columnas). */}
-        <div
-          aria-hidden
-          className="absolute top-6 right-[12.5%] left-[12.5%] hidden h-px bg-white/10 lg:block"
-        >
-          <div
-            className="etapas-avance h-full bg-gradient-to-r from-cian to-marca"
-            style={tramo(10, 32)}
-          />
-        </div>
-
-        {/* Línea del teléfono. */}
-        <div aria-hidden className="absolute top-6 bottom-6 left-6 w-px bg-white/10 lg:hidden">
-          <div
-            className="circuito-linea h-full bg-gradient-to-b from-cian to-marca"
-            style={tramo(8, 36)}
-          />
-        </div>
-
-        <ol className="relative grid gap-8 lg:grid-cols-4 lg:gap-6">
-          {etapas.map((etapa, i) => (
-            <li
-              key={etapa.titulo}
-              data-revelar
-              className="flex gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center"
-            >
-              {/* El fondo del círculo es sólido a propósito: tapa la línea que
-                  pasa por detrás. */}
-              <span
-                aria-hidden
-                className="flex size-12 flex-none items-center justify-center rounded-full border border-marca/50 bg-superficie"
-              >
-                <span className="circuito-nodo text-marca-3" style={tramo(8 + i * 6, 16 + i * 6)}>
-                  <Icono nombre={etapa.icono} className="size-5" />
-                </span>
-              </span>
-
-              <div className="lg:mt-5">
-                <p className="font-mono text-[10.5px] tracking-[0.16em] text-cian uppercase">
-                  Etapa {i + 1}
-                </p>
-                <h3 className="mt-1.5 text-[19px] leading-snug font-bold">{etapa.titulo}</h3>
-                <p className="mt-2 text-[14.5px] text-texto-2 lg:mx-auto lg:max-w-[26ch]">
-                  {etapa.texto}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
+      {/* Las cuatro etapas, unidas por una línea que se enciende con el
+          scroll. El dibujo vive en Etapas.tsx. */}
+      <Etapas pasos={etapas} rotulo="Etapa" className="mt-14 lg:mt-16" />
 
       <p
         data-revelar
