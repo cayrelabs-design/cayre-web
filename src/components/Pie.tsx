@@ -6,9 +6,14 @@ export function Pie() {
   const año = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-[#040814] pt-16 pb-7 text-sm text-texto-3">
-      <div className="aura -bottom-32 left-1/2 size-[32rem] -translate-x-1/2 bg-marca/14" />
-
+    // El pie no tiene fondo propio: es el mismo de la página, así que no hay
+    // una franja ni un borde donde termina el contenido y empieza el pie.
+    //
+    // El resplandor violeta de abajo es un degradado y no una mancha
+    // desenfocada, a propósito: la mancha se cortaba en seco contra el borde de
+    // arriba del pie y dibujaba una línea. El degradado llega a transparente
+    // antes de tocar ese borde, así que se funde solo.
+    <footer className="relative bg-[radial-gradient(ellipse_70%_100%_at_50%_100%,rgba(109,74,255,0.16),transparent_70%)] pt-10 pb-7 text-sm text-texto-3">
       <div className="contenedor relative">
         <div className="flex flex-col gap-8 border-b border-white/8 pb-10 md:flex-row md:justify-between">
           <div>
