@@ -18,11 +18,25 @@ import { NextResponse, type NextRequest } from 'next/server';
  * reglas de la base, que valen aunque todo lo demás falle.
  */
 export async function proxy(request: NextRequest) {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const clavePublica = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+
+  // Si faltan las variables (un despliegue nuevo donde todavía no se cargaron),
+  // el back office se cierra con un cartel claro en vez de romperse con un
+  // error ilegible. Cerrado es la respuesta segura: sin poder verificar quién
+  // entra, no entra nadie. La web pública no pasa por acá y sigue andando.
+  if (!url || !clavePublica) {
+    return new NextResponse(
+      'El back office todavía no está configurado: faltan las variables de Supabase en este despliegue.',
+      { status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } },
+    );
+  }
+
   let respuesta = NextResponse.next({ request });
 
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    url,
+    clavePublica,
     {
       cookies: {
         getAll: () => request.cookies.getAll(),
