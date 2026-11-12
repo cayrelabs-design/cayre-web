@@ -121,17 +121,23 @@ export function Portada() {
         </div>
 
         {/* La prueba: las empresas que trabajan con los sistemas, en una franja
-            a todo el ancho al pie de la portada. Con tres nombres entraba en una
-            tarjeta al lado del titular; con seis logos necesita su propio lugar.
-            En el teléfono se acomodan de a tres por fila. */}
+            a todo el ancho al pie de la portada.
+
+            La franja no sabe cuántos logos hay: en pantalla ancha se reparten
+            el ancho en partes iguales, sean cinco o siete; en el teléfono van
+            de a tres por fila y la última fila queda centrada. Así, sumar o
+            sacar una empresa es tocar la lista de textos y nada más. */}
         <div
           className="vidrio con-desenfoque entrada mt-10 flex flex-col gap-x-10 gap-y-5 px-6 py-5 lg:mt-14 lg:flex-row lg:items-center lg:px-8"
           style={{ animationDelay: "240ms" }}
         >
           <p className="rotulo flex-none !text-texto-3 lg:max-w-[13rem]">{portada.clientesTitulo}</p>
-          <ul className="grid flex-1 grid-cols-3 items-center justify-items-center gap-x-6 gap-y-6 sm:grid-cols-6">
+          <ul className="flex flex-1 flex-wrap items-center justify-center gap-x-6 gap-y-6 sm:flex-nowrap">
             {portada.clientes.map((cliente) => (
-              <li key={cliente} className="flex items-center justify-center">
+              <li
+                key={cliente}
+                className="flex basis-[calc(33.333%-1rem)] items-center justify-center sm:min-w-0 sm:flex-1 sm:basis-0"
+              >
                 <Marca
                   nombre={cliente}
                   logo={logoPublicado('clientes', aSlug(cliente))}

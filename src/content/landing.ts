@@ -2,11 +2,15 @@
 //
 // Reglas de esta web, acordadas entre los socios:
 //
-//  · Las empresas se nombran y se muestran con su logo CON AUTORIZACIÓN. Desde el
-//    11/11/2026 son seis: Porcenot, Bodysculpt, Ibérico, Shato, Tussy y Grupo Marquez.
-//    No todas las operan los socios (Grupo Marquez es cliente), así que la franja de
-//    logos dice "trabajan con nuestros sistemas" y ya no "son empresas que operamos".
+//  · Las empresas se nombran y se muestran con su logo CON AUTORIZACIÓN. Son
+//    cinco: Porcenot, Bodysculpt, Ibérico, Shato y Tussy.
 //    No se agrega ninguna empresa más sin pedir permiso.
+//  · Grupo Marquez NO va todavía (decisión del dueño, 12/11/2026): hay una
+//    propuesta presentada y el acuerdo no está firmado. Mostrarlo bajo "trabajan
+//    con nuestros sistemas" antes de la firma sería decir algo que aún no es
+//    cierto, justo delante de quien lo está decidiendo. Su logo quedó listo en
+//    public/logos/clientes/grupo-marquez.png: el día que firmen, se agrega el
+//    nombre a `portada.clientes` y aparece solo.
 //  · No se muestran caras ni nombres del equipo. Sí se puede decir "hablás con los socios".
 //  · NO se publica: antigüedad de Valtus, cantidad de clientes, testimonios,
 //    porcentajes de mejora ni estadísticas. (Regla de honestidad del traspaso, §5.)
@@ -54,7 +58,7 @@ export const portada = {
   // La prueba de que el software se usa. El orden es el de la franja de logos.
   // Los tres primeros tienen además su caso contado en la sección Experiencia.
   clientesTitulo: 'Trabajan con nuestros sistemas',
-  clientes: ['Porcenot', 'Bodysculpt', 'Ibérico Mayorista', 'Shato', 'Tussy', 'Grupo Marquez'],
+  clientes: ['Porcenot', 'Bodysculpt', 'Ibérico Mayorista', 'Shato', 'Tussy'],
 };
 
 /**
