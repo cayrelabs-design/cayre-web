@@ -28,15 +28,30 @@ habitual. Leer la guía que corresponda en `node_modules/next/dist/docs/`.
 
 ## Reglas de la web pública
 
+0. **Qué tiene que quedar del sitio** (decisión del dueño, 12/11/2026): Valtus
+   es un equipo de gerentes de operación que hace sus propios sistemas y puede
+   hacerse cargo de una operación grande. No es un proveedor de software para
+   comercios ni una agencia de marketing. La portada dice quiénes son; los
+   sistemas son las herramientas; **ValtusCorp** (proyectos integrales) tiene
+   sección propia y no vuelve a ser una tarjeta chica.
 1. **Regla de honestidad:** no se publica antigüedad, cantidad de clientes,
-   testimonios, porcentajes ni estadísticas.
+   testimonios, porcentajes ni estadísticas. El dueño la ratificó el
+   12/11/2026: el tamaño se cuenta con el alcance de los proyectos, sin cifras.
 2. **De Valtus360 se lista solo lo que anda hoy** (ver el encabezado de
    `src/content/productos.ts`).
 3. **Empresas con nombre y logo: solo las autorizadas** (lista en
-   `src/content/landing.ts`). No se agrega ninguna sin permiso del dueño.
+   `src/content/landing.ts`). No se agrega ninguna sin permiso del dueño, y
+   ninguna aparece como cliente antes de firmar.
 4. **No se muestran caras ni nombres del equipo.**
 5. **Una sola oferta:** el diagnóstico de 30 minutos. No sumar botones que
-   compitan.
+   compitan. El botón de ValtusCorp ("Contanos tu operación") lleva al mismo
+   formulario: es la misma puerta con otro cartel.
+7. **Los hallazgos de la sección de diagnóstico son ejemplos genéricos.** Lo
+   que se encuentra adentro de un cliente es del cliente: no se publica, ni
+   siquiera sin nombre, sin su autorización expresa.
+8. **ValtusCorp no dice cómo se cobra ni promete resultados.** Cada proyecto
+   integral tiene condiciones propias, escritas en su propuesta. El "abono
+   fijo" de los compromisos vale para los sistemas, y así está aclarado.
 6. **Una animación nunca esconde información:** todo se ve igual sin
    JavaScript y con "menos movimiento" activado.
 

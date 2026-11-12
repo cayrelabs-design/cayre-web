@@ -83,7 +83,9 @@ export function Portada() {
               Google para la velocidad de carga. Si arranca invisible, la página
               puntúa como si tardara casi un segundo más. */}
           <h1 className="text-[clamp(2.3rem,5.6vw,4rem)] leading-[1.06] font-bold">
-            {principio} {remate && <span className="texto-degradado">{remate}</span>}
+            {/* El remate va en su propio renglón: partido en dos ("Con / sistemas
+                propios.") pierde la fuerza de frase corta. */}
+            {principio} {remate && <span className="texto-degradado block">{remate}</span>}
           </h1>
 
           <p

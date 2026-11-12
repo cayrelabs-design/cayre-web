@@ -10,6 +10,7 @@ import { PorQue } from '@/components/PorQue';
 import { Portada } from '@/components/Portada';
 import { PuntoDePartida } from '@/components/PuntoDePartida';
 import { Productos } from '@/components/Productos';
+import { Proyectos } from '@/components/Proyectos';
 import { Revelador } from '@/components/Revelador';
 import { experiencia } from '@/content/landing';
 import { logoPublicado } from '@/lib/logos';
@@ -36,8 +37,11 @@ export default function Inicio() {
         <Circuito />
         <Metodo />
         <Productos />
-        {/* El diagnóstico va justo después de las líneas: el visitante acaba de
-            ver cinco y la pregunta que le queda es cuál necesita. */}
+        {/* ValtusCorp, la quinta línea, con sección propia: es la que dice de
+            qué tamaño son los problemas que se toman. */}
+        <Proyectos />
+        {/* El diagnóstico va justo después: el visitante acaba de ver todo lo
+            que se hace y la pregunta que le queda es por dónde empieza él. */}
         <Diagnostico />
         <Funciones />
         <Experiencia logos={logosDeClientes} />

@@ -396,6 +396,13 @@
   to { transform: scaleY(1); }
 }
 
+/* La línea que une las cuatro etapas de un proyecto integral: se llena de
+   izquierda a derecha. Usa el mismo reloj que el circuito (.circuito-escena). */
+@keyframes avanzarEtapas {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
 @supports (animation-timeline: view()) {
   /* El reloj de la escena: arranca cuando el diagrama asoma por abajo de la
      pantalla y termina cuando sale por arriba. Los hijos se cuelgan de él. */
@@ -430,6 +437,13 @@
     animation-timeline: --circuito;
     animation-range: var(--desde, cover 25%) var(--hasta, cover 50%);
   }
+
+  .etapas-avance {
+    transform-origin: left;
+    animation: avanzarEtapas linear both;
+    animation-timeline: --circuito;
+    animation-range: var(--desde, cover 16%) var(--hasta, cover 44%);
+  }
 }
 
 /* Menos movimiento: el circuito queda dibujado entero y quieto. No se pierde
@@ -445,7 +459,8 @@
     animation: none !important;
     opacity: 1 !important;
   }
-  .circuito-linea {
+  .circuito-linea,
+  .etapas-avance {
     animation: none !important;
     transform: none !important;
   }

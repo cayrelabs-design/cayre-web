@@ -43,16 +43,23 @@ export const navegacion = [
   { href: '/#punto-de-partida', etiqueta: 'El problema' },
   { href: '/#metodo', etiqueta: 'Cómo trabajamos' },
   { href: '/#productos', etiqueta: 'Qué hacemos' },
-  { href: '/#funciones', etiqueta: 'Funciones' },
+  { href: '/#proyectos', etiqueta: 'Proyectos integrales' },
   { href: '/#experiencia', etiqueta: 'Experiencia' },
   { href: '/#por-que', etiqueta: 'Por qué Valtus' },
 ];
 
+// La portada dice QUIÉNES SON antes que qué venden (decisión del dueño,
+// 12/11/2026). Antes abría con "El sistema, la tienda y la pauta": tres cosas
+// que se entregan, lo mismo que promete cualquier proveedor. Lo que distingue a
+// Valtus es que son gerentes de operación que además hacen el software, y eso
+// es lo que tiene que quedar si el visitante lee una sola frase.
+//
+// El titular termina con una frase corta porque la portada resalta la última.
 export const portada = {
-  etiqueta: 'E-commerce, sistemas y marketing',
-  titulo: 'El sistema, la tienda y la pauta. Un solo equipo.',
+  etiqueta: 'Gerentes de operación · Sistemas propios',
+  titulo: 'Ordenamos empresas desde adentro. Con sistemas propios.',
   bajada:
-    'Desarrollamos tu tienda online y tu sistema de gestión, y hacemos el marketing que los llena de ventas.',
+    'Somos un equipo de gerentes: entramos a tu operación, encontramos dónde se pierden ventas y rentabilidad, y lo resolvemos con sistemas que desarrollamos nosotros.',
   ctaPrincipal: 'Pedí tu diagnóstico de 30 minutos',
   ctaSecundario: 'Ver lo que hacemos',
   // La prueba de que el software se usa. El orden es el de la franja de logos.
@@ -142,13 +149,132 @@ export const diagnostico = {
   etiqueta: 'Por dónde se empieza',
   titulo: 'Un diagnóstico de 30 minutos, sin costo.',
   texto:
-    'Salís con un diagnóstico de tu operación y por dónde empezar, nos contrates o no.',
-  items: [
-    'Miramos tu circuito real: cómo vendés, cómo cobrás y qué usás hoy',
-    'Te decimos qué se puede automatizar y qué conviene dejar como está',
-    'Si hace falta un sistema, te decimos cuál y por qué. Si no hace falta, también',
-  ],
+    'Miramos cómo vendés, cómo cobrás y qué usás hoy. Salís sabiendo por dónde empezar, nos contrates o no. Y si no te hace falta un sistema, también te lo decimos.',
   cta: 'Pedí tu diagnóstico',
+
+  // ── La hoja de hallazgos ──────────────────────────────────────────────────
+  // Muestra cómo mira Valtus una operación: no una lista de funciones, sino lo
+  // que se encuentra y lo que cuesta.
+  //
+  // ⚠️ Son EJEMPLOS GENÉRICOS, del tipo de cosa que aparece en cualquier
+  // relevamiento. No son datos de ningún cliente, y así lo dice la sección.
+  // No reemplazarlos por hallazgos reales de una empresa sin su autorización
+  // expresa: lo que se encuentra adentro de un cliente es del cliente.
+  //
+  // Sin cifras, por la regla de honestidad. Van seis áreas distintas a
+  // propósito: el argumento es que se mira la operación entera, no la tienda.
+  hallazgosTitulo: 'Lo que suele aparecer',
+  hallazgosNota: 'Ejemplos del tipo de hallazgo de un relevamiento. No son datos de ningún cliente.',
+  hallazgos: [
+    {
+      area: 'Tienda',
+      vimos: 'El costo de envío aparece recién en el último paso.',
+      cuesta: 'Carritos abandonados a un clic de pagar.',
+    },
+    {
+      area: 'Atención',
+      vimos: 'Las consultas de la noche se responden al otro día.',
+      cuesta: 'Clientes que a la mañana ya compraron en otro lado.',
+    },
+    {
+      area: 'Stock',
+      vimos: 'El local y la tienda venden el mismo producto.',
+      cuesta: 'Pedidos cancelados y clientes que no vuelven.',
+    },
+    {
+      area: 'Administración',
+      vimos: 'El mismo pedido se carga a mano en tres lugares.',
+      cuesta: 'Horas de trabajo y un error distinto en cada copia.',
+    },
+    {
+      area: 'Pauta',
+      vimos: 'La publicidad se mide por clics, no por ventas cerradas.',
+      cuesta: 'Plata puesta en campañas que no venden.',
+    },
+    {
+      area: 'Caja',
+      vimos: 'El cierre del día nunca coincide con el sistema.',
+      cuesta: 'Diferencias que nadie puede explicar.',
+    },
+  ],
+};
+
+/**
+ * ValtusCorp: los proyectos integrales.
+ *
+ * Es la línea donde Valtus se hace cargo de una operación entera, no de un
+ * sistema. Hasta el 12/11/2026 era una tarjeta chica que decía "desarrollos a
+ * medida", y eso mostraba a la empresa bastante más chica de lo que es: por
+ * eso tiene sección propia.
+ *
+ * Reglas de este bloque:
+ *  · Describe CÓMO es un proyecto integral, no promete un resultado. Sin
+ *    porcentajes ni metas de venta: eso va en la propuesta de cada cliente.
+ *  · No dice cómo se cobra. Cada proyecto Corp tiene condiciones propias, que
+ *    no son las de los sistemas (el "abono fijo" vale para los sistemas).
+ *  · No nombra a ningún cliente.
+ */
+export const proyectos: {
+  etiqueta: string;
+  titulo: string;
+  texto: string;
+  abarcaTitulo: string;
+  abarca: string[];
+  etapas: { titulo: string; texto: string; icono: NombreIcono }[];
+  regla: string;
+  modalidadTitulo: string;
+  modalidad: string[];
+  condiciones: string;
+  cta: string;
+} = {
+  etiqueta: '04 — ValtusCorp · Proyectos integrales',
+  titulo: 'Cuando el proyecto es la operación entera.',
+  texto:
+    'Hay empresas a las que no les falta un sistema: les falta que alguien mire todo junto. Ahí entramos con un equipo de gerentes y nos hacemos cargo, área por área.',
+  abarcaTitulo: 'Qué puede abarcar',
+  abarca: [
+    'Sistemas',
+    'Procesos',
+    'Área comercial',
+    'Atención y posventa',
+    'Inteligencia artificial',
+    'Pauta publicitaria',
+    'Convenios de cobro y logística',
+    'Compras',
+    'Red de sucursales',
+  ],
+  etapas: [
+    {
+      titulo: 'Relevamiento interno',
+      texto: 'En persona y área por área. Queda escrito quién hace qué y dónde se pierde.',
+      icono: 'chat',
+    },
+    {
+      titulo: 'Herramientas',
+      texto: 'CRM con inteligencia artificial, tablero en vivo, tienda, precios y catálogo.',
+      icono: 'grilla',
+    },
+    {
+      titulo: 'Red comercial',
+      texto: 'Sucursales, convenios de cobro y de logística, y compras.',
+      icono: 'usuarios',
+    },
+    {
+      titulo: 'Sistema propio',
+      texto: 'Una plataforma a medida que conecta toda la estructura.',
+      icono: 'codigo',
+    },
+  ],
+  regla: 'Cada etapa cierra con resultados concretos antes de abrir la siguiente.',
+  modalidadTitulo: 'Cómo se trabaja',
+  modalidad: [
+    'Gerentes de sistemas, comercial e inteligencia artificial',
+    'Trabajo presencial, con cada área',
+    'Reunión semanal con la dirección',
+    'Reporte semanal y tablero en vivo',
+  ],
+  condiciones: 'Cada proyecto integral tiene su alcance y sus condiciones, escritos en su propuesta.',
+  cta: 'Contanos tu operación',
 };
 
 export const funciones: {
@@ -159,7 +285,7 @@ export const funciones: {
   rubroTitulo: string;
   rubros: string[];
 } = {
-  etiqueta: '04 — Funciones principales',
+  etiqueta: '05 — Funciones principales',
   titulo: 'La base que toda empresa necesita, lista desde el primer día.',
   texto:
     'Vienen en todos los sistemas que hacemos.',
@@ -217,7 +343,7 @@ export const experiencia: {
   casos: { cliente: string; rubro: string; desafio: string; items: string[]; icono: NombreIcono }[];
   cierre: { titulo: string; texto: string };
 } = {
-  etiqueta: '05 — Experiencia',
+  etiqueta: '06 — Experiencia',
   titulo: 'Sistemas que están funcionando hoy.',
   texto:
     'Tres operaciones distintas, con problemas que no se parecen en nada.',
@@ -272,7 +398,7 @@ export const experiencia: {
 };
 
 export const porQue = {
-  etiqueta: '06 — Por qué Valtus',
+  etiqueta: '07 — Por qué Valtus',
   titulo: 'Lo que nos hace distintos.',
   texto: 'Diez compromisos que van por escrito en cada propuesta.',
   compromisos: [
@@ -286,9 +412,11 @@ export const porQue = {
         'Ordenamos el circuito antes de automatizarlo. Al revés, solo se acelera el problema.',
     },
     {
-      titulo: 'Escala pyme, criterio de sistemas grandes',
+      // Decía "escala pyme... en presupuestos de pyme". Se cambió el 12/11/2026:
+      // Valtus también toma operaciones grandes, y esa frase los achicaba.
+      titulo: 'Criterio de sistemas grandes, a tu escala',
       texto:
-        'Trazabilidad, permisos y control de cambios, en presupuestos de pyme.',
+        'Trazabilidad, permisos y control de cambios, tengas un local o una red de sucursales.',
     },
     {
       titulo: 'Hacemos el software, no lo revendemos',
@@ -301,8 +429,12 @@ export const porQue = {
         'Nacieron adentro de operaciones que manejamos todos los días.',
     },
     {
-      titulo: 'Abono fijo',
-      texto: 'No sube por usuarios, por facturas ni por canales cuando crecés.',
+      // "En los sistemas" a propósito: los proyectos integrales (ValtusCorp)
+      // tienen condiciones propias. Sin esa aclaración, un cliente Corp lee acá
+      // lo contrario de lo que dice su propuesta.
+      titulo: 'Abono fijo en los sistemas',
+      texto:
+        'No sube por usuarios, por facturas ni por canales cuando crecés. Los proyectos integrales tienen condiciones propias, escritas en su propuesta.',
     },
     {
       titulo: 'Sin permanencia mínima',

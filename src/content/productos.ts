@@ -202,10 +202,16 @@ export const PRODUCTOS: Producto[] = [
     ],
   },
 
+  // ⚠️ ValtusCorp NO se muestra con esta ficha. Desde el 12/11/2026 tiene
+  // sección propia en la portada (src/components/Proyectos.tsx), con los textos
+  // de `proyectos` en landing.ts: es la línea de proyectos integrales, donde
+  // Valtus se hace cargo de una operación entera con condiciones propias de
+  // cada cliente. Lo de acá abajo queda como registro de la parte "desarrollos
+  // a medida", que es solo una porción de lo que es Corp.
   {
     slug: 'corp',
     nombre: 'ValtusCorp',
-    rubro: 'Desarrollos a medida',
+    rubro: 'Proyectos integrales y desarrollos a medida',
     quien: 'Para lo que tu negocio hace distinto y ningún sistema de catálogo contempla',
     resumen: 'El software que tu operación necesita y no existe en ningún catálogo.',
     titular: 'Si tu negocio no entra en una plantilla, no lo metas a la fuerza.',
@@ -243,7 +249,10 @@ export const PRODUCTOS: Producto[] = [
   {
     slug: 'mkt',
     nombre: 'ValtusMKT',
-    rubro: 'Agencia de marketing digital',
+    // Decía "Agencia de marketing digital". Se cambió el 12/11/2026: en las
+    // propuestas Valtus se presenta como "gerentes de operación, no una agencia
+    // de marketing", y el que lee la propuesta también mira la web.
+    rubro: 'Marketing medido en ventas',
     quien: 'Para el que ya tiene algo bueno para vender y necesita que se note',
     resumen: 'Campañas, contenido y marca, medidos contra tu facturación.',
     titular: 'El sistema ordena la operación. El marketing la llena de ventas.',

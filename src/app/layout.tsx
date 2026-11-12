@@ -35,13 +35,16 @@ export const metadata: Metadata = {
     default: 'Valtus — E-commerce, sistemas de gestión y marketing digital',
     template: '%s · Valtus',
   },
-  description: `${pie.bajada} para empresas argentinas. Desarrollamos tu tienda online y tu sistema, y hacemos el marketing que los llena de ventas.`,
+  // Es lo que muestra Google debajo del título y lo que aparece al pegar el
+  // enlace en WhatsApp: dice lo mismo que la portada.
+  description: `Un equipo de gerentes que entra a tu operación y la ordena con sistemas propios. ${pie.bajada}, para empresas argentinas.`,
   openGraph: {
     type: 'website',
     locale: 'es_AR',
     siteName: 'Valtus',
     title: 'Valtus — E-commerce, sistemas de gestión y marketing digital',
-    description: `${pie.bajada} para empresas argentinas.`,
+    description:
+      'Un equipo de gerentes que entra a tu operación y la ordena con sistemas propios.',
   },
   robots: { index: true, follow: true },
 };

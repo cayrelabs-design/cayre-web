@@ -9,10 +9,11 @@ import { Marquesina } from './Marquesina';
 import { Encabezamiento, Seccion } from './Seccion';
 
 /**
- * Las cinco líneas.
+ * Las herramientas: cuatro de las cinco líneas. La quinta, ValtusCorp, tiene
+ * sección propia (Proyectos.tsx).
  *
  * El orden no es casual: primero la línea principal, con su lista completa de
- * funciones, y después las otras cuatro en tarjetas chicas.
+ * funciones, y después las otras tres en tarjetas chicas.
  *
  * Las cinco se muestran iguales, sin cartel de estado ("funcionando hoy",
  * "primeros clientes", "en desarrollo"). Es decisión del dueño (12/11/2026):
@@ -104,6 +105,11 @@ function Ficha({ p }: { p: Producto }) {
 export function Productos() {
   const [principal, ...otrosSistemas] = SISTEMAS;
 
+  // ValtusCorp no va acá: tiene sección propia justo debajo (Proyectos.tsx).
+  // En una tarjeta chica al lado del punto de venta, un proyecto que abarca
+  // una empresa entera se leía como "también hacemos cosas a medida".
+  const enTarjeta = [...otrosSistemas, ...SERVICIOS].filter((p) => p.slug !== 'corp');
+
   // Cada integracion se muestra con lo mejor que haya: el logo oficial si el
   // archivo esta en public/logos/integraciones/, si no su isotipo, si no el nombre.
   const marcas = integraciones.integraciones.map((nombre) => {
@@ -118,19 +124,19 @@ export function Productos() {
   return (
     <Seccion id="productos">
       <Encabezamiento
-        etiqueta="03 — Las cinco líneas"
-        titulo="Tres sistemas y dos cosas que hacemos nosotros."
+        etiqueta="03 — Las herramientas"
+        titulo="Los sistemas los hicimos nosotros."
         texto="Los sistemas comparten usuarios, permisos, productos y clientes: el que arranca con uno y mañana necesita otro no migra nada, se le activa."
       />
 
       {/* Sólo la línea que está construida y funcionando lleva ficha grande con
-          la lista entera: es la prueba de la página. Las otras cuatro van en
-          una fila de tarjetas chicas — el detalle es conversación de reunión,
-          no de landing. */}
+          la lista entera: es la prueba de la página. Las otras tres van en una
+          fila de tarjetas chicas — el detalle es conversación de reunión, no
+          de landing. La quinta, ValtusCorp, es la sección que sigue. */}
       <FichaAncha p={principal} />
 
-      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {[...otrosSistemas, ...SERVICIOS].map((p) => (
+      <div className="mt-4 grid gap-4 sm:grid-cols-3">
+        {enTarjeta.map((p) => (
           <Ficha key={p.slug} p={p} />
         ))}
       </div>
