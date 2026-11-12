@@ -122,15 +122,15 @@ archivo del repositorio.
 
 ## 6. El dominio
 
-En Vercel, *Settings → Domains*: agregar `cayrelabs.com.ar`.
+En Vercel, *Settings → Domains*: agregar `valtus.com.ar`.
 En WNPower, crear los registros **A / CNAME** que indique Vercel.
 
 **No tocar los registros MX**: son los del correo.
 
 En Supabase, *Authentication → URL Configuration*: poner
-`https://cayrelabs.com.ar` como *Site URL*.
+`https://valtus.com.ar` como *Site URL*.
 
-El back office queda en `https://cayrelabs.com.ar/interno`.
+El back office queda en `https://valtus.com.ar/interno`.
 
 ---
 

@@ -48,12 +48,15 @@ export const PROYECTO: Record<EstadoProyecto, { nombre: string; tono: Tono }> = 
   cancelado: { nombre: 'Cancelado', tono: 'neutro' },
 };
 
+// Las claves de la izquierda son las que guarda la base (con una restriccion
+// en la migracion 0002) y no se ven en ninguna pantalla: quedaron del nombre
+// anterior de la empresa y no se cambian. Lo que se muestra es lo de la derecha.
 export const LINEAS = {
-  cayre360: 'Cayre360',
-  cayrepos: 'CayrePOS',
-  cayrecrm: 'CayreCRM',
-  cayrecorp: 'CayreCorp',
-  cayremkt: 'CayreMKT',
+  cayre360: 'Valtus360',
+  cayrepos: 'ValtusPOS',
+  cayrecrm: 'ValtusCRM',
+  cayrecorp: 'ValtusCorp',
+  cayremkt: 'ValtusMKT',
 } as const;
 export type Linea = keyof typeof LINEAS;
 

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Icono, Isotipo } from '@/interno/components/Icono';
+import { Icono, Logotipo } from '@/interno/components/Icono';
 import { Menu } from '@/interno/components/Menu';
 import { exigirSocio } from '@/interno/lib/sesion';
 import { salir } from '../ingresar/acciones';
@@ -25,14 +25,9 @@ export default async function Panel({ children }: LayoutProps<'/interno'>) {
     <div className="lg:flex lg:min-h-screen">
       {/* Columna lateral en computadora */}
       <aside className="hidden w-64 flex-none flex-col border-r border-linea bg-superficie px-4 py-6 lg:flex">
-        <Link href="/interno" className="mb-8 flex items-center gap-3 px-2 text-marca">
-          <Isotipo />
-          <span>
-            <span className="block text-[17px] leading-tight font-bold tracking-tight text-texto">
-              Cayre Labs
-            </span>
-            <span className="irotulo !text-[9.5px]">Interno</span>
-          </span>
+        <Link href="/interno" className="mb-8 flex flex-col gap-1.5 px-2">
+          <Logotipo size={22} fondo="claro" />
+          <span className="irotulo !text-[9.5px]">Interno</span>
         </Link>
 
         <Menu nuevas={count ?? 0} />
@@ -61,9 +56,9 @@ export default async function Panel({ children }: LayoutProps<'/interno'>) {
 
       {/* Barra de arriba en el teléfono */}
       <header className="sticky top-0 z-30 flex items-center justify-between border-b border-linea bg-superficie px-4 py-3 lg:hidden">
-        <Link href="/interno" className="flex items-center gap-2.5 text-marca">
-          <Isotipo size={24} />
-          <span className="font-bold tracking-tight text-texto">Cayre interno</span>
+        <Link href="/interno" className="flex items-center gap-2.5">
+          <Logotipo size={18} fondo="claro" />
+          <span className="irotulo !text-[9.5px]">Interno</span>
         </Link>
         <form action={salir}>
           <button type="submit" className="flex items-center gap-1.5 text-sm font-semibold text-texto-2">

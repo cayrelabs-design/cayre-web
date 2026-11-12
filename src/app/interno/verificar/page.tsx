@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { Isotipo } from '@/interno/components/Icono';
+import { Logotipo } from '@/interno/components/Icono';
 import { crearCliente } from '@/interno/lib/supabase/servidor';
 import { salir } from '../ingresar/acciones';
 import { Verificador } from './Verificador';
@@ -21,9 +21,8 @@ export default async function Verificar() {
   return (
     <main id="contenido" className="flex min-h-screen items-center justify-center px-5 py-10">
       <div className="w-full max-w-[26rem]">
-        <div className="mb-7 flex items-center justify-center gap-3 text-marca">
-          <Isotipo size={34} />
-          <span className="text-xl font-bold tracking-tight text-texto">Cayre Labs</span>
+        <div className="mb-7 flex justify-center">
+          <Logotipo size={30} fondo="claro" />
         </div>
 
         <div className="tarjeta p-7 sm:p-8">

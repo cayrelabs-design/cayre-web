@@ -1,4 +1,4 @@
-# Cayre Labs — web pública y back office
+# Valtus — web pública y back office
 
 Un solo proyecto: una carpeta, un repositorio, un proyecto de Vercel y una base
 de Supabase.
@@ -30,7 +30,7 @@ habitual. Leer la guía que corresponda en `node_modules/next/dist/docs/`.
 
 1. **Regla de honestidad:** no se publica antigüedad, cantidad de clientes,
    testimonios, porcentajes ni estadísticas.
-2. **De Cayre360 se lista solo lo que anda hoy** (ver el encabezado de
+2. **De Valtus360 se lista solo lo que anda hoy** (ver el encabezado de
    `src/content/productos.ts`).
 3. **Empresas con nombre y logo: solo las autorizadas** (lista en
    `src/content/landing.ts`). No se agrega ninguna sin permiso del dueño.

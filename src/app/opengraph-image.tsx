@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { V_EXTERIOR, V_INTERIOR } from '@/components/logo';
 import { pie, portada } from '@/content/landing';
 
 /**
@@ -13,7 +14,7 @@ import { pie, portada } from '@/content/landing';
  * la portada: si mañana cambia el titular, la imagen cambia sola.
  */
 
-export const alt = 'Cayre Labs — E-commerce, sistemas de gestión y marketing digital';
+export const alt = 'Valtus — E-commerce, sistemas de gestión y marketing digital';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -34,21 +35,17 @@ export default function Imagen() {
           padding: 72,
           backgroundColor: '#060a18',
           backgroundImage:
-            'radial-gradient(circle at 12% 0%, rgba(109,74,255,0.55), transparent 55%), radial-gradient(circle at 95% 100%, rgba(63,200,228,0.28), transparent 50%)',
+            'radial-gradient(circle at 12% 0%, rgba(16,137,198,0.55), transparent 55%), radial-gradient(circle at 95% 100%, rgba(63,200,228,0.28), transparent 50%)',
           color: '#ffffff',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-          <svg width="64" height="64" viewBox="0 0 64 64">
-            <path
-              d="M46.14 17.86 A20 20 0 1 0 46.14 46.14"
-              stroke="#8f76ff"
-              strokeWidth="9"
-              fill="none"
-            />
-            <rect x="42" y="27" width="10" height="10" rx="2" fill="#8f76ff" />
+          {/* La doble V del logo, con los mismos puntos que src/components/logo.tsx. */}
+          <svg width="86" height="64" viewBox="0 0 120 89.25">
+            <polygon points={V_EXTERIOR} fill="#4fb4ee" />
+            <polygon points={V_INTERIOR} fill="#4fb4ee" />
           </svg>
-          <div style={{ fontSize: 40, fontWeight: 700, letterSpacing: -1.5 }}>Cayre Labs</div>
+          <div style={{ fontSize: 44, fontWeight: 700, letterSpacing: 3 }}>VALTUS</div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -61,7 +58,7 @@ export default function Imagen() {
               fontWeight: 700,
               lineHeight: 1.08,
               letterSpacing: -2.5,
-              color: '#8f76ff',
+              color: '#4fb4ee',
             }}
           >
             {remate}

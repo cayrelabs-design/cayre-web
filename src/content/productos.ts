@@ -1,20 +1,20 @@
 /**
- * Las cinco líneas de Cayre Labs.
+ * Las cinco líneas de Valtus.
  *
  * Tres sistemas y dos servicios. El límite entre ellos es el tamaño y la forma
  * del negocio, no la lista de funciones:
  *
- *   Cayre360   empresa mediana con depósito, varios canales y mucho movimiento
- *   CayrePOS   el mismo circuito, en chico, para el comercio de mostrador
- *   CayreCRM   la parte comercial, con IA, sobre el sistema que ya tenés
- *   CayreCorp  lo que tu negocio hace distinto y ningún catálogo contempla
- *   CayreMKT   la agencia: que lo que construimos se llene de ventas
+ *   Valtus360   empresa mediana con depósito, varios canales y mucho movimiento
+ *   ValtusPOS   el mismo circuito, en chico, para el comercio de mostrador
+ *   ValtusCRM   la parte comercial, con IA, sobre el sistema que ya tenés
+ *   ValtusCorp  lo que tu negocio hace distinto y ningún catálogo contempla
+ *   ValtusMKT   la agencia: que lo que construimos se llene de ventas
  *
  * ── Regla de honestidad (traspaso §5) ───────────────────────────────────────
  * `funciones` es lo que ANDA HOY. No es la lista de deseos ni el roadmap: es lo
  * que se puede mostrar funcionando si el cliente lo pide en la reunión.
  *
- * De Cayre360 NO se promete, porque todavía no está: Mercado Libre, WooCommerce,
+ * De Valtus360 NO se promete, porque todavía no está: Mercado Libre, WooCommerce,
  * facturación ARCA válida (está en pruebas), producción, órdenes de compra,
  * funcionamiento sin señal, transportistas, ni app en Google Play o App Store.
  */
@@ -42,7 +42,7 @@ export type Producto = {
   bajada: string;
   linea: Linea;
   estado: Estado;
-  /** Color propio de la línea. Se usa en dosis chicas: el violeta sigue siendo el de la marca. */
+  /** Color propio de la línea. Se usa en dosis chicas: los colores de la marca son los azules del logo. */
   acento: string;
   funciones: string[];
   incluye: string[];
@@ -54,8 +54,8 @@ export const PRODUCTOS: Producto[] = [
   // Todo lo que dice `funciones` existe hoy. Ver la regla de honestidad arriba
   // antes de agregar un renglón.
   {
-    slug: 'cayre360',
-    nombre: 'Cayre360',
+    slug: 'valtus360',
+    nombre: 'Valtus360',
     rubro: 'La operación completa',
     quien: 'Para la empresa mediana con depósito, varios canales y mucho movimiento',
     resumen: 'Depósito, local, mayorista y tienda online sobre una sola base.',
@@ -89,7 +89,7 @@ export const PRODUCTOS: Producto[] = [
     preguntas: [
       {
         p: 'Ya tengo Tienda Nube, ¿para qué otro sistema?',
-        r: 'Tienda Nube sabe lo que vendiste online. No sabe lo que vendiste en el local ni al mayorista, ni en qué estante está cada producto. Cayre360 junta todo y mantiene un solo stock.',
+        r: 'Tienda Nube sabe lo que vendiste online. No sabe lo que vendiste en el local ni al mayorista, ni en qué estante está cada producto. Valtus360 junta todo y mantiene un solo stock.',
       },
       {
         p: '¿Mis empleados lo van a poder usar?',
@@ -110,7 +110,7 @@ export const PRODUCTOS: Producto[] = [
   // mano, por eso va como piloto y no como disponible.
   {
     slug: 'crm',
-    nombre: 'CayreCRM',
+    nombre: 'ValtusCRM',
     rubro: 'Comercial con IA',
     quien: 'Para el que atiende por WhatsApp, Instagram y la tienda a la vez',
     resumen: 'La IA que atiende y vende adentro de tu propio sistema.',
@@ -153,7 +153,7 @@ export const PRODUCTOS: Producto[] = [
 
   {
     slug: 'pos',
-    nombre: 'CayrePOS',
+    nombre: 'ValtusPOS',
     rubro: 'El mismo circuito, en chico',
     quien: 'Para el comercio que atiende mostrador',
     resumen: 'Punto de venta, facturación e inventario para comercios.',
@@ -171,7 +171,7 @@ export const PRODUCTOS: Producto[] = [
       'Actualización masiva de precios',
       'Reportes de ventas, márgenes y productos sin movimiento',
       'Usuarios con permisos por rol',
-      'Si el negocio crece, se pasa a Cayre360 con los datos puestos',
+      'Si el negocio crece, se pasa a Valtus360 con los datos puestos',
     ],
     incluye: [
       'Sin límite de productos ni de ventas',
@@ -185,7 +185,7 @@ export const PRODUCTOS: Producto[] = [
         r: 'No. Funciona en el navegador, en la computadora del mostrador o en una tablet. El lector de código de barras se enchufa y anda.',
       },
       {
-        p: '¿En qué se diferencia de Cayre360?',
+        p: '¿En qué se diferencia de Valtus360?',
         r: 'Es el mismo circuito sin la parte de depósito grande ni el canal mayorista. Si tu negocio crece hasta necesitarlos, no migrás nada: se activa.',
       },
       {
@@ -197,7 +197,7 @@ export const PRODUCTOS: Producto[] = [
 
   {
     slug: 'corp',
-    nombre: 'CayreCorp',
+    nombre: 'ValtusCorp',
     rubro: 'Desarrollos a medida',
     quien: 'Para lo que tu negocio hace distinto y ningún sistema de catálogo contempla',
     resumen: 'El software que tu operación necesita y no existe en ningún catálogo.',
@@ -211,7 +211,7 @@ export const PRODUCTOS: Producto[] = [
       'Plataformas de e-commerce minoristas y mayoristas, construidas, no instaladas',
       'Portales para clientes, proveedores o vendedores',
       'Integraciones con lo que ya usás, y entre sistemas que hoy no se hablan',
-      'Módulos propios montados sobre Cayre360',
+      'Módulos propios montados sobre Valtus360',
       'Migraciones desde tu sistema actual, con el historial completo',
       'Auditoría de procesos: qué automatizar, qué simplificar y qué tirar',
     ],
@@ -235,7 +235,7 @@ export const PRODUCTOS: Producto[] = [
 
   {
     slug: 'mkt',
-    nombre: 'CayreMKT',
+    nombre: 'ValtusMKT',
     rubro: 'Agencia de marketing digital',
     quien: 'Para el que ya tiene algo bueno para vender y necesita que se note',
     resumen: 'Campañas, contenido y marca, medidos contra tu facturación.',
@@ -249,7 +249,7 @@ export const PRODUCTOS: Producto[] = [
       'Estrategia y campañas en Meta y Google Ads',
       'Contenido, identidad y redes con una sola voz',
       'Medición contra la venta real: lo invertido contra lo facturado y el margen',
-      'Si tenés Cayre360 o CayreCRM, la venta vuelve sola a las plataformas',
+      'Si tenés Valtus360 o ValtusCRM, la venta vuelve sola a las plataformas',
       'Revisión de la tienda: si entra gente y no compra, el problema puede ser la tienda',
     ],
     incluye: [
@@ -261,11 +261,11 @@ export const PRODUCTOS: Producto[] = [
     preguntas: [
       {
         p: '¿Tengo que tener un sistema de ustedes?',
-        r: 'No. Se contrata solo. Si además tenés Cayre360 o CayreCRM, la medición deja de depender de los clics y pasa a ser contra tu facturación real.',
+        r: 'No. Se contrata solo. Si además tenés Valtus360 o ValtusCRM, la medición deja de depender de los clics y pasa a ser contra tu facturación real.',
       },
       {
         p: '¿La pauta la pago aparte?',
-        r: 'Sí. La inversión publicitaria va directo a Meta o a Google y no pasa por Cayre Labs.',
+        r: 'Sí. La inversión publicitaria va directo a Meta o a Google y no pasa por Valtus.',
       },
       {
         p: 'Tengo tienda y no vende. ¿Es problema de pauta?',

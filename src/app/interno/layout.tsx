@@ -17,8 +17,8 @@ import type { Metadata } from 'next';
  * La seguridad NO está acá: está en `exigirSocio()` y en las reglas de la base.
  */
 export const metadata: Metadata = {
-  // 'absolute' evita que se le pegue el final de la web publica ('· Cayre Labs').
-  title: { absolute: 'Cayre Labs · Interno', template: '%s · Cayre interno' },
+  // 'absolute' evita que se le pegue el final de la web publica ('· Valtus').
+  title: { absolute: 'Valtus · Interno', template: '%s · Valtus interno' },
   description: 'Acceso interno.',
   robots: { index: false, follow: false },
   openGraph: null,

@@ -79,10 +79,10 @@ export function Circuito() {
             <defs>
               <linearGradient id="circuito-trazo" x1="0" y1="0" x2="1" y2="0">
                 <stop offset="0%" stopColor="#3fc8e4" />
-                <stop offset="100%" stopColor="#6d4aff" />
+                <stop offset="100%" stopColor="#1089c6" />
               </linearGradient>
               <linearGradient id="circuito-nucleo" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="rgba(109,74,255,0.35)" />
+                <stop offset="0%" stopColor="rgba(16,137,198,0.35)" />
                 <stop offset="100%" stopColor="rgba(63,200,228,0.12)" />
               </linearGradient>
             </defs>
@@ -122,7 +122,7 @@ export function Circuito() {
                 height="100"
                 rx="26"
                 fill="url(#circuito-nucleo)"
-                stroke="rgba(143,118,255,0.5)"
+                stroke="rgba(79,180,238,0.5)"
               />
               <text
                 x="410"
@@ -174,7 +174,7 @@ export function Circuito() {
                 <text x="654" y={y + 5} className="fill-[#a8aece] font-sans text-[14px]">
                   {SALIDAS[i].nombre}
                 </text>
-                <circle cx="642" cy={y} r="3" fill="#8f76ff" />
+                <circle cx="642" cy={y} r="3" fill="#4fb4ee" />
               </g>
             ))}
           </svg>

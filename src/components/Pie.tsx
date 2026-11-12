@@ -9,15 +9,15 @@ export function Pie() {
     // El pie no tiene fondo propio: es el mismo de la página, así que no hay
     // una franja ni un borde donde termina el contenido y empieza el pie.
     //
-    // El resplandor violeta de abajo es un degradado y no una mancha
+    // El resplandor azul de abajo es un degradado y no una mancha
     // desenfocada, a propósito: la mancha se cortaba en seco contra el borde de
     // arriba del pie y dibujaba una línea. El degradado llega a transparente
     // antes de tocar ese borde, así que se funde solo.
-    <footer className="relative bg-[radial-gradient(ellipse_70%_100%_at_50%_100%,rgba(109,74,255,0.16),transparent_70%)] pt-10 pb-7 text-sm text-texto-3">
+    <footer className="relative bg-[radial-gradient(ellipse_70%_100%_at_50%_100%,rgba(16,137,198,0.16),transparent_70%)] pt-10 pb-7 text-sm text-texto-3">
       <div className="contenedor relative">
         <div className="flex flex-col gap-8 border-b border-white/8 pb-10 md:flex-row md:justify-between">
           <div>
-            <Link href="/" aria-label="Cayre Labs, volver al inicio">
+            <Link href="/" aria-label="Valtus, volver al inicio">
               <Logotipo size={24} />
             </Link>
             <p className="mt-3.5 max-w-[34ch] text-[13.5px]">{pie.bajada}</p>
@@ -43,7 +43,7 @@ export function Pie() {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 pt-6">
-          <p className="font-mono text-[11px] tracking-[0.05em]">© {año} CAYRE LABS</p>
+          <p className="font-mono text-[11px] tracking-[0.05em]">© {año} VALTUS</p>
           <nav aria-label="Legales" className="flex gap-5 text-[12.5px]">
             <Link href="/privacidad" className="hover:text-marca-2">
               Privacidad

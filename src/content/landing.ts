@@ -8,9 +8,9 @@
 //    logos dice "trabajan con nuestros sistemas" y ya no "son empresas que operamos".
 //    No se agrega ninguna empresa más sin pedir permiso.
 //  · No se muestran caras ni nombres del equipo. Sí se puede decir "hablás con los socios".
-//  · NO se publica: antigüedad de Cayre Labs, cantidad de clientes, testimonios,
+//  · NO se publica: antigüedad de Valtus, cantidad de clientes, testimonios,
 //    porcentajes de mejora ni estadísticas. (Regla de honestidad del traspaso, §5.)
-//  · De Cayre360 (antes CayreWMS) no se promete: Mercado Libre, WooCommerce,
+//  · De Valtus360 (antes CayreWMS) no se promete: Mercado Libre, WooCommerce,
 //    facturación ARCA válida, producción, órdenes de compra,
 //    funcionamiento sin señal, transportistas, ni app en Google Play o App Store.
 
@@ -27,10 +27,10 @@ const whatsappNumero: string | null = null;
 const whatsappComoSeLee: string | null = null;
 
 export const contacto = {
-  email: 'hola@cayrelabs.com.ar',
+  email: 'hola@valtus.com.ar',
   whatsappVisible: whatsappNumero ? (whatsappComoSeLee ?? whatsappNumero) : null,
   whatsappLink: whatsappNumero
-    ? `https://wa.me/${whatsappNumero}?text=${encodeURIComponent('Hola, vi la web de Cayre Labs y quiero hacer una consulta.')}`
+    ? `https://wa.me/${whatsappNumero}?text=${encodeURIComponent('Hola, vi la web de Valtus y quiero hacer una consulta.')}`
     : null,
   ubicacion: 'Buenos Aires, Argentina',
 };
@@ -41,7 +41,7 @@ export const navegacion = [
   { href: '/#productos', etiqueta: 'Qué hacemos' },
   { href: '/#funciones', etiqueta: 'Funciones' },
   { href: '/#experiencia', etiqueta: 'Experiencia' },
-  { href: '/#por-que', etiqueta: 'Por qué Cayre' },
+  { href: '/#por-que', etiqueta: 'Por qué Valtus' },
 ];
 
 export const portada = {
@@ -188,7 +188,7 @@ export const funciones: {
 /**
  * Las plataformas con las que el sistema se conecta. Antes vivian adentro de
  * la seccion "A tu medida", que se saco porque repetia el argumento de
- * CayrePOS -> Cayre360 y porque su tercer nivel se llamaba "360", igual que
+ * ValtusPOS -> Valtus360 y porque su tercer nivel se llamaba "360", igual que
  * el producto.
  */
 export const integraciones = {
@@ -268,7 +268,7 @@ export const experiencia: {
 };
 
 export const porQue = {
-  etiqueta: '06 — Por qué Cayre',
+  etiqueta: '06 — Por qué Valtus',
   titulo: 'Lo que nos hace distintos.',
   texto: 'Diez compromisos que van por escrito en cada propuesta.',
   compromisos: [

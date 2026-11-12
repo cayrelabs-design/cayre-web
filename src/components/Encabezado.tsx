@@ -11,7 +11,7 @@ export function Encabezado() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/6 bg-fondo/80 backdrop-blur-xl">
       <div className="contenedor flex h-18 items-center justify-between gap-6">
-        <Link href="/" aria-label="Cayre Labs, volver al inicio" className="shrink-0">
+        <Link href="/" aria-label="Valtus, volver al inicio" className="shrink-0">
           <Logotipo />
         </Link>
 

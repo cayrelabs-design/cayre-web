@@ -36,12 +36,6 @@ export function Icono({ nombre, className = 'size-5' }: { nombre: NombreIcono; c
   );
 }
 
-/** El isotipo de Cayre Labs: la "C" abierta con el cuadrado. */
-export function Isotipo({ size = 28 }: { size?: number }) {
-  return (
-    <svg viewBox="0 0 64 64" width={size} height={size} role="img" aria-label="Cayre Labs">
-      <path d="M46.14 17.86 A20 20 0 1 0 46.14 46.14" stroke="currentColor" strokeWidth="9" fill="none" />
-      <rect x="42" y="27" width="10" height="10" rx="2" fill="currentColor" />
-    </svg>
-  );
-}
+// El logo de Valtus vive en un solo lugar (src/components/logo.tsx) y el back
+// office lo toma de ahí, en su versión para fondo claro.
+export { Isotipo, Logotipo } from '@/components/logo';

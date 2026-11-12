@@ -7,6 +7,6 @@ import type { MetadataRoute } from 'next';
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: '*', allow: '/', disallow: '/interno' },
-    sitemap: 'https://cayrelabs.com.ar/sitemap.xml',
+    sitemap: 'https://valtus.com.ar/sitemap.xml',
   };
 }

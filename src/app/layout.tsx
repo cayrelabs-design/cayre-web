@@ -30,17 +30,17 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://cayrelabs.com.ar'),
+  metadataBase: new URL('https://valtus.com.ar'),
   title: {
-    default: 'Cayre Labs — E-commerce, sistemas de gestión y marketing digital',
-    template: '%s · Cayre Labs',
+    default: 'Valtus — E-commerce, sistemas de gestión y marketing digital',
+    template: '%s · Valtus',
   },
   description: `${pie.bajada} para empresas argentinas. Desarrollamos tu tienda online y tu sistema, y hacemos el marketing que los llena de ventas.`,
   openGraph: {
     type: 'website',
     locale: 'es_AR',
-    siteName: 'Cayre Labs',
-    title: 'Cayre Labs — E-commerce, sistemas de gestión y marketing digital',
+    siteName: 'Valtus',
+    title: 'Valtus — E-commerce, sistemas de gestión y marketing digital',
     description: `${pie.bajada} para empresas argentinas.`,
   },
   robots: { index: true, follow: true },

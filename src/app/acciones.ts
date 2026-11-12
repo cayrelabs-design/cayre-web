@@ -47,7 +47,7 @@ export async function enviarConsulta(
   const ip = (await headers()).get('x-forwarded-for')?.split(',')[0]?.trim() ?? '';
   const ipHash = ip
     ? createHash('sha256')
-        .update(`${process.env.CONSULTAS_SAL ?? 'cayrelabs'}:${ip}`)
+        .update(`${process.env.CONSULTAS_SAL ?? 'valtus'}:${ip}`)
         .digest('hex')
     : null;
 

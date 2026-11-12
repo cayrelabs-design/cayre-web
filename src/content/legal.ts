@@ -7,12 +7,12 @@
 //
 // ⚠️ PENDIENTE — completar `responsable`: razón social y CUIT de quien responde
 // por los datos. Mientras estén en null no se muestran, y la política nombra
-// solo a "Cayre Labs" con su mail de contacto.
+// solo a "Valtus" con su mail de contacto.
 
 import { contacto } from './landing';
 
 export const responsable = {
-  nombre: 'Cayre Labs',
+  nombre: 'Valtus',
   razonSocial: null as string | null,
   cuit: null as string | null,
   domicilio: contacto.ubicacion,
@@ -20,7 +20,7 @@ export const responsable = {
 };
 
 /** Se cambia a mano cada vez que cambia el texto: es parte de lo que se informa. */
-export const actualizado = '11 de noviembre de 2026';
+export const actualizado = '12 de noviembre de 2026';
 
 export type Apartado = {
   titulo: string;

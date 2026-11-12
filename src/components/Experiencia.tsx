@@ -66,7 +66,7 @@ export function Experiencia({
             onClick={() => setActivo(i)}
             className={`flex items-center gap-2.5 rounded-full px-5 py-3 font-display text-[15px] font-bold transition ${
               i === activo
-                ? 'degradado text-white shadow-[0_8px_26px_-12px_rgba(109,74,255,0.9)]'
+                ? 'degradado text-white shadow-[0_8px_26px_-12px_rgba(16,137,198,0.9)]'
                 : 'text-texto-2 hover:bg-white/8 hover:text-white'
             }`}
           >

@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════════════════
-   Sistema visual de Cayre Labs
+   Sistema visual de Valtus
 
    Oscuro, pero azul profundo y no negro: el negro puro se lee severo y
    plano. Las superficies son vidrio translúcido sobre ese fondo, las
-   esquinas son generosas y el acento es un gradiente que arranca en el
-   violeta de la marca.
+   esquinas son generosas y los acentos son los azules del logo de Valtus
+   (marino #142041 y petróleo #085682), aclarados para que se lean sobre el
+   fondo oscuro.
 
    Los nombres siguen la convención de Tailwind 4: lo que se declara acá
    con el prefijo --color- queda como clase (bg-superficie, text-texto-2…).
    ═══════════════════════════════════════════════════════════════════════ */
 
 @theme {
-  /* Fondos: azul muy oscuro con una pizca del violeta de marca */
+  /* Fondos: azul muy oscuro, de la familia del marino de la marca */
   --color-fondo: #060a18;
   --color-fondo-2: #0a1024;
   --color-superficie: #111733;
@@ -31,9 +32,9 @@
   --color-texto-3: #7f87b0;
 
   /* Marca */
-  --color-marca: #6d4aff;
-  --color-marca-2: #8f76ff;
-  --color-marca-3: #b3a2ff;
+  --color-marca: #1089c6;
+  --color-marca-2: #4fb4ee;
+  --color-marca-3: #9bd3f6;
   --color-cian: #3fc8e4;
 
   /* Estados */
@@ -46,8 +47,8 @@
   --radius-bloque: 32px;
 
   /* Solo los usa el back office (/interno). Ver el bloque del final. */
-  --color-marca-oscura: #5637e0;
-  --color-marca-suave: #efeaff;
+  --color-marca-oscura: #085682;
+  --color-marca-suave: #e3f1fa;
   --color-ok-suave: #e3f6ee;
   --color-alerta-suave: #fdf1d9;
   --color-error-suave: #fdebee;
@@ -142,25 +143,20 @@
 
   .vidrio-marca {
     background:
-      linear-gradient(145deg, rgba(109, 74, 255, 0.16), rgba(63, 200, 228, 0.05) 60%, transparent),
+      linear-gradient(145deg, rgba(16, 137, 198, 0.16), rgba(63, 200, 228, 0.05) 60%, transparent),
       rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(143, 118, 255, 0.32);
+    border: 1px solid rgba(79, 180, 238, 0.32);
     border-radius: var(--radius-tarjeta);
   }
 
-  /* El gradiente de marca: cian a violeta. Se usa en el botón principal y
+  /* El gradiente de marca: de celeste a marino. Se usa en el botón principal y
      en una palabra del titular, nunca en bloques grandes de texto. */
   .degradado {
-    background-image: linear-gradient(
-      96deg,
-      var(--color-cian) 4%,
-      var(--color-marca) 52%,
-      #b443ff 96%
-    );
+    background-image: linear-gradient(96deg, #18a0dc 0%, #0b6aa3 55%, #173f86 100%);
   }
 
   .texto-degradado {
-    background-image: linear-gradient(96deg, var(--color-cian) 4%, var(--color-marca-2) 60%, #c07bff 100%);
+    background-image: linear-gradient(96deg, var(--color-cian) 4%, var(--color-marca-2) 60%, #6d9bf5 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -184,11 +180,11 @@
 
   .boton-primario {
     color: #fff;
-    box-shadow: 0 10px 30px -12px rgba(109, 74, 255, 0.9);
+    box-shadow: 0 10px 30px -12px rgba(16, 137, 198, 0.9);
   }
   .boton-primario:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 38px -12px rgba(109, 74, 255, 0.95);
+    box-shadow: 0 16px 38px -12px rgba(16, 137, 198, 0.95);
   }
 
   .boton-secundario {
@@ -292,7 +288,7 @@
   }
   .vidrio-interactivo:hover {
     transform: translateY(-5px);
-    border-color: rgba(143, 118, 255, 0.45);
+    border-color: rgba(79, 180, 238, 0.45);
     background-color: rgba(255, 255, 255, 0.07);
   }
 
@@ -571,10 +567,10 @@
   --color-superficie-2: #f8f9fd;
   --color-linea: #e6e8f2;
   --color-linea-2: #d5d8e6;
-  --color-texto: #171a2b;
+  --color-texto: #142041;
   --color-texto-2: #565c78;
   --color-texto-3: #6f7591;
-  --color-marca: #6d4aff;
+  --color-marca: #0b6aa3;
   --color-ok: #0b7d4e;
   --color-alerta: #96600a;
   --color-error: #c22a40;
@@ -680,7 +676,7 @@
 .campo:focus {
   outline: none;
   border-color: var(--color-marca);
-  box-shadow: 0 0 0 3px rgba(109, 74, 255, 0.16);
+  box-shadow: 0 0 0 3px rgba(16, 137, 198, 0.16);
 }
 
 .etiqueta-campo {
