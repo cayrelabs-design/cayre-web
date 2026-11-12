@@ -107,7 +107,7 @@ export const terminos: { titulo: string; bajada: string; apartados: Apartado[] }
       titulo: 'Lo que dice el sitio no es una oferta cerrada',
       parrafos: [
         'La descripción de cada sistema y servicio es informativa. Lo que efectivamente se contrata —alcance, plazos y precio— es lo que queda por escrito en la propuesta que te mandamos, y nada más que eso.',
-        'Algunas líneas figuran como "en desarrollo" o "primeros clientes": todavía no se contratan de forma general, y sus funciones pueden cambiar antes de salir.',
+        'Los sistemas evolucionan: sus funciones pueden cambiar con el tiempo. Las que valen para vos son las que figuran en tu propuesta.',
         'El diagnóstico de 30 minutos es sin costo y no te obliga a contratar nada.',
       ],
     },

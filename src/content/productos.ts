@@ -20,9 +20,16 @@
  */
 
 /**
- * `piloto` existe para no tener que elegir entre dos mentiras: decir
- * "disponible" de algo que todavía no se puede contratar llave en mano, o
- * decir "próximamente" de algo que está funcionando en una operación real.
+ * En qué punto está cada línea DE VERDAD. Es un dato interno: desde el
+ * 12/11/2026 el sitio no lo muestra (decisión del dueño: se sale a
+ * comercializar cuando todo esté funcionando y probado, así que las cinco se
+ * presentan iguales).
+ *
+ * Se conserva acá para que quede escrito qué está construido y qué no. Antes
+ * de salir a vender, las cinco tendrían que decir 'disponible'.
+ *
+ * `piloto` es "funciona en una operación real, pero todavía no se entrega
+ * llave en mano".
  */
 export type Estado = 'disponible' | 'piloto' | 'proximamente';
 

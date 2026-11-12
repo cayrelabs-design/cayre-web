@@ -11,36 +11,18 @@ import { Encabezamiento, Seccion } from './Seccion';
 /**
  * Las cinco líneas.
  *
- * El orden no es casual: primero el único sistema construido y funcionando
- * —que es toda la prueba que tiene la página— y después el resto. Lo que
- * todavía no se puede contratar lo dice, y por eso no lleva botón: publicar
- * "contratar" sobre algo que no existe trae el reclamo el primer día, y el que
- * atiende el teléfono sos vos.
+ * El orden no es casual: primero la línea principal, con su lista completa de
+ * funciones, y después las otras cuatro en tarjetas chicas.
+ *
+ * Las cinco se muestran iguales, sin cartel de estado ("funcionando hoy",
+ * "primeros clientes", "en desarrollo"). Es decisión del dueño (12/11/2026):
+ * el sitio se sale a comercializar cuando todo esté funcionando y probado, así
+ * que el estado de avance no es información para el visitante.
+ *
+ * El dato sigue anotado en src/content/productos.ts (`estado`), para uso
+ * interno. Antes de salir a vender conviene repasarlo: ese archivo dice qué
+ * está construido de verdad.
  */
-
-function Insignia({ estado }: { estado: Producto['estado'] }) {
-  if (estado === 'disponible') {
-    return (
-      <span className="flex items-center gap-2 rounded-full bg-ok/15 px-3 py-1.5 font-mono text-[9.5px] tracking-[0.12em] text-ok uppercase">
-        <span className="latir size-1.5 rounded-full bg-ok" aria-hidden />
-        Funcionando hoy
-      </span>
-    );
-  }
-  if (estado === 'piloto') {
-    return (
-      <span className="flex items-center gap-2 rounded-full bg-alerta/15 px-3 py-1.5 font-mono text-[9.5px] tracking-[0.12em] text-alerta uppercase">
-        <span className="latir size-1.5 rounded-full bg-alerta" aria-hidden />
-        Primeros clientes
-      </span>
-    );
-  }
-  return (
-    <span className="rounded-full border border-white/12 px-3 py-1.5 font-mono text-[9.5px] tracking-[0.12em] text-texto-3 uppercase">
-      En desarrollo
-    </span>
-  );
-}
 
 /** Ficha ancha, a dos columnas. La usa la línea que encabeza la sección. */
 function FichaAncha({ p }: { p: Producto }) {
@@ -50,10 +32,7 @@ function FichaAncha({ p }: { p: Producto }) {
       className="vidrio-marca grid gap-8 p-8 !rounded-[32px] lg:grid-cols-[1fr_1fr] lg:p-11"
     >
       <div>
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="size-8 flex-none rounded-xl" style={{ background: p.acento }} aria-hidden />
-          <Insignia estado={p.estado} />
-        </div>
+        <span className="block size-8 rounded-xl" style={{ background: p.acento }} aria-hidden />
 
         <h3 className="mt-5 text-[clamp(1.7rem,3.4vw,2.35rem)] leading-tight font-bold">
           {p.nombre}
@@ -97,16 +76,11 @@ function FichaAncha({ p }: { p: Producto }) {
   );
 }
 
-/** Ficha de media columna. Muestra las seis primeras funciones y corta. */
+/** Ficha chica: nombre, rubro, la idea en una frase y el enlace. */
 function Ficha({ p }: { p: Producto }) {
   return (
     <article data-revelar className="vidrio vidrio-interactivo flex flex-col p-6">
-      {/* min-h fija: si una insignia es más larga que las otras, la fila de
-          tarjetas se desalinea y los nombres quedan a distinta altura. */}
-      <div className="flex min-h-14 flex-wrap items-center gap-2.5">
-        <span className="size-6 flex-none rounded-lg" style={{ background: p.acento }} aria-hidden />
-        <Insignia estado={p.estado} />
-      </div>
+      <span className="block size-6 rounded-lg" style={{ background: p.acento }} aria-hidden />
 
       <h3 className="mt-4 text-[22px] leading-tight font-bold">{p.nombre}</h3>
       <p className="mt-1 font-mono text-[9.5px] tracking-[0.14em] text-marca-2 uppercase">
@@ -116,16 +90,13 @@ function Ficha({ p }: { p: Producto }) {
       <p className="mt-3.5 text-[15.5px] leading-snug font-semibold text-white">{p.titular}</p>
       <p className="mt-2 text-[14px] text-texto-2">{p.resumen}</p>
 
-      {/* Lo que todavía no se contrata no lleva invitación a contratarlo. */}
-      {p.estado !== 'proximamente' && (
-        <Link
-          href="#contacto"
-          className="mt-auto inline-flex items-center gap-2 self-start pt-5 font-mono text-[10.5px] tracking-[0.08em] text-marca-2 uppercase hover:text-marca-3"
-        >
-          Verlo funcionando
-          <Icono nombre="flecha" className="size-3.5" />
-        </Link>
-      )}
+      <Link
+        href="#contacto"
+        className="mt-auto inline-flex items-center gap-2 self-start pt-5 font-mono text-[10.5px] tracking-[0.08em] text-marca-2 uppercase hover:text-marca-3"
+      >
+        Verlo funcionando
+        <Icono nombre="flecha" className="size-3.5" />
+      </Link>
     </article>
   );
 }
