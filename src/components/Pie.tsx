@@ -64,6 +64,9 @@ export function Pie() {
             <Link href="/terminos" className="hover:text-marca-2">
               Términos
             </Link>
+            <Link href="/eliminacion-de-datos" className="hover:text-marca-2">
+              Eliminación de datos
+            </Link>
           </nav>
         </div>
       </div>

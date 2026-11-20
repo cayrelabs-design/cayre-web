@@ -34,6 +34,13 @@ const cabeceras = [
 ];
 
 const nextConfig: NextConfig = {
+  // Direcciones que existían en valtus.com.ar antes de que esta web ocupara el
+  // dominio (noviembre de 2026). Se mantienen vivas para que un enlace viejo, o
+  // uno cargado en otra plataforma, no termine en "página no encontrada".
+  async redirects() {
+    return [{ source: '/contacto', destination: '/#contacto', permanent: false }];
+  },
+
   async headers() {
     return [
       { source: '/:path*', headers: cabeceras },

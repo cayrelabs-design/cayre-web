@@ -20,7 +20,7 @@ export const responsable = {
 };
 
 /** Se cambia a mano cada vez que cambia el texto: es parte de lo que se informa. */
-export const actualizado = '12 de noviembre de 2026';
+export const actualizado = '20 de noviembre de 2026';
 
 export type Apartado = {
   titulo: string;
@@ -89,6 +89,61 @@ export const privacidad: { titulo: string; bajada: string; apartados: Apartado[]
       parrafos: [
         'Si cambia qué datos pedimos o para qué los usamos, se actualiza esta página y la fecha de arriba.',
       ],
+    },
+  ],
+};
+
+/**
+ * Cómo pedir que se borren los datos.
+ *
+ * Existe como página aparte (y no solo como un párrafo de la política de
+ * privacidad) por dos motivos:
+ *  · es lo que busca alguien que quiere irse, y tiene que encontrarlo solo;
+ *  · la dirección /eliminacion-de-datos ya existía en valtus.com.ar antes de
+ *    que esta web ocupara el dominio (noviembre de 2026), y puede estar
+ *    cargada en plataformas de terceros. No cambiarle la dirección.
+ *
+ * ⚠️ Habla de los datos de ESTA web (el formulario de contacto) y de los
+ * sistemas que se contratan. Si algún día una aplicación de Valtus se conecta
+ * con Meta, Google u otra plataforma, esas plataformas exigen que esta página
+ * diga qué se borra de lo que se obtuvo de ellas: hay que ampliarla antes.
+ */
+export const eliminacion: { titulo: string; bajada: string; apartados: Apartado[] } = {
+  titulo: 'Eliminación de datos',
+  bajada: 'Cómo pedir que borremos tus datos, qué se borra y en cuánto tiempo.',
+  apartados: [
+    {
+      titulo: 'Cómo pedirlo',
+      parrafos: [
+        `Escribinos a ${responsable.email} y decinos que querés que borremos tus datos. Para ubicar tu consulta alcanza con que nos pases el mail o el teléfono que dejaste en el formulario. No hace falta que expliques el motivo.`,
+      ],
+    },
+    {
+      titulo: 'Qué se borra',
+      parrafos: ['Todo lo que guardamos de tu consulta:'],
+      lista: [
+        'Tu nombre, tu teléfono o tu mail, y el nombre de tu empresa.',
+        'El mensaje que nos escribiste.',
+        'Las anotaciones internas que hayamos hecho sobre esa consulta.',
+        'El resumen irreversible de tu conexión que se guarda para frenar envíos automáticos.',
+      ],
+    },
+    {
+      titulo: 'En cuánto tiempo',
+      parrafos: [
+        'Dentro de los cinco días hábiles de recibido tu pedido, que es el plazo que fija la Ley Nº 25.326. Te avisamos cuando esté hecho.',
+        'Si más adelante nos volvés a escribir, es una consulta nueva: de la anterior no queda nada.',
+      ],
+    },
+    {
+      titulo: 'Si usás uno de nuestros sistemas',
+      parrafos: [
+        'Los datos que tu empresa carga en un sistema de Valtus son de tu empresa. Podés pedir que te los entreguemos completos y que los eliminemos escribiendo al mismo mail; los plazos y la forma son los que figuran en tu propuesta.',
+      ],
+    },
+    {
+      titulo: 'Más información',
+      parrafos: ['Qué datos pedimos y para qué los usamos está en la Política de privacidad.'],
     },
   ],
 };
