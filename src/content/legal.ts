@@ -1,5 +1,19 @@
 // Los textos legales del sitio.
 //
+// ⚠️ Desde el 25/11/2026 las tres páginas legales tienen DOS partes:
+//
+//   1. El texto de la plataforma (app.valtus.com.ar), que va primero y entero.
+//      No está en este archivo: sale de src/content/legal-plataforma.ts, que se
+//      genera de las páginas originales. Son las direcciones que Meta tiene
+//      cargadas para esa aplicación, y tienen que seguir diciendo lo mismo.
+//   2. Lo propio de ESTE sitio (el formulario de contacto), que va debajo. Eso
+//      es lo que se escribe acá, y `delSitio` (al final) elige qué apartados
+//      se muestran en cada página.
+//
+// Los apartados que `delSitio` no elige no se publican: quedaron de cuando
+// estas páginas hablaban solo del sitio, y repetirían lo que ya dice el texto
+// de la plataforma (quién responde, tus derechos, la ley aplicable).
+//
 // ⚠️ Los escribió el equipo de desarrollo describiendo lo que el sitio hace de
 // verdad (qué datos pide, dónde los guarda, para qué). NO reemplazan la
 // revisión de un abogado: antes de salir a producción conviene que alguien
@@ -20,7 +34,7 @@ export const responsable = {
 };
 
 /** Se cambia a mano cada vez que cambia el texto: es parte de lo que se informa. */
-export const actualizado = '20 de noviembre de 2026';
+export const actualizado = '25 de noviembre de 2026';
 
 export type Apartado = {
   titulo: string;
@@ -196,4 +210,55 @@ export const terminos: { titulo: string; bajada: string; apartados: Apartado[] }
       ],
     },
   ],
+};
+
+// ── Qué se muestra de este sitio en cada página ──────────────────────────────
+
+/** Busca los apartados por título. Si alguien renombra uno, falla acá y no en silencio. */
+function elegir(apartados: Apartado[], titulos: string[]): Apartado[] {
+  return titulos.map((titulo) => {
+    const apartado = apartados.find((a) => a.titulo === titulo);
+    if (!apartado) throw new Error(`legal.ts: no existe el apartado "${titulo}"`);
+    return apartado;
+  });
+}
+
+export type BloqueDelSitio = { titulo: string; bajada: string; apartados: Apartado[] };
+
+export const delSitio: Record<'privacidad' | 'terminos' | 'eliminacion', BloqueDelSitio> = {
+  privacidad: {
+    titulo: 'El formulario de contacto de este sitio',
+    bajada:
+      'Además de la plataforma, este sitio tiene un formulario para pedirnos una consulta. Esto es lo que pasa con lo que cargás ahí.',
+    apartados: elegir(privacidad.apartados, [
+      'Qué datos te pedimos',
+      'Qué no guardamos',
+      'Para qué los usamos',
+      'Dónde se guardan',
+      'Cuánto tiempo',
+    ]),
+  },
+  terminos: {
+    titulo: 'Sobre este sitio web',
+    bajada:
+      'Lo de arriba regula el uso de la plataforma. Esto vale para el sitio institucional, que cuenta qué hacemos y te deja pedirnos una consulta.',
+    apartados: elegir(terminos.apartados, [
+      'Qué es este sitio',
+      'Lo que dice el sitio no es una oferta cerrada',
+      'Contenido y marcas',
+      'Uso correcto',
+      'Disponibilidad',
+    ]),
+  },
+  eliminacion: {
+    titulo: 'Si nos escribiste por el formulario de este sitio',
+    bajada:
+      'Lo de arriba es para quienes usan la plataforma. Si lo que querés borrar es una consulta que dejaste en el formulario de contacto, es así.',
+    apartados: elegir(eliminacion.apartados, [
+      'Cómo pedirlo',
+      'Qué se borra',
+      'En cuánto tiempo',
+      'Si usás uno de nuestros sistemas',
+    ]),
+  },
 };

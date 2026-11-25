@@ -1,13 +1,19 @@
 import type { Metadata } from 'next';
 import { PaginaLegal } from '@/components/PaginaLegal';
-import { terminos } from '@/content/legal';
+import { delSitio } from '@/content/legal';
+import { legalPlataforma } from '@/content/legal-plataforma';
+
+// La página tiene dos partes: el texto de la plataforma (el que tienen cargado
+// las plataformas de terceros para la aplicación) y, debajo, lo propio de este
+// sitio. Ver src/components/PaginaLegal.tsx.
+const plataforma = legalPlataforma.terminos;
 
 export const metadata: Metadata = {
-  title: terminos.titulo,
-  description: terminos.bajada,
+  title: plataforma.titulo,
+  description: delSitio.terminos.bajada,
   alternates: { canonical: '/terminos' },
 };
 
 export default function Terminos() {
-  return <PaginaLegal {...terminos} />;
+  return <PaginaLegal plataforma={plataforma} sitio={delSitio.terminos} />;
 }

@@ -51,6 +51,14 @@ habitual. Leer la guía que corresponda en `node_modules/next/dist/docs/`.
    salen de `src/content/productos.ts`, igual que las tarjetas de la portada,
    para que no puedan decir cosas distintas. Los servicios (ValtusCorp y
    ValtusMKT) no tienen página.
+10. **Las tres páginas legales llevan primero el texto de la plataforma, sin
+    tocar** (`/privacidad`, `/terminos`, `/eliminacion-de-datos`). Son las
+    direcciones que Meta tiene cargadas para la aplicación de
+    `app.valtus.com.ar` y las vuelve a visitar. Ese texto no se edita acá: sale
+    de `originales/legales/` con `node scripts/preparar-legales.mjs`. Lo propio
+    de esta web va debajo, en `src/content/legal.ts`. No cambiarles la
+    dirección ni sacar el texto de la plataforma sin hablarlo con quien maneja
+    esa aplicación.
 7. **Los hallazgos de la sección de diagnóstico son ejemplos genéricos.** Lo
    que se encuentra adentro de un cliente es del cliente: no se publica, ni
    siquiera sin nombre, sin su autorización expresa.
